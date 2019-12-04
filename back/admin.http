@@ -1,7 +1,7 @@
-GET http://localhost:3000/admin
+GET http://localhost:8000/admin
 
 ###
-POST http://localhost:3000/admin
+POST http://localhost:8000/admin
 Content-Type: application/json
 
 {

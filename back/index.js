@@ -1,7 +1,7 @@
 const express = require('express');
-const connection = require('./conf');
+// const connection = require('./conf');
 const app = express();
-const port = 3000;
+const port = 8000;
 
 const bodyParser = require('body-parser');
 
@@ -10,6 +10,16 @@ app.use(bodyParser.json());
 app.get('/', (request, response) => {
   response.send('Welcome to Express');
 });
+
+app.get('/admin', (request, response) => {
+  connection.query('SELECT * from admin', (err, results) => {
+    if (err) {
+      response.status(500).send('Error retrieving admin');
+    } else {
+      response.json(results);
+    }
+  });
+})
 
 app.post('/admin', (request, response) => {
   const formData = request.body;
