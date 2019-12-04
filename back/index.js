@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 app.post('/admin', (request, response) => {
   const formData = request.body;
 
-  connection.query('INSERT INTO child SET ?', formData, (err, results) => {
+  connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
 
     if (err) {
       console.log(err);
