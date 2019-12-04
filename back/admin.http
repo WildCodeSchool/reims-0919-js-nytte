@@ -1,7 +1,19 @@
-GET http://localhost:8000/admin
+GET http://localhost:8000/api/camping
 
 ###
-POST http://localhost:8000/admin
+POST http://localhost:8000/api/camping
+Content-Type: application/json
+
+{
+  "camping1": {
+    "firstname": "Nico",
+    "lastname": "Latina",
+    "company": "Hilton Hotel"
+  }
+}
+
+###
+POST http://localhost:8000/api/admin
 Content-Type: application/json
 
 {

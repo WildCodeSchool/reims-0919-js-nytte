@@ -1,39 +1,26 @@
 const express = require('express');
-// const connection = require('./conf');
 const app = express();
 const port = 8000;
+const camping = require("./data").campingList
 
 const bodyParser = require('body-parser');
-
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+
 
 app.get('/', (request, response) => {
   response.send('Welcome to Express');
 });
 
-app.get('/admin', (request, response) => {
-  connection.query('SELECT * from admin', (err, results) => {
-    if (err) {
-      response.status(500).send('Error retrieving admin');
-    } else {
-      response.json(results);
-    }
-  });
+app.get('/api/camping', (request, response) => {
+  response.send(camping);
+});
+
+app.post('/api/camping', (req, res) => {
+  camping.push(req.body.camping1)
+  res.send(req.body);
 })
 
-app.post('/admin', (request, response) => {
-  const formData = request.body;
-
-  connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
-
-    if (err) {
-      console.log(err);
-      response.status(500).send("Erreur lors de la sauvegarde d'un admin");
-    } else {
-      response.sendStatus(200);
-    }
-  });
-});
 
 app.listen(port, (err) => {
   if (err) {
