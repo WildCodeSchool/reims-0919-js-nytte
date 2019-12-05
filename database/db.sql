@@ -11,8 +11,8 @@ CREATE TABLE admin
   password_admin VARCHAR(256) NOT NULL,
   city VARCHAR(100) NOT NULL,
   zip VARCHAR(5) NOT NULL,
-  adress1 VARCHAR(120)  NOT NULL,
-  adress2 VARCHAR(120) NULL,
+  address1 VARCHAR(120)  NOT NULL,
+  address2 VARCHAR(120) NULL,
   photo VARCHAR(250) NOT NULL,
   description_company VARCHAR(400) NULL,
   latitude VARCHAR(4) NULL,
@@ -23,7 +23,7 @@ CREATE TABLE admin
 
 
 INSERT INTO admin 
-(company, firstname, lastname,login_admin,password_admin,city,zip,adress1,photo,phone_company)
+(company, firstname, lastname,login_admin,password_admin,city,zip,address1,photo,phone_company)
 VALUES
 ('Camping de Max','Maxime','Thibaud','max-thi','password','Sainte Maxime','83120','1 rue Thibaud','https://zupimages.net/up/19/49/c3li.jpg','0401020304'),
 ('Camping de Wojtek','Wojtek','Zdebski','woj-tek','password','Quiberon','56170','3 rue de la Steppe','https://zupimages.net/up/19/49/3ik8.jpg','0201020304'),
