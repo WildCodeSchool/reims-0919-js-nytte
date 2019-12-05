@@ -1,35 +1,7 @@
-### GET a list of campsites
+### GET a list of admins
 GET http://localhost:8000/api/admin
 
-### POST a new campsite
-POST http://localhost:8000/api/camping
-Content-Type: application/json
-
-{
-  "camping1": {
-    "firstname": "Charlotte",
-    "lastname": "Hilton",
-    "company": "Epsilon Hotel"
-  }
-}
 
 ### POST a new admin
 POST http://localhost:8000/api/admin
 Content-Type: application/json
-
-{
-    "company": "Camping de M",
-    "firstname": "Ma",
-    "lastname": "Thi",
-    "login_admin": "max-thira",
-    "password_admin": "passwor",
-    "city": "Sainte axou",
-    "zip": "4312",
-    "address1": "1 rue Thibaut",
-    "address2": null,
-    "photo": "https://zupimages.net/up/19/49/c3li.jpg",
-    "description_company": null,
-    "latitude": null,
-    "longitude": null,
-    "phone_company": "0401015351"
-  }
