@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 8000;
-const camping = require("./data").campingList
+const connection = require("./conf");
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -9,17 +9,30 @@ app.use(bodyParser.json());
 
 
 app.get('/', (request, response) => {
-  response.send('Welcome to Express');
+  response.send('Welcome to Campsite Express');
 });
 
-app.get('/api/camping', (request, response) => {
-  response.send(camping);
-});
-
-app.post('/api/camping', (request, response) => {
-  camping.push(request.body.camping1)
-  response.send(request.body);
+app.get('/api/admin', (request, response) => {
+  connection.query('SELECT * from admin', (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving admins');
+   } else {
+     response.json(results);
+   }
+ });
 })
+
+app.post('/api/admin', (request, response) => {
+  const formData = request.body;
+  connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
+  if (err) {
+    console.log(err);
+    response.status(500).send("Error saving a new admin");
+  } else {
+    response.sendStatus(200);
+  }
+});
+});
 
 
 app.listen(port, (err) => {

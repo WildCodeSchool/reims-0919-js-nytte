@@ -1,24 +1,7 @@
-### GET a list of campsites
-GET http://localhost:8000/api/camping
+### GET a list of admins
+GET http://localhost:8000/api/admin
 
-### POST a new campsite
-POST http://localhost:8000/api/camping
-Content-Type: application/json
-
-{
-  "camping1": {
-    "firstname": "Charlotte",
-    "lastname": "Hilton",
-    "company": "Epsilon Hotel"
-  }
-}
 
 ### POST a new admin
 POST http://localhost:8000/api/admin
 Content-Type: application/json
-
-{
-  "company": "Hilton Hotel",
-  "firstname": "Vico",
-  "lastname": "Latino",
-}
