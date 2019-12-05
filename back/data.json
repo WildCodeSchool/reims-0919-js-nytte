@@ -1,0 +1,19 @@
+{
+  "campingList": [
+    {
+      "firstname": "Thierry",
+      "lastname": "Margoulin",
+      "company": "Camping des flots bleus"
+    },
+    {
+      "firstname": "Vico",
+      "lastname": "Latino",
+      "company": "Camping des flots noirs"
+    },
+    {
+      "firstname": "Sophie",
+      "lastname": "Favier",
+      "company": "Camping des flots rouges"
+    }
+  ]
+}
