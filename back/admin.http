@@ -1,5 +1,5 @@
 ### GET a list of campsites
-GET http://localhost:8000/api/camping
+GET http://localhost:8000/api/admin
 
 ### POST a new campsite
 POST http://localhost:8000/api/camping
@@ -18,7 +18,18 @@ POST http://localhost:8000/api/admin
 Content-Type: application/json
 
 {
-  "company": "Hilton Hotel",
-  "firstname": "Vico",
-  "lastname": "Latino",
-}
+    "company": "Camping de M",
+    "firstname": "Ma",
+    "lastname": "Thi",
+    "login_admin": "max-thira",
+    "password_admin": "passwor",
+    "city": "Sainte axou",
+    "zip": "4312",
+    "address1": "1 rue Thibaut",
+    "address2": null,
+    "photo": "https://zupimages.net/up/19/49/c3li.jpg",
+    "description_company": null,
+    "latitude": null,
+    "longitude": null,
+    "phone_company": "0401015351"
+  }

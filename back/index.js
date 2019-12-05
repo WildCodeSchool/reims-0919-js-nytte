@@ -29,6 +29,17 @@ app.get('/api/admin', (request, response) => {
 })
 
 
+app.post('/api/admin', (request, response) => {
+  const formData = request.body;
+  connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
+  if (err) {
+    console.log(err);
+    response.status(500).send("Error saving a movie");
+  } else {
+    response.sendStatus(200);
+  }
+});
+});
 
 
 app.post('/api/camping', (request, response) => {
