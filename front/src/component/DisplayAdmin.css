@@ -2,13 +2,55 @@
   text-align: center;
   padding: 1%;
   background-size: cover ;
+  background-color:#339999;
+  font-family: 'PT Sans', sans-serif;
+  color:white;
+  border-bottom-right-radius:5%;
+  border-bottom-left-radius:5%;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
 }
 
-h2, p {
-  color: rgb(29, 28, 31);
-}
 
  .info{
   border: 2px solid white;
   border-radius: 2%;
 } 
+
+#pagePrinc{
+  display:flex;
+  flex-direction:column;
+  height:70%;
+}
+
+.photoProfil{
+  width:80%;
+  margin-top:10%;
+  margin-right:8%;
+  margin-left:8%;
+  border-radius:15px;
+  border: 6px solid white;
+  height:120px;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+}
+
+.logo{
+  width:30px;
+  height:30px;
+}
+
+#phonePres, #responsablePres, #mailPres{
+  display:flex;
+  justify-content: space-between;
+  width:70%;
+  align-items: center;
+  margin-left:15%;
+}
+.titreProfil{
+font-size:1.8em;
+margin-bottom:0
+}
+.adressePres p{
+  margin-top:0;
+}
