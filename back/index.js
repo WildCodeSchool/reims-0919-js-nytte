@@ -16,9 +16,9 @@ app.get('/api/camping', (request, response) => {
   response.send(camping);
 });
 
-app.post('/api/camping', (req, res) => {
-  camping.push(req.body.camping1)
-  res.send(req.body);
+app.post('/api/camping', (request, response) => {
+  camping.push(request.body.camping1)
+  response.send(request.body);
 })
 
 
