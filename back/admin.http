@@ -5,3 +5,8 @@ GET http://localhost:8000/api/admin
 ### POST a new admin
 POST http://localhost:8000/api/admin
 Content-Type: application/json
+
+
+### PUT an admin
+PUT http://localhost:8000/api/admin/:id
+Content-Type: application/json
