@@ -22,6 +22,16 @@ app.get('/api/admin', (request, response) => {
  });
 })
 
+app.get('/api/admin/:id', (request, response) => {
+  connection.query('SELECT * FROM admin WHERE id = ?', [request.params.id], (err, results) => {
+    if (err) {
+      response.status(500).send("Erreur lors de la récupération de l'admin");
+    } else {
+      response.json(results);
+    }
+  });
+});
+
 app.post('/api/admin', (request, response) => {
   const formData = request.body;
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
