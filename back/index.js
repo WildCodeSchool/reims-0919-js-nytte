@@ -35,15 +35,27 @@ app.get('/api/admin/:id', (request, response) => {
 app.post('/api/admin', (request, response) => {
   const formData = request.body;
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
-  if (err) {
-    console.log(err);
-    response.status(500).send("Error saving a new admin");
-  } else {
-    response.sendStatus(200);
-  }
-});
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error saving a new admin");
+    } else {
+      response.sendStatus(200);
+    }
+  });
 });
 
+app.put('/api/admin/:id', (request, response) => {
+  const idAdmin = request.params.id;
+  const formData = request.body;
+    connection.query('UPDATE admin SET ? WHERE id = ?', [formData, idAdmin], err => {
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error editing the admin");
+    } else {
+      response.sendStatus(200);
+    }
+  });
+});
 
 app.listen(port, (err) => {
   if (err) {
