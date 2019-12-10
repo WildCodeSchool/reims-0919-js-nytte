@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import DisplayAdmin from './component/DisplayAdmin.js'
+import FormAdmin from './component/FormAdmin.js'
 const sampleCamping =
 //[
   {"id":1,
@@ -85,6 +85,7 @@ render() {
         <button  type="button" onClick={this.getCamping}>Suivant</button>
       </div>
     </div>
+      <FormAdmin />
   </div>
 );
 }}
