@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios'
 import './App.css';
+import DisplayAdmin from './component/DisplayAdmin.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+constructor(props) {
+  super(props);
+  this.state = { camping :{
+      id: 0,
+      company: '',
+      firstname: '',
+  }};
+
 }
+
+componentDidMount() {
+ 
+  axios.get('http://localhost:8000/api/admins')
+  .then(response => {
+    return response.data
+  })
+  .then(data =>{
+    this.setState({
+      camping: data[3]});
+  });
+}
+
+render() {
+  return (
+  <div>
+     <DisplayAdmin camping={this.state.camping}/>
+  </div>
+);
+}}
 
 export default App;
