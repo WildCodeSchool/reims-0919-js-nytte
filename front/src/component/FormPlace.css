@@ -1,4 +1,4 @@
-.formAdminContainer {
+.formContainer {
   background-color: #2d9486 ;
   height: 100vh;
   display: flex;
@@ -6,16 +6,13 @@
   align-items: center; 
   justify-content: flex-start; 
 }
-.formAdminContainer form {
+.formContainer form {
     width: 85%;
 }
 
-.formAdminContainer hr {
+.formContainer hr {
     color: lightgray;
 }
-
-
-
 
 .LogoNytte {
     width: 50%;

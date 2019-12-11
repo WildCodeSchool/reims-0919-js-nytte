@@ -2,7 +2,7 @@ import React from 'react';
 import './FormPlace.css'
 
 
-class FormAdmin extends React.Component {
+class FormPlace extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -10,7 +10,7 @@ class FormAdmin extends React.Component {
     }
     render() {
       return (
-      <div className = "formAdminContainer">
+      <div className = "formContainer">
         <img src = 'https://zupimages.net/up/19/50/0b2g.png' className = 'LogoNytte' alt='logo Nytte'></img>
         <form>
             <div className="form-example">
@@ -75,4 +75,4 @@ class FormAdmin extends React.Component {
       </div>
     );
     }}
-export default FormAdmin;
+export default FormPlace;
