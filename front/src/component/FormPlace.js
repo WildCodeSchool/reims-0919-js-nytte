@@ -30,30 +30,14 @@ class FormPlace extends React.Component {
             </div>
             <hr/>
             <div className="form-example">
-                <label htmlFor="email">Mail</label>
-                <input type="email" name="email" id="email" required/>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="adress">Adresse</label>
-                <input type="text" name="adress" id="adress" required/>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="city">Ville</label>
-                <input type="text" name="city" id="city" required/>
+                <label htmlFor="phone">Téléphone</label>
+                <input type="tel" name="phone" id="phone" required/>
             </div>
             <hr/>
             <div className = 'form-example'>
                 <label htmlFor="lastname">
-                  Description
-                  <textarea />
+                  <textarea className='textareaForm' placeholder='description'/>
                 </label>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="phone">Téléphone</label>
-                <input type="tel" name="phone" id="phone" required/>
             </div>
             <hr/>
             <div className= 'inputForm'>

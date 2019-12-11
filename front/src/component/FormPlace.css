@@ -43,6 +43,9 @@
     color: white;
     font-size: 1.6em;
     margin-top: 8%;
-    
+}
 
+.textareaForm {
+  width: 100%;
+  resize: none;
 }
