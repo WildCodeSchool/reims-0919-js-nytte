@@ -1,6 +1,9 @@
 ### GET a list of admins
 GET http://localhost:8000/api/admins
 
+### GET one admin
+GET http://localhost:8000/api/admin/:id
+
 
 ### POST a new admin
 POST http://localhost:8000/api/admins
