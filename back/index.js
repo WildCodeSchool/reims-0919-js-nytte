@@ -34,6 +34,27 @@ app.get('/api/admins/:id', (request, response) => {
  });
 })
 
+app.get('/api/places', (request, response) => {
+  connection.query('SELECT * FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+app.get('/api/places/:id', (request, response) => {
+  connection.query('SELECT * FROM place INNER JOIN admin WHERE place.admin_id=admin.id AND admin.id = ?', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
