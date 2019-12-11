@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
+app.use(cors())
 const port = 8000;
 const connection = require("./conf");
 
@@ -12,7 +14,7 @@ app.get('/', (request, response) => {
   response.send('Welcome to Campsite Express');
 });
 
-app.get('/api/admin', (request, response) => {
+app.get('/api/admins', (request, response) => {
   connection.query('SELECT * from admin', (err, results) => {
    if (err) {
      response.status(500).send('Error retrieving admins');
@@ -22,17 +24,17 @@ app.get('/api/admin', (request, response) => {
  });
 })
 
-app.get('/api/admin/:id', (request, response) => {
-  connection.query('SELECT * FROM admin WHERE id = ?', [request.params.id], (err, results) => {
-    if (err) {
-      response.status(500).send("Erreur lors de la récupération de l'admin");
-    } else {
-      response.json(results);
-    }
-  });
-});
+app.get('/api/admins/:id', (request, response) => {
+  connection.query('SELECT * from admin where id = ?', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving admins');
+   } else {
+     response.json(results);
+   }
+ });
+})
 
-app.post('/api/admin', (request, response) => {
+app.post('/api/admins', (request, response) => {
   const formData = request.body;
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
     if (err) {
@@ -44,7 +46,7 @@ app.post('/api/admin', (request, response) => {
   });
 });
 
-app.put('/api/admin/:id', (request, response) => {
+app.put('/api/admins/:id', (request, response) => {
   const idAdmin = request.params.id;
   const formData = request.body;
     connection.query('UPDATE admin SET ? WHERE id = ?', [formData, idAdmin], err => {
