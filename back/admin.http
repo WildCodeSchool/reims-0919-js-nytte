@@ -1,12 +1,15 @@
 ### GET a list of admins
-GET http://localhost:8000/api/admin
+GET http://localhost:8000/api/admins
 
 
 ### POST a new admin
-POST http://localhost:8000/api/admin
+POST http://localhost:8000/api/admins
 Content-Type: application/json
 
 
 ### PUT an admin
-PUT http://localhost:8000/api/admin/:id
+PUT http://localhost:8000/api/admins/:id
 Content-Type: application/json
+
+### GET one admin
+GET http://localhost:8000/api/admins/:id
