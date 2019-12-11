@@ -20,14 +20,12 @@ class FormPlace extends React.Component {
             </div> 
             <hr/>
             <div className = 'form-example'>
-                <label htmlFor="lastname">
-                  Description
-                  <textarea />
-                </label>
+                <label htmlFor="firstname">Prénom du responsable</label>
+                <input type="text" name="firstname" id="firstname" required/>
             </div>
             <hr/>
             <div className = 'form-example'>
-                <label htmlFor="firstname">Prénom</label>
+                <label htmlFor="firstname">Nom du responsable</label>
                 <input type="text" name="firstname" id="firstname" required/>
             </div>
             <hr/>
@@ -46,24 +44,11 @@ class FormPlace extends React.Component {
                 <input type="text" name="city" id="city" required/>
             </div>
             <hr/>
-            <div className="form-example">
-                <label htmlFor="zip">Code postal</label>
-                <input type="number" name="zip" id="zip" required/>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="username">Identifiant</label>
-                <input type="text" name="username" id="username" required/>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="password">Mot de passe</label>
-                <input type="password" name="password" id="password" required/>
-            </div>
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" id="description" required/>
+            <div className = 'form-example'>
+                <label htmlFor="lastname">
+                  Description
+                  <textarea />
+                </label>
             </div>
             <hr/>
             <div className="form-example">
