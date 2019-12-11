@@ -31,8 +31,13 @@ render() {
   return (
   <div>
      <DisplayAdmin camping={this.state.camping}/>
+     <FormAdmin />
   </div>
 );
 }}
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> b1a8857f5aa6a28d844bca19614195fb98efdd40
