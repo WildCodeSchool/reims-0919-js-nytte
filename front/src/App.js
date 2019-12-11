@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import './App.css';
 import DisplayAdmin from './component/DisplayAdmin.js'
+import FormPlace from './component/FormPlace'
 
 
 class App extends React.Component {
@@ -31,6 +32,7 @@ render() {
   return (
   <div>
      <DisplayAdmin camping={this.state.camping}/>
+     <FormPlace />
   </div>
 );
 }}
