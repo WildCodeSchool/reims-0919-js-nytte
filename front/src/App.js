@@ -31,6 +31,7 @@ render() {
   return (
   <div>
      <DisplayAdmin camping={this.state.camping}/>
+     <FormAdmin />
   </div>
 );
 }}

@@ -5,7 +5,7 @@ function DisplayAdmin(props){
   return(
   <div id="pagePrinc">
     <div id="photoDeProfil">
-      <img className="photoProfil" src={props.camping.photo} alt="photo de profil de l'établissement touristique"></img>
+      <img className="photoProfil" src={props.camping.photo} alt="profil de l'établissement touristique"></img>
     </div>
     <h2 className="titreProfil">{props.camping.company.toUpperCase()}</h2>
     <div className="adressePres">
