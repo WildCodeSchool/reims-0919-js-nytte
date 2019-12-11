@@ -54,6 +54,28 @@ app.get('/api/places/:id', (request, response) => {
  });
 })
 
+app.get('/api/vacationers', (request, response) => {
+  connection.query('SELECT * FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+app.get('/api/vacationers/:id', (request, response) => {
+  connection.query('', [request.params.id], (err, results) =>SELECT * FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id AND admin.id = ? {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+
+
 
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
