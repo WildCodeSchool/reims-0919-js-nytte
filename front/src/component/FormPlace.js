@@ -8,19 +8,22 @@ class FormPlace extends React.Component {
       this.state = {
       };
     }
+
     render() {
       return (
       <div className = "formContainer">
         <img src = 'https://zupimages.net/up/19/50/0b2g.png' className = 'LogoNytte' alt='logo Nytte'></img>
         <form>
             <div className="form-example">
-                <label htmlFor="company">Nom établissement</label>
-                <input type="text" name="company" id="company" required/>
+                <label htmlFor="place">Nom du lieu</label>
+                <input type="text" name="place" id="place" required/>
             </div> 
             <hr/>
             <div className = 'form-example'>
-                <label htmlFor="lastname">Nom</label>
-                <input type="text" name="lastname" id="lastname" required/>
+                <label htmlFor="lastname">
+                  Description
+                  <textarea />
+                </label>
             </div>
             <hr/>
             <div className = 'form-example'>
