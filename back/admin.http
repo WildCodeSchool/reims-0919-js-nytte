@@ -16,3 +16,15 @@ Content-Type: application/json
 
 ### GET one admin
 GET http://localhost:8000/api/admins/:id
+
+### GET a list of places
+GET http://localhost:8000/api/places
+
+### GET one place
+GET http://localhost:8000/api/places/:id
+
+### GET a list of vacationers
+GET http://localhost:8000/api/vacationers
+
+### GET one vacationer
+GET http://localhost:8000/api/vacationers/:id
