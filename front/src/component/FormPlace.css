@@ -1,5 +1,4 @@
 .formContainer {
-  background-color: #2d9486 ;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,4 +46,13 @@
 .textareaForm {
   width: 100%;
   resize: none;
+}
+
+.bannerTop {
+  background-color: #2d9486;
+  width: 100%;
+  border-bottom-right-radius:5%;
+  border-bottom-left-radius:5%;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
 }
