@@ -136,7 +136,7 @@ app.put('/api/places/:id', (request, response) => {
   });
 });
 
-app.put('/api/vactioners/:id', (request, response) => {
+app.put('/api/vacationers/:id', (request, response) => {
   const idAdmin = request.params.id;
   const formData = request.body;
     connection.query('UPDATE vacationer SET ? WHERE id = ?', [formData, idAdmin], err => {
