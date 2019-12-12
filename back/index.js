@@ -74,15 +74,36 @@ app.get('/api/vacationers/:id', (request, response) => {
  });
 })
 
-
-
-
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
     if (err) {
       console.log(err);
       response.status(500).send("Error saving a new admin");
+    } else {
+      response.sendStatus(200);
+    }
+  });
+});
+
+app.post('/api/places', (request, response) => {
+  const formData = request.body;
+  connection.query('INSERT INTO place SET ?', formData, (err, results) => {
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error saving a new place");
+    } else {
+      response.sendStatus(200);
+    }
+  });
+});
+
+app.post('/api/vacationers', (request, response) => {
+  const formData = request.body;
+  connection.query('INSERT INTO vacationer SET ?', formData, (err, results) => {
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error saving a new vacationer");
     } else {
       response.sendStatus(200);
     }
