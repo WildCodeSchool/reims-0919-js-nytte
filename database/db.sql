@@ -13,7 +13,7 @@ CREATE TABLE admin
   zip VARCHAR(5) NOT NULL,
   address1 VARCHAR(120)  NOT NULL,
   address2 VARCHAR(120) NULL,
-  photo VARCHAR(250) NOT NULL,
+  photo VARCHAR(250) NULL,
   description_company VARCHAR(400) NULL,
   latitude VARCHAR(4) NULL,
   longitude VARCHAR(4) NULL,
