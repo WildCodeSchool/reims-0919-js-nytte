@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import './App.css';
 import DisplayAdmin from './component/DisplayAdmin.js'
-
+import FormAdmin from './component/FormAdmin.js'
 
 class App extends React.Component {
 constructor(props) {
