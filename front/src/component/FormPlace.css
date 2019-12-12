@@ -26,7 +26,7 @@
     background: none;
     border: none;
     text-align: right;
-    color: white;
+    color: #2d9486;
 }
 
 .inputForm {
@@ -46,6 +46,7 @@
 .textareaForm {
   width: 100%;
   resize: none;
+  border: 0px;
 }
 
 .bannerTop {
@@ -55,6 +56,10 @@
   border-bottom-left-radius:5%;
   box-shadow:0 19px 38px
   rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+  margin-bottom: 8%;
+  text-align: center;
+  font-size: 0.9em;
+  color:white;
 }
 
 button {
