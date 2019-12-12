@@ -44,7 +44,7 @@
     margin-top: 8%;
 }
 
-.textareaForm {
+textarea{
   width: 100%;
   resize: none;
   border: 0px;
@@ -52,6 +52,7 @@
 }
 
 .bannerTop {
+  display: flex;
   background-color: #2d9486;
   width: 100%;
   border-bottom-right-radius:5%;
@@ -64,10 +65,11 @@
   color:white;
 }
 
-button {
+.createButton {
   width: 50%;
   height: 5%;
   font-size: 1.2em;
+  box-shadow:3px 2px 3px
 }
 
 .arrowBack {
@@ -76,4 +78,10 @@ button {
   background-color:#2d9486;
   border: 0px;
   font-size: 4em;
+  position: absolute;
+}
+
+.title {
+  margin-left: auto;
+  margin-right: auto;
 }

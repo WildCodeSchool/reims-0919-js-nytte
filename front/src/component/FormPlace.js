@@ -14,7 +14,7 @@ class FormPlace extends React.Component {
       <div className = "formContainer">
         <div className="bannerTop">
           <button className='arrowBack'>&lsaquo;</button>
-          <h1>Création
+          <h1 className='title'>Création
             <br/>
               d'un lieu
           </h1>
@@ -46,13 +46,12 @@ class FormPlace extends React.Component {
             </div>
             <hr/>
             <div className = 'textareaForm'>
-                <label htmlFor="description">
-                  <textarea className='textareaForm' placeholder='description du lieu' rows='5'/>
-                </label>
+                <label htmlFor="description">Description</label>
+                <textarea className='textareaForm' placeholder='description du lieu' rows='5'/>
             </div>
             <hr/>
         </form>
-        <button>Créer</button>
+        <button className="createButton">Créer</button>
       </div>
     );
     }}
