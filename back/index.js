@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', (request, response) => {
-  response.send('Welcome to Campsite Express');
+  response.send('Welcome to Nytte');
 });
 
 app.get('/api/admins', (request, response) => {
@@ -33,6 +33,49 @@ app.get('/api/admins/:id', (request, response) => {
    }
  });
 })
+
+app.get('/api/places', (request, response) => {
+  connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+app.get('/api/places/:id', (request, response) => {
+  connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id AND place.id = ?', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving places');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+app.get('/api/vacationers', (request, response) => {
+  connection.query('SELECT tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving vacationers');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+app.get('/api/vacationers/:id', (request, response) => {
+  connection.query('SELECT tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id AND vacationer.id = ?', [request.params.id], (err, results) => {
+   if (err) {
+     response.status(500).send('Error retrieving vacationers');
+   } else {
+     response.json(results);
+   }
+ });
+})
+
+
+
 
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
