@@ -13,6 +13,8 @@ class FormPlace extends React.Component {
       return (
       <div className = "formContainer">
         <div className="bannerTop">
+          <p></p>
+          <button className='arrowBack'>&lsaquo;</button>
           <h1>Création
             <br/>
               d'un lieu
@@ -50,9 +52,6 @@ class FormPlace extends React.Component {
                 </label>
             </div>
             <hr/>
-            <div className= 'inputForm'>
-                <input  type="submit" value="VALIDER  >"/>
-            </div>
         </form>
         <button>Créer</button>
       </div>

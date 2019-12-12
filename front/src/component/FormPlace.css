@@ -7,6 +7,7 @@
 }
 .formContainer form {
     width: 85%;
+    margin-bottom: 5%;
 }
 
 .formContainer hr {
@@ -47,6 +48,7 @@
   width: 100%;
   resize: none;
   border: 0px;
+  color: #2d9486;
 }
 
 .bannerTop {
@@ -66,4 +68,12 @@ button {
   width: 50%;
   height: 5%;
   font-size: 1.2em;
+}
+
+.arrowBack {
+  width: 30px;
+  height: 60px;
+  background-color:#2d9486;
+  border: 0px;
+  font-size: 4em;
 }
