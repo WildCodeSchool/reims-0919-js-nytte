@@ -54,6 +54,7 @@ class FormPlace extends React.Component {
                 <input  type="submit" value="VALIDER  >"/>
             </div>
         </form>
+        <button>Créer</button>
       </div>
     );
     }}
