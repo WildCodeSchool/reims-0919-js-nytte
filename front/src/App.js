@@ -3,6 +3,7 @@ import axios from 'axios'
 import './App.css';
 import DisplayAdmin from './component/DisplayAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
+import DisplayVacationer from './component/DisplayVacationer.js'
 import FormAdmin from './component/FormAdmin.js'
 
 
@@ -15,7 +16,8 @@ constructor(props) {
       company: '',
       firstname: '',
     },
-    place : {}
+    place : {},
+    vacationer :{}
   };
 }
 
@@ -54,6 +56,7 @@ render() {
      <FormAdmin />
      <div>
      <DisplayPlace place={this.state.place}/>
+     <DisplayVacationer vacationer={this.state.vacationer}/>
      </div>
   </div>
 );
