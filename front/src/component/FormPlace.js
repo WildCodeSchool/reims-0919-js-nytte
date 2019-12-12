@@ -19,24 +19,14 @@ class FormPlace extends React.Component {
                 <input type="text" name="place" id="place" required/>
             </div> 
             <hr/>
-            <div className = 'form-example'>
-                <label htmlFor="firstname">Prénom du responsable</label>
-                <input type="text" name="firstname" id="firstname" required/>
-            </div>
-            <hr/>
-            <div className = 'form-example'>
-                <label htmlFor="firstname">Nom du responsable</label>
-                <input type="text" name="firstname" id="firstname" required/>
-            </div>
-            <hr/>
             <div className="form-example">
                 <label htmlFor="phone">Téléphone</label>
                 <input type="tel" name="phone" id="phone" required/>
             </div>
             <hr/>
-            <div className = 'form-example'>
-                <label htmlFor="lastname">
-                  <textarea className='textareaForm' placeholder='description'/>
+            <div className = 'textareaForm'>
+                <label htmlFor="description">
+                  <textarea className='textareaForm' placeholder='description du lieu' />
                 </label>
             </div>
             <hr/>
