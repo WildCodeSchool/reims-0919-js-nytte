@@ -55,10 +55,14 @@ render() {
   return (
   <div>
      <FormAdmin />
+     <br/>
      <RandomCamping />
+     <br/>
      <div>
      <DisplayPlace place={this.state.place}/>
+     <br/>
      <DisplayVacationer vacationer={this.state.vacationer}/>
+     <br/>
      </div>
   </div>
 );
