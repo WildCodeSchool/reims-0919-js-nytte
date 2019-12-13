@@ -43,7 +43,6 @@ class App extends React.Component {
         <FormAdmin />
       </div>
       <div>
-        <DisplayAdmin camping={this.state.camping}/>
         <FormPlace />
       </div>
     );
