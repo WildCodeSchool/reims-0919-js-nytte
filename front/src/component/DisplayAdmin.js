@@ -1,5 +1,5 @@
 import React from 'react';
-import './DisplayAdmin.css';
+import './Display.css';
 
 function DisplayAdmin(props){
   return(
@@ -21,7 +21,7 @@ function DisplayAdmin(props){
     </div>
     <div id="mailPres">
       <img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>
-      <p>{props.camping.email_company}</p>
+      <p>{props.camping.email}</p>
     </div>
     <p>{props.camping.description_company}</p>
   </div>
