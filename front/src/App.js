@@ -2,8 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import './App.css'
 import DisplayAdmin from './component/DisplayAdmin.js'
+import FormPlace from './component/FormPlace'
 import FormAdmin from './component/FormAdmin.js'
 import LoginAdmin from './component/LoginAdmin.js'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +37,7 @@ class App extends React.Component {
       })
   }
 
+
   render() {
     return (
       <div>
@@ -48,9 +51,10 @@ class App extends React.Component {
           Suivant
         </button>
         <FormAdmin />
+        <FormPlace />
       </div>
     )
   }
 }
-
 export default App
+

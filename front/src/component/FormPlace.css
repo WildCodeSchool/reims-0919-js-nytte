@@ -1,0 +1,87 @@
+.formContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; 
+}
+.formContainer form {
+    width: 85%;
+    margin-bottom: 5%;
+}
+
+.formContainer hr {
+    color: lightgray;
+}
+
+.LogoNytte {
+    width: 50%;
+}
+
+.form-example {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-example input {
+    background: none;
+    border: none;
+    text-align: right;
+    color: #2d9486;
+}
+
+.inputForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputForm input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.6em;
+    margin-top: 8%;
+}
+
+textarea{
+  width: 100%;
+  resize: none;
+  border: 0px;
+  color: #2d9486;
+}
+
+.bannerTop {
+  display: flex;
+  background-color: #2d9486;
+  width: 100%;
+  border-bottom-right-radius:5%;
+  border-bottom-left-radius:5%;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+  margin-bottom: 8%;
+  text-align: center;
+  font-size: 0.9em;
+  color:white;
+}
+
+.createButton {
+  width: 50%;
+  height: 5%;
+  font-size: 1.2em;
+  box-shadow:3px 2px 3px
+}
+
+.arrowBack {
+  width: 30px;
+  height: 60px;
+  background-color:#2d9486;
+  border: 0px;
+  font-size: 4em;
+  position: absolute;
+}
+
+.title {
+  margin-left: auto;
+  margin-right: auto;
+}
