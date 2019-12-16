@@ -76,6 +76,7 @@ app.get('/api/vacationers/:id', (request, response) => {
 
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
+  //formData.password = bcrypt(formData.password)
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
     if (err) {
       console.log(err);
@@ -84,6 +85,19 @@ app.post('/api/admins', (request, response) => {
       response.sendStatus(200);
     }
   });
+});
+
+const validUsername = 'Cindie';
+const validPassword = 'jaimelecode';
+
+app.post('/api/admins/login', (request, response) => {
+  const formData = request.body;
+  
+  if (formData.loginAdmin === validUsername && formData.passwordAdmin === validPassword) {
+    response.status(200).send("Vous êtes bien connecté")
+  } else {
+    response.status(401).send("La connection a échouée !!!");
+  }
 });
 
 app.post('/api/places', (request, response) => {
