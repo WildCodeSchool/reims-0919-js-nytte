@@ -7,6 +7,9 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import FormAdmin from './component/FormAdmin.js'
 import LoginAdmin from './component/LoginAdmin.js'
+import DisplayPlace from './component/DisplayPlace.js'
+import DisplayVacationer from './component/DisplayVacationer.js'
+import FormAdmin from './component/FormAdmin.js'
 
 
 class App extends React.Component {
@@ -15,7 +18,8 @@ class App extends React.Component {
     this.state = {
       campings: null,
       currentCamping: 0,
-      place : {}
+      place : {},
+      vacationer :{}
     }
     this.nextCamping = this.nextCamping.bind(this)
   }
@@ -38,23 +42,23 @@ class App extends React.Component {
           campings: data
         })
       })
-      axios.get('http://localhost:8000/api/places')
-  .then(response => {
-    return response.data
-  })
-  .then(data =>{
-    this.setState({
-      place: data[0]});
-  });
-  axios.get('http://localhost:8000/api/vacationers')
-  .then(response => {
-    return response.data
-  })
-  .then(data =>{
-    this.setState({
+    axios.get('http://localhost:8000/api/places')
+      .then(response => {
+        return response.data
+      })
+      .then(data =>{
+        this.setState({
+          place: data[0]});
+        });
+     axios.get('http://localhost:8000/api/vacationers')
+        .then(response => {
+          return response.data
+      })
+      .then(data =>{
+      this.setState({
       vacationer: data[0]});
   });
-  }
+}
 
 
   render() {
@@ -71,6 +75,8 @@ class App extends React.Component {
         </button>
         <FormAdmin />
         <FormPlace />
+        <DisplayPlace place={this.state.place}/>
+        <DisplayVacationer vacationer={this.state.vacationer}/>
       </div>
     )
   }

@@ -1,0 +1,76 @@
+#pagePrinc, #pagePlace, #pageVacationer {
+  text-align: center;
+  padding: 1%;
+  background-size: cover ;
+  background-color:#2d9486;
+  font-family: 'PT Sans', sans-serif;
+  color:white;
+  border-bottom-right-radius:5%;
+  border-bottom-left-radius:5%;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+}
+
+
+ .info{
+  border: 2px solid white;
+  border-radius: 2%;
+} 
+
+#pagePrinc, #pagePlace, #pageVacationer{
+  display:flex;
+  flex-direction:column;
+  height:70%;
+}
+
+#pageVacationer{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.photoProfil{
+  width:80%;
+  margin-top:10%;
+  margin-right:8%;
+  margin-left:8%;
+  border-radius:15px;
+  border: 6px solid white;
+  height:120px;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+}
+
+.photoProfilVac{
+  width:60%;
+  margin-top:10%;
+  margin-right:18%;
+  margin-left:18%;
+  border-radius:100%;
+  border: 6px solid white;
+  height:240px;
+  box-shadow:0 19px 38px
+  rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+}
+
+.logo{
+  width:30px;
+  height:30px;
+}
+
+#phonePres, #responsablePres, #mailPres{
+  display:flex;
+  justify-content: space-between;
+  width:70%;
+  align-items: center;
+  margin-left:15%;
+}
+.titreProfil{
+font-size:1.8em;
+margin-bottom:0;
+text-align:center;
+
+}
+.adressePres p{
+  margin-top:0;
+}
