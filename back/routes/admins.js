@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const connection = require("../conf");
 
-app.get('/api/admins', (request, response) => {
+
+router.get('/', (request, response) => {
     connection.query('SELECT * from admin', (err, results) => {
      if (err) {
        response.status(500).send('Error retrieving admins');
@@ -11,7 +13,7 @@ app.get('/api/admins', (request, response) => {
    });
   })
   
-  app.get('/api/admins/:id', (request, response) => {
+  router.get('/:id', (request, response) => {
     connection.query('SELECT * from admin where id = ?', [request.params.id], (err, results) => {
      if (err) {
        response.status(500).send('Error retrieving admins');
@@ -21,7 +23,7 @@ app.get('/api/admins', (request, response) => {
    });
   })
 
-  app.post('/api/admins', (request, response) => {
+  router.post('/api/admins', (request, response) => {
     const formData = request.body;
     connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
       if (err) {
@@ -33,7 +35,7 @@ app.get('/api/admins', (request, response) => {
     });
   });
 
-  app.put('/api/admins/:id', (request, response) => {
+  router.put('/api/admins/:id', (request, response) => {
     const idAdmin = request.params.id;
     const formData = request.body;
       connection.query('UPDATE admin SET ? WHERE id = ?', [formData, idAdmin], err => {
@@ -45,3 +47,5 @@ app.get('/api/admins', (request, response) => {
       }
     });
   });
+
+  module.exports = router
