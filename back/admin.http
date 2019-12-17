@@ -9,10 +9,100 @@ GET http://localhost:8000/api/admin/:id
 POST http://localhost:8000/api/admins
 Content-Type: application/json
 
+{
+    "company":"Hotel de plein air de Cindie",
+    "firstname":"Cindie",
+    "lastname":"Jouvin",
+    "login_admin":"cin-jou",
+    "password_admin":"password",
+    "city":"Cassis",
+    "zip":"13260",
+    "address1":"Rue de la Framboise",
+    "photo":"https://zupimages.net/up/19/49/ctks.jpg",
+    "phone_company":"0406081001"
+}
+
 
 ### PUT an admin
 PUT http://localhost:8000/api/admins/:id
 Content-Type: application/json
 
+{
+    "id":4,
+    "company":"Camping de Cindie"
+}
+
 ### GET one admin
 GET http://localhost:8000/api/admins/:id
+
+### GET a list of places
+GET http://localhost:8000/api/places
+
+### GET one place
+GET http://localhost:8000/api/places/:id
+
+### GET a list of vacationers
+GET http://localhost:8000/api/vacationers
+
+### GET one vacationer
+GET http://localhost:8000/api/vacationers/:id
+
+### POST a place
+POST http://localhost:8000/api/places
+Content-Type: application/json
+
+{
+    "local_name":"Disco Nytter",
+     "local_photo":"https://zupimages.net/up/19/50/l5kd.jpeg",
+      "local_description":"Pour danser toute la nuit",
+      "admin_id":4
+}
+
+### POST a vacationer
+POST http://localhost:8000/api/vacationers
+Content-Type: application/json
+
+{
+    "tourist_firstname":"Cindie",
+    "tourist_lastname":"Jouvin",
+    "tourist_login":"cindie.jouvin",
+    "tourist_password":"password",
+    "tourist_city":"Sillery",
+    "tourist_zip":"51500",
+    "tourist_address1":"4 rue du Parc",
+    "tourist_email":"cindie.jouvin@gmail.com",
+    "admin_id":4,
+    "birthday":"1979-08-19" 
+}
+
+### PUT a place
+PUT http://localhost:8000/api/places/:id
+Content-Type: application/json
+
+{
+    "id":14,
+    "local_name":"Disco fever Nytter"
+}
+
+### PUT a vacationer
+PUT http://localhost:8000/api/vacationers/:id
+Content-Type: application/json
+
+{
+    "id":1,
+    "tourist_login":"cindie.jou"
+}
+
+
+### POST a login
+POST http://localhost:8000/api/admins/login
+Content-Type: application/json
+
+{
+  "loginAdmin" : "Cindie",
+  "passwordAdmin" : "jaimelecode"
+}
+
+### Check login
+GET http://localhost:8000/api/testVerify
+

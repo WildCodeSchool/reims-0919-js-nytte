@@ -1,7 +1,10 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
-import './App.css';
+import './App.css'
 import DisplayAdmin from './component/DisplayAdmin.js'
+import FormPlace from './component/FormPlace'
+import FormAdmin from './component/FormAdmin.js'
+import LoginAdmin from './component/LoginAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import FormAdmin from './component/FormAdmin.js'
@@ -49,17 +52,26 @@ componentDidMount() {
   });
 }
 
-render() {
-  return (
-  <div>
-     <DisplayAdmin camping={this.state.camping}/>
-     <FormAdmin />
-     <div>
-     <DisplayPlace place={this.state.place}/>
-     <DisplayVacationer vacationer={this.state.vacationer}/>
-     </div>
-  </div>
-);
-}}
 
-export default App;
+  render() {
+    return (
+      <div>
+        <LoginAdmin />
+        {this.state.campings && (
+          <DisplayAdmin
+            camping={this.state.campings[this.state.currentCamping]}
+          />
+        )}
+        <button type='button' onClick={this.nextCamping}>
+          Suivant
+        </button>
+        <FormAdmin />
+        <FormPlace />
+        <DisplayPlace place={this.state.place}/>
+        <DisplayVacationer vacationer={this.state.vacationer}/>
+      </div>
+    )
+  }
+}
+export default App
+
