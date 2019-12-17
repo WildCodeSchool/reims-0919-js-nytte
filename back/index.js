@@ -10,8 +10,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
+
 function verifyToken(req, res, next){
   const bearerHeader = req.headers.authorization
+  console.log(req.headers)
   if(typeof bearerHeader !== 'undefined'){
       const bearer = bearerHeader.split(' ') // split bearerHeader in a new Array
       const bearerToken = bearer[1] // store index 1 of the newly created array in a new variable bearToken
@@ -19,8 +21,10 @@ function verifyToken(req, res, next){
       next() // step to the next middleware
   } else{
       res.sendStatus(403)
+      console.log('hello im here')
   }
 }
+
 
 
 
@@ -101,31 +105,33 @@ app.post('/api/admins', (request, response) => {
   });
 });
 
-const validUsername = 'Cindie';
-const validPassword = 'jaimelecode';
-
 app.post('/api/admins/login', (request, response) => {
-
-  const formData = request.body;
-  
-  if (formData.loginAdmin === validUsername && formData.passwordAdmin === validPassword) {
     const user = {
-      loginAdmin: 'Cindie',
-      passwordAdmin: 'jaimelecode'
+       loginAdmin: 'Cindie',
+       passwordAdmin: 'jaimelecode'
     }
-
     jwt.sign({ user }, 'secret', {expiresIn : '1h'}, (err, token) => {
       response.json({
           token
       })
     })
-  } else {
-    response.status(401).send("La connection a échouée !!!");
-  }
 });
 
-app.get('/api/testVerify', verifyToken, (request, response) => {
-
+app.get('/api/testVerify', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'secret', (err, authorizedData) => {
+    if(err){
+        //If error send Forbidden (403)
+        console.log('ERROR: Could not connect to the protected route');
+        res.sendStatus(403);
+    } else {
+        //If token is successfully verified, we can send the autorized data 
+        res.json({
+            message: 'Successful log in',
+            authorizedData
+        });
+        console.log('SUCCESS: Connected to protected route');
+    }
+})
 });
 
 app.post('/api/places', (request, response) => {
