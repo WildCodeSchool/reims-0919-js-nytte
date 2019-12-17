@@ -7,7 +7,6 @@ import FormAdmin from './component/FormAdmin.js'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
-import FormAdmin from './component/FormAdmin.js'
 
 
 class App extends React.Component {
