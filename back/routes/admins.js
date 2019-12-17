@@ -23,7 +23,7 @@ router.get('/', (request, response) => {
    });
   })
 
-  router.post('/api/admins', (request, response) => {
+  router.post('/', (request, response) => {
     const formData = request.body;
     connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
       if (err) {
@@ -35,7 +35,7 @@ router.get('/', (request, response) => {
     });
   });
 
-  router.put('/api/admins/:id', (request, response) => {
+  router.put('/:id', (request, response) => {
     const idAdmin = request.params.id;
     const formData = request.body;
       connection.query('UPDATE admin SET ? WHERE id = ?', [formData, idAdmin], err => {
