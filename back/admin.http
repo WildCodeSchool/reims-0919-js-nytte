@@ -92,3 +92,17 @@ Content-Type: application/json
     "id":1,
     "tourist_login":"cindie.jou"
 }
+
+
+### POST a login
+POST http://localhost:8000/api/admins/login
+Content-Type: application/json
+
+{
+  "loginAdmin" : "Cindie",
+  "passwordAdmin" : "jaimelecode"
+}
+
+### Check login
+GET http://localhost:8000/api/testVerify
+

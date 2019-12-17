@@ -4,10 +4,24 @@ const app = express();
 app.use(cors())
 const port = 8000;
 const connection = require("./conf");
+const jwt = require('jsonwebtoken');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+
+function verifyToken(req, res, next){
+  const bearerHeader = req.headers.authorization
+  if(typeof bearerHeader !== 'undefined'){
+      const bearer = bearerHeader.split(' ') // split bearerHeader in a new Array
+      const bearerToken = bearer[1] // store index 1 of the newly created array in a new variable bearToken
+      req.token = bearerToken
+      next() // step to the next middleware
+  } else{
+      res.sendStatus(403)
+  }
+}
+
 
 
 app.get('/', (request, response) => {
@@ -76,6 +90,7 @@ app.get('/api/vacationers/:id', (request, response) => {
 
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
+  //formData.password = bcrypt(formData.password)
   connection.query('INSERT INTO admin SET ?', formData, (err, results) => {
     if (err) {
       console.log(err);
@@ -84,6 +99,38 @@ app.post('/api/admins', (request, response) => {
       response.sendStatus(200);
     }
   });
+});
+
+const validUsername = 'Cindie';
+const validPassword = 'jaimelecode';
+
+app.post('/api/admins/login', (request, response) => {
+
+  const formData = request.body;
+  
+  if (formData.loginAdmin === validUsername && formData.passwordAdmin === validPassword) {
+    const user = {
+      loginAdmin: 'Cindie',
+      passwordAdmin: 'jaimelecode'
+    }
+
+    jwt.sign({ user }, 'secret', {expiresIn : '1h'}, (err, token) => {
+      if (err) {
+        console.log(err);
+        response.status(500).send("Error creating a token")
+      } else {
+        response.json({
+          token
+        })
+      }
+    })
+  } else {
+    response.status(401).send("La connection a échouée !!!");
+  }
+});
+
+app.get('/api/testVerify', verifyToken, (request, response) => {
+
 });
 
 app.post('/api/places', (request, response) => {
@@ -148,7 +195,6 @@ app.put('/api/vacationers/:id', (request, response) => {
     }
   });
 });
-
 
 app.listen(port, (err) => {
   if (err) {
