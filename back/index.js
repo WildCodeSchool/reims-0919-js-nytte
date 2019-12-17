@@ -115,9 +115,14 @@ app.post('/api/admins/login', (request, response) => {
     }
 
     jwt.sign({ user }, 'secret', {expiresIn : '1h'}, (err, token) => {
-      response.json({
+      if (err) {
+        console.log(err);
+        response.status(500).send("Error creating a token")
+      } else {
+        response.json({
           token
-      })
+        })
+      }
     })
   } else {
     response.status(401).send("La connection a échouée !!!");
