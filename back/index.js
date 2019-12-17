@@ -123,6 +123,7 @@ app.post('/api/admins/login', (request, response) => {
     response.status(401).send("La connection a échouée !!!");
   }
 });
+
 app.get('/api/testVerify', verifyToken, (request, response) => {
 
 });
