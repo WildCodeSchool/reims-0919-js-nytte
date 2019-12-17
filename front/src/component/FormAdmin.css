@@ -1,11 +1,12 @@
 .formAdminContainer {
-  background-color: #2d9486 ;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: flex-start; 
+    background-color: #2d9486;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
+
 .formAdminContainer form {
     width: 85%;
 }
@@ -16,7 +17,6 @@
 
 
 
-
 .LogoNytte {
     width: 50%;
 }
@@ -24,7 +24,7 @@
 .form-example {
     display: flex;
     justify-content: space-between;
-    
+
 }
 
 .form-example input {
@@ -46,6 +46,5 @@
     color: white;
     font-size: 1.6em;
     margin-top: 8%;
-    
 
 }

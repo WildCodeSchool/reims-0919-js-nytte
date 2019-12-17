@@ -1,35 +1,44 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
-import './App.css';
+import './App.css'
 import DisplayAdmin from './component/DisplayAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import FormAdmin from './component/FormAdmin.js'
+import FormPlace from './component/FormPlace'
+import FormAdmin from './component/FormAdmin.js'
+import LoginAdmin from './component/LoginAdmin.js'
 
 
 class App extends React.Component {
-constructor(props) {
-  super(props);
-  this.state = { 
-    camping :{
-      id: 0,
-      company: '',
-      firstname: '',
-    },
-    place : {}
-  };
-}
+  constructor(props) {
+    super(props)
+    this.state = {
+      campings: null,
+      currentCamping: 0,
+      place : {}
+    }
+    this.nextCamping = this.nextCamping.bind(this)
+  }
 
-componentDidMount() {
- 
-  axios.get('http://localhost:8000/api/admins')
-  .then(response => {
-    return response.data
-  })
-  .then(data =>{
-    this.setState({
-      camping: data[3]});
-  });
-  axios.get('http://localhost:8000/api/places')
+  nextCamping() {
+    this.setState(prevState => {
+      return {
+        currentCamping:
+          (prevState.currentCamping + 1) % prevState.campings.length
+      }
+    })
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:8000/api/admins')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          campings: data
+        })
+      })
+      axios.get('http://localhost:8000/api/places')
   .then(response => {
     return response.data
   })
@@ -45,18 +54,26 @@ componentDidMount() {
     this.setState({
       vacationer: data[0]});
   });
+  }
+
+
+  render() {
+    return (
+      <div>
+        <LoginAdmin />
+        {this.state.campings && (
+          <DisplayAdmin
+            camping={this.state.campings[this.state.currentCamping]}
+          />
+        )}
+        <button type='button' onClick={this.nextCamping}>
+          Suivant
+        </button>
+        <FormAdmin />
+        <FormPlace />
+      </div>
+    )
+  }
 }
+export default App
 
-render() {
-  return (
-  <div>
-     <DisplayAdmin camping={this.state.camping}/>
-     <FormAdmin />
-     <div>
-     <DisplayPlace place={this.state.place}/>
-     </div>
-  </div>
-);
-}}
-
-export default App;
