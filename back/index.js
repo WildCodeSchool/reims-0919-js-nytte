@@ -171,9 +171,9 @@ app.put('/api/admins/:id', (request, response) => {
 });
 
 app.put('/api/places/:id', (request, response) => {
-  const idAdmin = request.params.id;
+  const idPlace = request.params.id;
   const formData = request.body;
-    connection.query('UPDATE place SET ? WHERE id = ?', [formData, idAdmin], err => {
+    connection.query('UPDATE place SET ? WHERE id = ?', [formData, idPlace], err => {
     if (err) {
       console.log(err);
       response.status(500).send("Error editing the place");
@@ -184,9 +184,9 @@ app.put('/api/places/:id', (request, response) => {
 });
 
 app.put('/api/vacationers/:id', (request, response) => {
-  const idAdmin = request.params.id;
+  const idVacationer = request.params.id;
   const formData = request.body;
-    connection.query('UPDATE vacationer SET ? WHERE id = ?', [formData, idAdmin], err => {
+    connection.query('UPDATE vacationer SET ? WHERE id = ?', [formData, idVacationer], err => {
     if (err) {
       console.log(err);
       response.status(500).send("Error editing the vacationer");
