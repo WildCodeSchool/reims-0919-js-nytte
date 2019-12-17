@@ -123,6 +123,33 @@ app.put('/api/admins/:id', (request, response) => {
   });
 });
 
+app.put('/api/places/:id', (request, response) => {
+  const idPlace = request.params.id;
+  const formData = request.body;
+    connection.query('UPDATE place SET ? WHERE id = ?', [formData, idPlace], err => {
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error editing the place");
+    } else {
+      response.sendStatus(200);
+    }
+  });
+});
+
+app.put('/api/vacationers/:id', (request, response) => {
+  const idVacationer = request.params.id;
+  const formData = request.body;
+    connection.query('UPDATE vacationer SET ? WHERE id = ?', [formData, idVacationer], err => {
+    if (err) {
+      console.log(err);
+      response.status(500).send("Error editing the vacationer");
+    } else {
+      response.sendStatus(200);
+    }
+  });
+});
+
+
 app.listen(port, (err) => {
   if (err) {
     throw new Error('Something bad happened...');
