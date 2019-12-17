@@ -5,9 +5,9 @@ const connection = require("../conf");
 router.get('/', (request, response) => {
   connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
    if (err) {
-     response.status(500).send('Error retrieving places');
+    response.status(500).send('Error retrieving places');
    } else {
-     response.json(results);
+    response.json(results);
    }
  });
 })
@@ -15,9 +15,9 @@ router.get('/', (request, response) => {
 router.get('/:id', (request, response) => {
   connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id AND place.id = ?', [request.params.id], (err, results) => {
    if (err) {
-     response.status(500).send('Error retrieving places');
+    response.status(500).send('Error retrieving places');
    } else {
-     response.json(results);
+    response.json(results);
    }
  });
 })

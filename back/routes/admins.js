@@ -6,9 +6,9 @@ const connection = require("../conf");
 router.get('/', (request, response) => {
     connection.query('SELECT * from admin', (err, results) => {
      if (err) {
-       response.status(500).send('Error retrieving admins');
+      response.status(500).send('Error retrieving admins');
      } else {
-       response.json(results);
+      response.json(results);
      }
    });
   })
@@ -16,9 +16,9 @@ router.get('/', (request, response) => {
   router.get('/:id', (request, response) => {
     connection.query('SELECT * from admin where id = ?', [request.params.id], (err, results) => {
      if (err) {
-       response.status(500).send('Error retrieving admins');
+      response.status(500).send('Error retrieving admins');
      } else {
-       response.json(results);
+      response.json(results);
      }
    });
   })
