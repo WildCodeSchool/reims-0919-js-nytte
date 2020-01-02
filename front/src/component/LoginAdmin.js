@@ -1,5 +1,5 @@
 import React from 'react'
-import './FormAdmin.css'
+import './LoginAdmin.css'
 import axios from 'axios'
 
 class LoginAdmin extends React.Component {

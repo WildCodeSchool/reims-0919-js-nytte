@@ -20,27 +20,27 @@ class FormPlace extends React.Component {
           </h1>
         </div>
         <form>
-            <div className="form-example">
+            <div className="form-place">
                 <label htmlFor="place">Nom du lieu</label>
                 <input type="text" name="place" id="place" required/>
             </div> 
             <hr/>
-            <div className="form-example">
+            <div className="form-place">
                 <label htmlFor="phone">Téléphone</label>
                 <input type="tel" name="phone" id="phone" required/>
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-place">
                 <label htmlFor="photo">Photo du lieu</label>
                 <input type="text" name="photo" id="photo " required/>
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-place">
                 <label htmlFor="attachment">Pièce jointe</label>
                 <input type="text" name="attachment" id="attachment" required/>
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-place">
                 <label htmlFor="logo">Logo</label>
                 <input type="text" name="logo" id="logo" required/>
             </div>
