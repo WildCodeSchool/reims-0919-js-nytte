@@ -50,7 +50,7 @@ CREATE TABLE place
 INSERT INTO place 
 (local_name, local_photo, local_description,admin_id)
 VALUES
-('La Plage','https://zupimages.net/up/19/50/bvpr.jpeg','Sable fin, eau turquoise, transats et monoi pour le bronsage ...',1),
+('La Plage','https://zupimages.net/up/19/50/bvpr.jpeg','Sable fin, eau turquoise, transats et monoi pour le bronzage ...',1),
 ('La chbaraque','https://zupimages.net/up/19/50/flst.jpeg','Histoire de cultiver votre fessier pour la plage',1),
 ('La Piscine','https://zupimages.net/up/19/50/flst.jpeg','Si tu as peur des vagues de la méditerannée',1),
 ('Le Fumoir','https://zupimages.net/up/19/50/x489.jpg','Découvrez ce cadre raffiné, feutré et intime, fait de bois brûlé et verni. Le lieu est réservé aux fumeurs de havanes. Cigares, whisky, cognacs et alcools blancs sont proposés pour une dégustation hors du temps, confortablement installés au fond d’un fauteuil Club.',3),
@@ -86,6 +86,6 @@ CREATE TABLE vacationer
 );
 
 INSERT INTO vacationer 
-(tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday )
+(tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday,tourist_photo )
 VALUES
-('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19');
+('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');

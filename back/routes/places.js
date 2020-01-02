@@ -2,7 +2,36 @@ const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
 const multer = require('multer');
-const upload = multer({ dest: 'tmp/' });
+const fs = require('fs');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    fs.mkdir('./uploads', function(err) {
+      if(err) {
+          console.log(err.stack)
+      } else {
+          callback(null, './uploads');
+      }
+  })
+},
+filename: function (req, file, callback) {
+  callback(null, file.fieldname + '-' + Date.now());
+}
+});
+
+router.post('/api/file',function(req,res){
+  var upload = multer({ storage : storage}).single('userFile');
+  upload(req,res,function(err) {
+      if(err) {
+          return res.end("Error uploading file.");
+      }
+      res.end("File is uploaded");
+  });
+});
+
+
+
+
 
 router.get('/', (request, response) => {
   connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
