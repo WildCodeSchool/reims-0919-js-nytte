@@ -7,6 +7,7 @@ import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import FormVacationer from './component/FormVacationer.js'
 
 
 class App extends React.Component {
@@ -16,9 +17,11 @@ class App extends React.Component {
       campings: null,
       currentCamping: 0,
       place : {},
-      vacationer :{}
+      vacationer :null,
+      currentVacationer: 0
     }
     this.nextCamping = this.nextCamping.bind(this)
+    this.nextVacationer = this.nextVacationer.bind(this)
   }
 
   nextCamping() {
@@ -26,6 +29,15 @@ class App extends React.Component {
       return {
         currentCamping:
           (prevState.currentCamping + 1) % prevState.campings.length
+      }
+    })
+  }
+
+  nextVacationer() {
+    this.setState(prevState => {
+      return {
+        currentVacationer:
+          (prevState.currentVacationer + 1) % prevState.vacationers.length
       }
     })
   }
@@ -46,15 +58,13 @@ class App extends React.Component {
       .then(data =>{
         this.setState({
           place: data[0]});
-        });
-     axios.get('http://localhost:8000/api/vacationers')
-        .then(response => {
-          return response.data
+       });
+    axios.get('http://localhost:8000/api/vacationers')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          vacationers: data})
       })
-      .then(data =>{
-      this.setState({
-      vacationer: data[0]});
-  });
 }
 
 
@@ -73,7 +83,15 @@ class App extends React.Component {
         <FormAdmin />
         <FormPlace />
         <DisplayPlace place={this.state.place}/>
-        <DisplayVacationer vacationer={this.state.vacationer}/>
+        {this.state.vacationers && (
+          <DisplayVacationer
+            vacationer={this.state.vacationers[this.state.currentVacationer]}
+          />
+        )}
+        <button type='button' onClick={this.nextVacationer}>
+          Suivant
+        </button>
+        <FormVacationer vacationer={this.state.vacationer}/>
       </div>
     )
   }
