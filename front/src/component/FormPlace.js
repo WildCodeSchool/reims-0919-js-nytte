@@ -1,13 +1,15 @@
 import React from 'react';
-import './FormPlace.css'
+import './FormPlace.css';
 
 
 class FormPlace extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
+      this.state = { 
+      
       };
     }
+
 
     render() {
       return (
@@ -33,17 +35,26 @@ class FormPlace extends React.Component {
               <hr/>
               <div className="form-example">
                   <label htmlFor="photo">Photo du lieu</label>
-                  <input type="text" name="photo" id="photo " required/>
+                  <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
+                    <input type="file" name="monfichier"/>
+                    <button> envoyer </button>
+                  </form>
               </div>
               <hr/>
               <div className="form-example">
                   <label htmlFor="attachment">Pièce jointe</label>
-                  <input type="text" name="attachment" id="attachment" required/>
+                    <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
+                      <input type="file" name="monfichier"/>
+                      <button> envoyer </button>
+                    </form>
               </div>
               <hr/>
               <div className="form-example">
                   <label htmlFor="logo">Logo</label>
-                  <input type="text" name="logo" id="logo" required/>
+                  <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
+                    <input type="file" name="monfichier"/>
+                    <button> envoyer </button>
+                  </form>
               </div>
               <hr/>
               <div className = 'textareaForm'>
@@ -52,13 +63,9 @@ class FormPlace extends React.Component {
               </div>
               <hr/>
           </form>
-          <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
-            <input type="file" name="monfichier"/>
-            <button> envoyer </button>
-          </form>
-        </div>  
-        <button className="createButton">Créer</button>
       </div>
+    </div>
     );
-    }}
+  }
+}
 export default FormPlace;
