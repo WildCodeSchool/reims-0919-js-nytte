@@ -2,7 +2,7 @@
 GET http://localhost:8000/api/admins
 
 ### GET one admin
-GET http://localhost:8000/api/admin/:id
+GET http://localhost:8000/api/admins/:id
 
 
 ### POST a new admin
