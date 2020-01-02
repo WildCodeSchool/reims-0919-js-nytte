@@ -48,7 +48,9 @@ class FormVacationer extends React.Component {
       birthday: this.state.birthday,
       admin_id: this.state.adminId
     })
-    alert("Votre compte a été créé!")
+    .then(response => {
+      (response.status === 200) && (alert("Votre compte a été créé!"))
+    })
   }
 
   render() {
