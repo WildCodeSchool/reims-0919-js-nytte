@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
+const multer = require('multer');
+const upload = multer({ dest: 'tmp/' });
 
 router.get('/', (request, response) => {
   connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
