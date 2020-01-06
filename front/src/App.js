@@ -102,27 +102,6 @@ class App extends React.Component {
             <FormVacationer vacationer={this.state.vacationer}/>
           </Route>
         </Switch>
-        {/* <LoginAdmin isConnected = {this.state.isConnected} />
-        {this.state.campings && (
-          <DisplayAdmin
-            camping={this.state.campings[this.state.currentCamping]}
-          />
-        )}
-        <button type='button' onClick={this.nextCamping}>
-          Suivant
-        </button>
-        <FormAdmin />
-        <FormPlace />
-        <DisplayPlace place={this.state.place}/>
-        {this.state.vacationers && (
-          <DisplayVacationer
-            vacationer={this.state.vacationers[this.state.currentVacationer]}
-          />
-        )}
-        <button type='button' onClick={this.nextVacationer}>
-          Suivant
-        </button>
-        <FormVacationer vacationer={this.state.vacationer}/> */}
       </div>
     )
   }
