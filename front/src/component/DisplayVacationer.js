@@ -25,10 +25,8 @@ function DisplayVacationer(props){
 
     </div>
     <div id="mailPres">
-      {props.vacationer.tourist_email===null? "": 
-        <img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
-      {props.vacationer.tourist_email===null? "": 
-        <p>{props.vacationer.tourist_email}</p>}
+      {props.vacationer.tourist_email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
+      {props.vacationer.tourist_email===null||<p>{props.vacationer.tourist_email}</p>}
     </div>
   </div>
   )

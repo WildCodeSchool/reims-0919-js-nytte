@@ -22,9 +22,8 @@ function DisplayAdmin(props){
       <p>Responsable : {props.camping.firstname} {props.camping.lastname}</p>
     </div>
     <div id="mailPres">
-      {props.camping.email===null? "": 
-        <img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
-      {props.camping.email===null? "":<p>{props.camping.email_company}</p>}
+      {props.camping.email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
+      {props.camping.email===null||<p>{props.camping.email_company}</p>}
     </div>
     <p>{props.camping.description_company}</p>
   </div>
