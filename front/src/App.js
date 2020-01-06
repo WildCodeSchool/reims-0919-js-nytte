@@ -2,10 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import './App.css'
 import DisplayAdmin from './component/DisplayAdmin.js'
+import DisplayPlace from './component/DisplayPlace.js'
 import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import { Switch, Route} from 'react-router-dom'
@@ -16,13 +18,15 @@ class App extends React.Component {
     this.state = {
       campings: null,
       currentCamping: 0,
-      place : {},
+      places : null,
+      currentPlace: 0,
       vacationer :null,
       currentVacationer: 0,
       isConnected: false,
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
+    this.nextPlace = this.nextPlace.bind(this)
   }
 
   nextCamping() {
@@ -43,6 +47,15 @@ class App extends React.Component {
     })
   }
 
+  nextPlace() {
+    this.setState(prevState => {
+      return {
+        currentPlace:
+          (prevState.currentPlace + 1) % prevState.places.length
+      }
+    })
+  }
+
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
@@ -52,14 +65,14 @@ class App extends React.Component {
           campings: data
         })
       })
+
     axios.get('http://localhost:8000/api/places')
-      .then(response => {
-        return response.data
-      })
-      .then(data =>{
+    .then(response => response.data)
+      .then(data => {
         this.setState({
-          place: data[0]});
-       });
+          places: data})
+       })
+
     axios.get('http://localhost:8000/api/vacationers')
       .then(response => response.data)
       .then(data => {
@@ -71,7 +84,6 @@ class App extends React.Component {
 
   render() {
     return (
-      
       <div>
         <Switch>
           <Route exact path='/'>
