@@ -39,7 +39,7 @@ class FormEvent extends React.Component {
         picture: this.state.picture,
         category: this.state.category,
         description: this.state.description,
-        isItBookable: this.state.isItBookable
+        isItBookable: this.state.checked
       })
       alert("Votre événement a bien été crée !")
     }
