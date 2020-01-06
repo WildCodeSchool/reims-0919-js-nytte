@@ -1,5 +1,5 @@
 import React from 'react';
-import './DisplayAdmin.css';
+import './Display.css';
 
 function DisplayAdmin(props){
   return(

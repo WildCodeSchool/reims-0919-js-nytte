@@ -2,9 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import './App.css'
 import DisplayAdmin from './component/DisplayAdmin.js'
-import FormPlace from './component/FormPlace'
 import FormAdmin from './component/FormAdmin.js'
+import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
+import DisplayPlace from './component/DisplayPlace.js'
+import DisplayVacationer from './component/DisplayVacationer.js'
 
 
 class App extends React.Component {
@@ -12,7 +14,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       campings: null,
-      currentCamping: 0
+      currentCamping: 0,
+      place : {},
+      vacationer :{}
     }
     this.nextCamping = this.nextCamping.bind(this)
   }
@@ -35,7 +39,23 @@ class App extends React.Component {
           campings: data
         })
       })
-  }
+    axios.get('http://localhost:8000/api/places')
+      .then(response => {
+        return response.data
+      })
+      .then(data =>{
+        this.setState({
+          place: data[0]});
+        });
+     axios.get('http://localhost:8000/api/vacationers')
+        .then(response => {
+          return response.data
+      })
+      .then(data =>{
+      this.setState({
+      vacationer: data[0]});
+  });
+}
 
 
   render() {
@@ -52,6 +72,8 @@ class App extends React.Component {
         </button>
         <FormAdmin />
         <FormPlace />
+        <DisplayPlace place={this.state.place}/>
+        <DisplayVacationer vacationer={this.state.vacationer}/>
       </div>
     )
   }

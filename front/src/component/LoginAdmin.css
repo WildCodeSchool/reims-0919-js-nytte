@@ -1,0 +1,50 @@
+.formAdminContainer {
+    background-color: #2d9486;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.formAdminContainer form {
+    width: 85%;
+}
+
+.formAdminContainer hr {
+    color: lightgray;
+}
+
+
+
+.LogoNytte {
+    width: 50%;
+}
+
+.form-example {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.form-example input {
+    background: none;
+    border: none;
+    text-align: right;
+    color: white;
+}
+
+.inputForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputForm input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.6em;
+    margin-top: 8%;
+
+}
