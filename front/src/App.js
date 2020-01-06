@@ -7,6 +7,7 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import FormEvent from './component/FormEvent'
 
 
 class App extends React.Component {
@@ -74,6 +75,7 @@ class App extends React.Component {
         <FormPlace />
         <DisplayPlace place={this.state.place}/>
         <DisplayVacationer vacationer={this.state.vacationer}/>
+        <FormEvent />
       </div>
     )
   }

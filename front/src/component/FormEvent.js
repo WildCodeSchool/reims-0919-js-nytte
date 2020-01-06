@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormPlace.css'
+import './FormEvent.css'
 
 
 class FormEvent extends React.Component {
@@ -16,7 +16,7 @@ class FormEvent extends React.Component {
           <button className='arrowBack'>&lsaquo;</button>
           <h1 className='title'>Création
             <br/>
-              d'un lieu
+              d'un événement
           </h1>
         </div>
         <form>
