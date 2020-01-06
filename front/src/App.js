@@ -7,7 +7,7 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
-
+import Uploader from './component/Uploader.js'
 
 class App extends React.Component {
   constructor(props) {

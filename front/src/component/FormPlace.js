@@ -35,26 +35,32 @@ class FormPlace extends React.Component {
               <hr/>
               <div className="form-example">
                   <label htmlFor="photo">Photo du lieu</label>
-                  <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
-                    <input type="file" name="monfichier"/>
+                  <form method="POST" enctype="multipart/form-data" action="upload">
+                    <input type="file" name="file"/>
                     <button> envoyer </button>
                   </form>
               </div>
               <hr/>
               <div className="form-example">
                   <label htmlFor="attachment">Pièce jointe</label>
-                    <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
-                      <input type="file" name="monfichier"/>
+                    <form method="POST" enctype="multipart/form-data" action="upload">
+                      <input type="file" name="file"/>
                       <button> envoyer </button>
                     </form>
               </div>
               <hr/>
               <div className="form-example">
                   <label htmlFor="logo">Logo</label>
-                  <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
-                    <input type="file" name="monfichier"/>
-                    <button> envoyer </button>
-                  </form>
+                  <form ref='uploadForm' 
+                    id='uploadForm' 
+                    action='/upload' 
+                    method='post' 
+                    encType="multipart/form-data">
+                      <input type="file" name="my_profile_pic" />
+                      <input type="file" name="my_pet" />
+                      <input type="file" name="my_cover_photo" />
+                      <input type='submit' value='Upload!' />
+                  </form>		
               </div>
               <hr/>
               <div className = 'textareaForm'>

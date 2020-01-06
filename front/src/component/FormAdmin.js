@@ -182,7 +182,7 @@ class FormAdmin extends React.Component {
           <hr />
           <div className='form-example'>
             <label htmlFor='photo'>Photo</label>
-              <form method="POST" enctype="multipart/form-data" action="uploaddufichier">
+              <form method="POST" enctype="multipart/form-data" action="upload">
                 <input type="file" name="monfichier"/>
                 <button> envoyer </button>
               </form>
