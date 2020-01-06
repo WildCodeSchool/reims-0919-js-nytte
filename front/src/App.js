@@ -5,7 +5,6 @@ import DisplayAdmin from './component/DisplayAdmin.js'
 import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
-import DisplayPlace from './component/DisplayPlace.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 
 
