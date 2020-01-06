@@ -8,6 +8,7 @@ import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import FormEvent from './component/FormEvent'
+import FormVacationer from './component/FormVacationer.js'
 
 
 class App extends React.Component {
@@ -16,10 +17,14 @@ class App extends React.Component {
     this.state = {
       campings: null,
       currentCamping: 0,
-      place : {},
-      vacationer :{}
+      places : null,
+      currentPlace: 0,
+      vacationer :null,
+      currentVacationer: 0
     }
     this.nextCamping = this.nextCamping.bind(this)
+    this.nextVacationer = this.nextVacationer.bind(this)
+    this.nextPlace = this.nextPlace.bind(this)
   }
 
   nextCamping() {
@@ -27,6 +32,24 @@ class App extends React.Component {
       return {
         currentCamping:
           (prevState.currentCamping + 1) % prevState.campings.length
+      }
+    })
+  }
+
+  nextVacationer() {
+    this.setState(prevState => {
+      return {
+        currentVacationer:
+          (prevState.currentVacationer + 1) % prevState.vacationers.length
+      }
+    })
+  }
+
+  nextPlace() {
+    this.setState(prevState => {
+      return {
+        currentPlace:
+          (prevState.currentPlace + 1) % prevState.places.length
       }
     })
   }
@@ -40,22 +63,20 @@ class App extends React.Component {
           campings: data
         })
       })
+
     axios.get('http://localhost:8000/api/places')
-      .then(response => {
-        return response.data
-      })
-      .then(data =>{
+    .then(response => response.data)
+      .then(data => {
         this.setState({
-          place: data[0]});
-        });
-     axios.get('http://localhost:8000/api/vacationers')
-        .then(response => {
-          return response.data
+          places: data})
+       })
+
+    axios.get('http://localhost:8000/api/vacationers')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          vacationers: data})
       })
-      .then(data =>{
-      this.setState({
-      vacationer: data[0]});
-  });
 }
 
 
@@ -63,6 +84,7 @@ class App extends React.Component {
     return (
       <div>
         <LoginAdmin />
+        
         {this.state.campings && (
           <DisplayAdmin
             camping={this.state.campings[this.state.currentCamping]}
@@ -72,9 +94,26 @@ class App extends React.Component {
           Suivant
         </button>
         <FormAdmin />
-        <FormPlace />
-        <DisplayPlace place={this.state.place}/>
-        <DisplayVacationer vacationer={this.state.vacationer}/>
+        <FormPlace />   
+      
+        {this.state.places && (
+          <DisplayPlace
+            place={this.state.places[this.state.currentPlace]}
+          />
+        )}
+         <button type='button' onClick={this.nextPlace}>
+          Suivant
+        </button>
+
+        {this.state.vacationers && (
+          <DisplayVacationer
+            vacationer={this.state.vacationers[this.state.currentVacationer]}
+          />
+        )}
+        <button type='button' onClick={this.nextVacationer}>
+          Suivant
+        </button>
+        <FormVacationer vacationer={this.state.vacationer}/>
         <FormEvent />
       </div>
     )
