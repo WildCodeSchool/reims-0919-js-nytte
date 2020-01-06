@@ -7,6 +7,7 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 
 
@@ -93,8 +94,8 @@ class App extends React.Component {
           Suivant
         </button>
         <FormAdmin />
-        <FormPlace />
-       
+        <FormPlace />   
+      
         {this.state.places && (
           <DisplayPlace
             place={this.state.places[this.state.currentPlace]}
@@ -113,6 +114,7 @@ class App extends React.Component {
           Suivant
         </button>
         <FormVacationer vacationer={this.state.vacationer}/>
+        <FormEvent />
       </div>
     )
   }
