@@ -1,5 +1,5 @@
 import React from 'react'
-import './FormAdmin.css'
+import './LoginAdmin.css'
 import axios from 'axios'
 
 class LoginAdmin extends React.Component {
@@ -30,8 +30,21 @@ class LoginAdmin extends React.Component {
         passwordAdmin: this.state.password
       })
       .then(res => {
-        console.log('Yes! ', res.data)
-      })
+        console.log('Yes! ', res.data.token)
+        axios
+          .get(
+            'http://localhost:8000/api/testVerify',
+            {
+              headers: {
+                'Authorization': `Bearer ${res.data.token}`
+              }
+            }
+          )
+          .then(res => {
+            
+            console.log('Yes again!', res.data)
+          })
+    })
   }
 
   render() {
