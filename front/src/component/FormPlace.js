@@ -23,51 +23,30 @@ class FormPlace extends React.Component {
         </div>
         <div>
           <form>
-              <div className="form-example">
+              <div className="form-place">
                   <label htmlFor="place">Nom du lieu</label>
                   <input type="text" name="place" id="place" required/>
               </div> 
-              <hr/>
-              <div className="form-example">
+              <div className="form-place">
                   <label htmlFor="phone">Téléphone</label>
                   <input type="tel" name="phone" id="phone" required/>
               </div>
-              <hr/>
-              <div className="form-example">
+              <div className="form-place">
                   <label htmlFor="photo">Photo du lieu</label>
-                  <form method="POST" enctype="multipart/form-data" action="upload">
                     <input type="file" name="file"/>
-                    <button> envoyer </button>
-                  </form>
               </div>
-              <hr/>
-              <div className="form-example">
+              <div className="form-place">
                   <label htmlFor="attachment">Pièce jointe</label>
-                    <form method="POST" enctype="multipart/form-data" action="upload">
                       <input type="file" name="file"/>
-                      <button> envoyer </button>
-                    </form>
               </div>
-              <hr/>
-              <div className="form-example">
+              <div className="form-place">
                   <label htmlFor="logo">Logo</label>
-                  <form ref='uploadForm' 
-                    id='uploadForm' 
-                    action='/upload' 
-                    method='post' 
-                    encType="multipart/form-data">
-                      <input type="file" name="my_profile_pic" />
-                      <input type="file" name="my_pet" />
-                      <input type="file" name="my_cover_photo" />
-                      <input type='submit' value='Upload!' />
-                  </form>		
+                      <input type="file" name="logo" />
               </div>
-              <hr/>
-              <div className = 'textareaForm'>
+              <div className = 'form-place'>
                   <label htmlFor="description">Description</label>
-                  <textarea className='textareaForm' placeholder='description du lieu' rows='5'/>
+                  <textarea className='textareaFormBox' placeholder='description du lieu' rows='5'/>
               </div>
-              <hr/>
           </form>
       </div>
     </div>

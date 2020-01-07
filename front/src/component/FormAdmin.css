@@ -29,9 +29,22 @@
 
 .form-example input {
     background: none;
-    border: none;
     text-align: right;
     color: white;
+    margin-top:12px;
+    border-bottom:1px solid rgb(90, 88, 88);
+    border-top:none;
+    border-right:none;
+    border-left:none;
+}
+
+.formAdminContainer label{
+    margin-top:12px;
+    border-bottom:1px solid rgb(90, 88, 88);
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    width:100%;
 }
 
 .inputForm {
@@ -45,6 +58,5 @@
     border: none;
     color: white;
     font-size: 1.6em;
-    margin-top: 8%;
 
 }

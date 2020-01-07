@@ -60,7 +60,7 @@ class FormAdmin extends React.Component {
           alt='logo Nytte'></img>
         <form onSubmit={this.handleSubmit}>
           <div className='form-example'>
-            <label htmlFor='company'>Nom établissement</label>
+            <label htmlFor='company'>Raison Sociale</label>
             <input
               type='text'
               name='company'
@@ -122,7 +122,7 @@ class FormAdmin extends React.Component {
           <div className='form-example'>
             <label htmlFor='zip'>Code postal</label>
             <input
-              type='number'
+              type='text'
               name='zip'
               id='zip'
               onChange={this.change}
