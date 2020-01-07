@@ -1,21 +1,28 @@
 .formAdminContainer {
   background-color: #2d9486;
-  height: 100vh;
+  height: 250vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
+.formAdminVacationer{
+  background-color: #2d9486;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.formAdminVacationer h1{
+  color:white;
+}
+
 .formAdminContainer form {
   width: 85%;
 }
-
-.formAdminContainer hr {
-  color: lightgray;
-}
-
-
 
 .LogoNytte {
   width: 50%;
@@ -31,7 +38,7 @@
     background: none;
     text-align: right;
     color: white;
-    margin-top:12px;
+    margin-top:2px;
     border-bottom:1px solid rgb(90, 88, 88);
     border-top:none;
     border-right:none;
@@ -39,7 +46,7 @@
 }
 
 .formAdminContainer label{
-    margin-top:12px;
+    margin-top:2px;
     border-bottom:1px solid rgb(90, 88, 88);
     border-top:none;
     border-right:none;

@@ -66,7 +66,7 @@ class FormPlace extends React.Component {
                   required/>
             </div> 
             <div className="form-place">
-                <label htmlFor="adminId ">N° d'établissement</label>
+                <label htmlFor="adminId ">N° identifiant</label>
                 <input 
                   type="number" 
                   name="adminId" 
@@ -113,7 +113,7 @@ class FormPlace extends React.Component {
               <div className = 'textareaForm'>
                 <label htmlFor="description">Description</label>
                 <textarea 
-                  className='textareaForm' 
+                  className='textareaFormBox' 
                   placeholder='description du lieu' rows='5'
                   name="description"
                   id="description"
