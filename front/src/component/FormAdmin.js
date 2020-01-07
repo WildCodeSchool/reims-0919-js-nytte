@@ -69,7 +69,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='lastname'>Nom</label>
             <input
@@ -80,7 +79,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='firstname'>Prénom</label>
             <input
@@ -91,7 +89,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='email'>Mail</label>
             <input
@@ -102,7 +99,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='adress'>Adresse</label>
             <input
@@ -113,7 +109,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='city'>Ville</label>
             <input
@@ -124,7 +119,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='zip'>Code postal</label>
             <input
@@ -135,7 +129,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='username'>Identifiant</label>
             <input
@@ -146,7 +139,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='password'>Mot de passe</label>
             <input
@@ -157,7 +149,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='description'>Description</label>
             <input
@@ -168,7 +159,6 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='phone'>Téléphone</label>
             <input
@@ -179,15 +169,10 @@ class FormAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
-          <div className='form-example'>
+          <div className='form-example'>       
             <label htmlFor='photo'>Photo</label>
-              <form method="POST" enctype="multipart/form-data" action="upload">
                 <input type="file" name="monfichier"/>
-                <button> envoyer </button>
-              </form>
           </div>
-          <hr />
           <div className='inputForm'>
             <input
               onClick={this.postFormData}
@@ -195,8 +180,8 @@ class FormAdmin extends React.Component {
               value='VALIDER >'
             />
           </div>
-        </form>
-      </div>
+          </form>  
+        </div>
     )
   }
 }
