@@ -69,9 +69,11 @@ app.get('/api/testVerify', verifyToken, (req, res) => {
 const admins = require('./routes/admins');
 const places = require('./routes/places');
 const vacationers = require('./routes/vacationers');
+const happenings = require('./routes/happenings');
 app.use('/api/admins', admins);
 app.use('/api/places', places);
 app.use('/api/vacationers', vacationers);
+app.use('/api/happenings', happenings);
 
 app.listen(port, (err) => {
   if (err) {
