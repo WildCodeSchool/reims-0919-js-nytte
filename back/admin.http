@@ -127,8 +127,6 @@ Content-Type: application/json
     "place_id":2
  }
 
- happening_name, happening_picture, happening_category,
-  happening_description, happening_date, happening_time, isItBookable FROM happening INNER JOIN place WHERE happening.place_id=place.id'
 
 ### PUT a happening
 PUT http://localhost:8000/api/happenings/:id
