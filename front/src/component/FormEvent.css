@@ -18,13 +18,14 @@
     width: 50%;
 }
 
-.form-place {
+.form-example {
     display: flex;
     justify-content: space-between;
 }
 
-.form-place input {
+.form-example input {
     background: none;
+    border: none;
     text-align: right;
     color: #2d9486;
 }
@@ -83,33 +84,4 @@ textarea{
 .title {
   margin-left: auto;
   margin-right: auto;
-}
-
-.form-place input {
-  background: none;
-  text-align: right;
-  color: white;
-  margin-top:12px;
-  border-bottom:1px solid rgb(90, 88, 88);
-  border-top:none;
-  border-right:none;
-  border-left:none;
-  width:100%;
-  margin-left:8%;
-}
-
-.formContainer label{
-  margin-top:12px;
-  border:none;
-  width:100%;
-  margin-left:8%;
-}
-
-
-.textareaFormBox {
-  margin-left:12%;
-  margin-right:12%;
-  width:88%;
-  height:200px;
-  background-color: rgb(233, 237, 241);
 }

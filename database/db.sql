@@ -89,3 +89,22 @@ INSERT INTO vacationer
 (tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday,tourist_photo )
 VALUES
 ('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');
+
+CREATE TABLE happening
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  happening_name VARCHAR(150) NOT NULL,
+  happening_picture VARCHAR(250) NULL,
+  happening_category VARCHAR(150) NULL,
+  happening_description VARCHAR(400) NULL,
+  happening_date DATE NULL,
+  happening_time TIME NULL,
+  isItBookable BOOLEAN NULL,
+  place_id INT NOT NULL,
+  FOREIGN KEY (place_id) REFERENCES place(id)
+);
+
+INSERT INTO happening
+(happening_name,happening_picture,happening_category,happening_description,happening_date,happening_time,isItBookable,place_id)
+VALUES
+('Soirée Princesse','https://cutt.ly/NritAeR','fête','Bal des princesses',1,14);
