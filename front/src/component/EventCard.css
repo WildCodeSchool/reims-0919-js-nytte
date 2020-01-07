@@ -1,0 +1,28 @@
+.CardLight{
+    display:flex;
+    flex-direction:column;
+    width:150px;
+    border-radius: 10px;
+    margin:2%;
+    background-color:rgb(58, 49, 43);
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+}
+
+.photoCardProfil{
+    max-width:150px;
+    height:auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.pictureCardLight button{
+    max-width:150px;
+    background-color:rgb(58, 49, 43);
+    border:none;
+    color:white;
+    padding-left:30%;
+    border-radius: 0px 0px 10px 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
