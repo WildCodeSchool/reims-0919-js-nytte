@@ -52,7 +52,6 @@ class LoginAdmin extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='password'>Mot de passe</label>
             <input
