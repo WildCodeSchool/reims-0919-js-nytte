@@ -88,4 +88,6 @@ CREATE TABLE vacationer
 INSERT INTO vacationer 
 (tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday,tourist_photo )
 VALUES
+
 ('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');
+
