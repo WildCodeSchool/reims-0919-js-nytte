@@ -6,7 +6,10 @@ function CardString(props){
   console.log(props)
   return(
   <div id="CardString">
-    <EventCard place={props.place}/>
+    <EventCard 
+      place={props.place}
+      event={props.event}
+    />
   </div>
   )
 }
