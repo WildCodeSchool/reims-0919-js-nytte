@@ -8,7 +8,6 @@ import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import CardString from './component/CardString.js'
-import EventCard from './component/EventCard.js'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 import { Switch, Route} from 'react-router-dom'
@@ -24,10 +23,13 @@ class App extends React.Component {
       vacationer :null,
       currentVacationer: 0,
       isConnected: false,
+      events:null,
+      currentEvent:0
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
+    this.nextEvent = this.nextEvent.bind(this)
   }
 
   nextCamping() {
@@ -57,6 +59,16 @@ class App extends React.Component {
     })
   }
 
+  nextEvent() {
+    this.setState(prevState => {
+      return {
+        currentEvent:
+          (prevState.currentEvent + 1) % prevState.events.length
+      }
+    })
+  }  
+
+
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
@@ -80,7 +92,13 @@ class App extends React.Component {
         this.setState({
           vacationers: data})
       })
-}
+    axios.get('http://localhost:8000/api/happenings')
+    .then(response => response.data)
+    .then(data => {
+      this.setState({
+        vacationers: data})
+      })
+    }
 
 
   render() {
@@ -118,6 +136,12 @@ class App extends React.Component {
           {this.state.places && (
              <CardString 
               place={this.state.places[this.state.currentPlace]}/>
+            )}
+          </Route>
+          <Route exact path='/eventfull'>
+          {this.state.events && (
+             <CardString 
+              event={this.state.events[this.state.currentEvent]}/>
             )}
           </Route>
         </Switch>
