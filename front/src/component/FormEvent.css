@@ -18,12 +18,12 @@
     width: 50%;
 }
 
-.form-place {
+.form-example {
     display: flex;
     justify-content: space-between;
 }
 
-.form-place input {
+.form-example input {
     background: none;
     border: none;
     text-align: right;
