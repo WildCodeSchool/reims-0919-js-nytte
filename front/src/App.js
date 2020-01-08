@@ -114,8 +114,11 @@ class App extends React.Component {
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
           </Route>
-          <Route exact path='/Event'>
-            <CardString place={this.state.place}/>
+          <Route exact path='/event'>
+          {this.state.places && (
+             <CardString 
+              place={this.state.places[this.state.currentPlace]}/>
+            )}
           </Route>
         </Switch>
       </div>
