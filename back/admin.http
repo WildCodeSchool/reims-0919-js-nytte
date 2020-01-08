@@ -106,3 +106,33 @@ Content-Type: application/json
 ### Check login
 GET http://localhost:8000/api/testVerify
 
+
+
+
+### GET a list of happenings
+GET http://localhost:8000/api/happenings
+
+### GET one happenings
+GET http://localhost:8000/api/happenings/:id
+
+### POST a happening
+POST http://localhost:8000/api/happenings
+Content-Type: application/json
+
+ {
+    "happening_name":"Soirée Scandinave",
+    "happening_category":"Pour tous",
+    "happening_date":"2020-20-05",
+    "happening_time":"19:00:00",
+    "place_id":2
+ }
+
+
+### PUT a happening
+PUT http://localhost:8000/api/happenings/:id
+Content-Type: application/json
+
+{
+    "id":2,
+    "happening_category":"Adults only"
+}

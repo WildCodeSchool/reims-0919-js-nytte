@@ -9,7 +9,8 @@ import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
-
+import DisplayPlace from './component/DisplayPlace.js'
+import { Switch, Route} from 'react-router-dom'
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class App extends React.Component {
       places : null,
       currentPlace: 0,
       vacationer :null,
-      currentVacationer: 0
+      currentVacationer: 0,
+      isConnected: false,
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
@@ -83,38 +85,35 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <LoginAdmin />
-        
-        {this.state.campings && (
-          <DisplayAdmin
-            camping={this.state.campings[this.state.currentCamping]}
-          />
-        )}
-        <button type='button' onClick={this.nextCamping}>
-          Suivant
-        </button>
-        <FormAdmin />
-        <FormPlace />   
-      
-        {this.state.places && (
-          <DisplayPlace
-            place={this.state.places[this.state.currentPlace]}
-          />
-        )}
-         <button type='button' onClick={this.nextPlace}>
-          Suivant
-        </button>
-
-        {this.state.vacationers && (
-          <DisplayVacationer
-            vacationer={this.state.vacationers[this.state.currentVacationer]}
-          />
-        )}
-        <button type='button' onClick={this.nextVacationer}>
-          Suivant
-        </button>
-        <FormVacationer vacationer={this.state.vacationer}/>
-        <FormEvent />
+        <Switch>
+          <Route exact path='/'>
+            <LoginAdmin isConnected = {this.state.isConnected} />
+          </Route>
+          <Route exact path='/adminprofil'>
+            {this.state.campings && (
+              <DisplayAdmin camping={this.state.campings[this.state.currentCamping]}/>
+            )}
+          </Route>
+          <Route exact path='/formadmin'>
+            <FormAdmin />
+          </Route>
+          <Route exact path='/formplace'>
+            <FormPlace />
+          </Route>
+          <Route exact path='/place' >
+            <DisplayPlace place={this.state.place}/>
+          </Route>
+          <Route exact path='/vacationer'>
+            {this.state.vacationers && (
+              <DisplayVacationer
+                vacationer={this.state.vacationers[this.state.currentVacationer]}
+              />
+            )}
+          </Route>        
+          <Route exact path='/formvacationer'>
+            <FormVacationer vacationer={this.state.vacationer}/>
+          </Route>
+        </Switch>
       </div>
     )
   }
