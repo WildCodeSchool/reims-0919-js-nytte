@@ -1,7 +1,7 @@
 .CardLight{
     display:flex;
     flex-direction:column;
-    width:150px;
+    width:70%;
     border-radius: 10px;
     margin:2%;
     background-color:rgb(58, 49, 43);
@@ -10,8 +10,8 @@
 }
 
 .photoCardProfil{
-    max-width:150px;
-    height:auto;
+    width:100%;
+    height:150px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -35,4 +35,11 @@
     background-color:#2d9486;
     border:0.5px solid rgb(58, 49, 43);
     box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+}
+
+.CardString h1{
+    width:100%;
+    border-radius: 10px;
+    margin:2%;
+    background-color:#2d9486; 
 }

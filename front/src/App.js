@@ -7,8 +7,8 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
-import CardString from './component/CardString.js'
-import FormEvent from './component/FormEvent'
+import EventCard from './component/EventCard.js'
+import EventCardFull from './component/EventCardFull'
 import FormVacationer from './component/FormVacationer.js'
 import { Switch, Route} from 'react-router-dom'
 
@@ -92,18 +92,18 @@ class App extends React.Component {
         this.setState({
           vacationers: data})
       })
+
     axios.get('http://localhost:8000/api/happenings')
-    .then(response => response.data)
-    .then(data => {
-      this.setState({
-        vacationers: data})
-      })
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          events: data})
+        })
     }
 
 
   render() {
     return (
-      <div>
         <Switch>
           <Route exact path='/'>
             <LoginAdmin isConnected = {this.state.isConnected} />
@@ -132,20 +132,22 @@ class App extends React.Component {
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
           </Route>
-          <Route exact path='/event'>
-          {this.state.places && (
-             <CardString 
-              place={this.state.places[this.state.currentPlace]}/>
-            )}
+          <Route exact path='/events'>
+          {this.state.events && this.state.events.map((event) => (
+             <EventCard 
+              photo={event.local_photo}
+              category={event.happening_category}/>
+            )
+          )}
           </Route>
           <Route exact path='/eventfull'>
-          {this.state.events && (
-             <CardString 
+          {this.state.places && this.state.events && (
+             <EventCardFull
+              place={this.state.places[this.state.currentPlace]}
               event={this.state.events[this.state.currentEvent]}/>
             )}
           </Route>
         </Switch>
-      </div>
     )
   }
 }
