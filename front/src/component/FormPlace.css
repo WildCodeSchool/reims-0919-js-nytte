@@ -10,10 +10,6 @@
     margin-bottom: 5%;
 }
 
-.formContainer hr {
-    color: lightgray;
-}
-
 .LogoNytte {
     width: 50%;
 }
@@ -25,7 +21,6 @@
 
 .form-place input {
     background: none;
-    border: none;
     text-align: right;
     color: #2d9486;
 }
@@ -84,4 +79,36 @@ textarea{
 .title {
   margin-left: auto;
   margin-right: auto;
+}
+
+.form-place input {
+  background: none;
+  text-align: right;
+  color: white;
+  margin-top:16px;
+  border-bottom:1px solid rgb(90, 88, 88);
+  border-top:none;
+  border-right:none;
+  border-left:none;
+  width:70%;
+  margin-left:4%;
+  }
+
+.form-place label{
+  margin-top:16px;
+  border:none;
+  width:100px;
+  border-bottom:1px solid rgb(90, 88, 88);
+  border-top:none;
+  border-right:none;
+  border-left:none;
+}
+
+
+.textareaFormBox {
+  margin-left:4%;
+  margin-right:8%;
+  width:88%;
+  height:180px;
+  background-color: rgb(233, 237, 241);
 }

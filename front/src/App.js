@@ -7,6 +7,9 @@ import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import EventCard from './component/EventCard.js'
+import EventCardFull from './component/EventCardFull'
+import CardString from './component/CardString.js'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 import { Switch, Route} from 'react-router-dom'
@@ -22,10 +25,13 @@ class App extends React.Component {
       vacationer :null,
       currentVacationer: 0,
       isConnected: false,
+      events:null,
+      currentEvent:0
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
+    this.nextEvent = this.nextEvent.bind(this)
   }
 
   nextCamping() {
@@ -55,6 +61,16 @@ class App extends React.Component {
     })
   }
 
+  nextEvent() {
+    this.setState(prevState => {
+      return {
+        currentEvent:
+          (prevState.currentEvent + 1) % prevState.events.length
+      }
+    })
+  }  
+
+
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
@@ -78,12 +94,18 @@ class App extends React.Component {
         this.setState({
           vacationers: data})
       })
-}
+
+    axios.get('http://localhost:8000/api/happenings')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          events: data})
+        })
+    }
 
 
   render() {
     return (
-      <div>
         <Switch>
           <Route exact path='/'>
             <LoginAdmin isConnected = {this.state.isConnected} />
@@ -100,7 +122,11 @@ class App extends React.Component {
             <FormPlace />
           </Route>
           <Route exact path='/place' >
-            <DisplayPlace place={this.state.place}/>
+          {this.state.places && (
+            <DisplayPlace 
+              place={this.state.places[this.state.currentPlace]}
+            />
+          )}
           </Route>
           <Route exact path='/vacationer'>
             {this.state.vacationers && (
@@ -112,8 +138,23 @@ class App extends React.Component {
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
           </Route>
+          <Route exact path='/events'>
+          {this.state.events && this.state.events.map((event) => (
+              <EventCard 
+                photo={event.local_photo}
+                category={event.happening_category}
+              />
+          ))}
+          </Route>
+          <Route exact path='/eventfull'>
+            {this.state.places && this.state.events && (
+              <EventCardFull
+                place={this.state.places[this.state.currentPlace]}
+                event={this.state.events[this.state.currentEvent]}
+              />
+            )}
+          </Route>
         </Switch>
-      </div>
     )
   }
 }
