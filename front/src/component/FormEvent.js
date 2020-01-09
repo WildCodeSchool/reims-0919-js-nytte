@@ -94,6 +94,39 @@ class FormEvent extends React.Component {
                 />
             </div> 
             <hr/>
+            <div className="form-event">
+                <label htmlFor="placeId">N° de lieu</label>
+                <input
+                  type="text"
+                  name="placeId"
+                  id="placeId"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="date">Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="time">Heure</label>
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
             <div className = 'textareaForm'>
                 <label htmlFor="description">Description</label>
                 <textarea
