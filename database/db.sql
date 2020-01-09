@@ -88,18 +88,18 @@ CREATE TABLE vacationer
 INSERT INTO vacationer 
 (tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday )
 VALUES
-('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19');
+('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');
 
-CREATE TABLE happening 
+CREATE TABLE happening
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   happening_name VARCHAR(150) NOT NULL,
   happening_picture VARCHAR(250) NULL,
   happening_category VARCHAR(150) NULL,
   happening_description VARCHAR(400) NULL,
-  happening_date DATE NOT NULL,
-  happening_time TIME NOT NULL,
-  isItBookable BOOLEAN NOT NULL,
+  happening_date DATE NULL,
+  happening_time TIME NULL,
+  isItBookable BOOLEAN NULL,
   place_id INT NOT NULL,
   FOREIGN KEY (place_id) REFERENCES place(id)
 );

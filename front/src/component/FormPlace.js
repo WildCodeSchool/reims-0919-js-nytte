@@ -64,8 +64,8 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div> 
-            <div className="form-example">
-                <label htmlFor="adminId ">N° d'établissement</label>
+            <div className="form-place">
+                <label htmlFor="adminId ">N° identifiant</label>
                 <input 
                   type="number" 
                   name="adminId" 
@@ -109,10 +109,10 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   equired/>
             </div>
-            <div className = 'textareaForm'>
+              <div className = 'textareaForm'>
                 <label htmlFor="description">Description</label>
                 <textarea 
-                  className='textareaForm' 
+                  className='textareaFormBox' 
                   placeholder='description du lieu' rows='5'
                   name="description"
                   id="description"
@@ -128,8 +128,8 @@ class FormPlace extends React.Component {
         >
           Créer
         </button>
-      </div>
-      );
+    </div>
+    );
   }
 }
 export default FormPlace;

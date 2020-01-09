@@ -136,17 +136,18 @@ class App extends React.Component {
           </Route>
           <Route exact path='/events'>
           {this.state.events && this.state.events.map((event) => (
-             <EventCard 
-              photo={event.local_photo}
-              category={event.happening_category}/>
-            )
-          )}
+              <EventCard 
+                photo={event.local_photo}
+                category={event.happening_category}
+              />
+          ))}
           </Route>
           <Route exact path='/eventfull'>
-          {this.state.places && this.state.events && (
-             <EventCardFull
-              place={this.state.places[this.state.currentPlace]}
-              event={this.state.events[this.state.currentEvent]}/>
+            {this.state.places && this.state.events && (
+              <EventCardFull
+                place={this.state.places[this.state.currentPlace]}
+                event={this.state.events[this.state.currentEvent]}
+              />
             )}
           </Route>
         </Switch>
