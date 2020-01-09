@@ -29,9 +29,9 @@
 
 .form-example input {
     background: none;
-    border: none;
     text-align: right;
     color: white;
+    margin-top: 8%;
 }
 
 .inputForm {

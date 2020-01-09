@@ -72,7 +72,8 @@ Content-Type: application/json
     "tourist_address1":"4 rue du Parc",
     "tourist_email":"cindie.jouvin@gmail.com",
     "admin_id":4,
-    "birthday":"1979-08-19" 
+    "birthday":"1979-08-19",
+    "tourist_photo":"https://zupimages.net/up/20/01/d0lg.jpg" 
 }
 
 ### PUT a place
@@ -90,7 +91,8 @@ Content-Type: application/json
 
 {
     "id":1,
-    "tourist_login":"cindie.jou"
+    "tourist_login":"cindie.jou",
+    "tourist_photo":"https://zupimages.net/up/20/01/d0lg.jpg"
 }
 
 

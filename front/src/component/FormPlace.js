@@ -18,7 +18,6 @@ class FormPlace extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this)
       this.postFormData = this.postFormData.bind(this)
     }
-
     change = e => {
       this.setState({
         [e.target.id]: e.target.value
@@ -44,6 +43,7 @@ class FormPlace extends React.Component {
       })
     }
 
+
     render() {
       return (
       <div className = "formContainer">
@@ -64,9 +64,8 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div> 
-            <hr/>
-            <div className="form-example">
-                <label htmlFor="adminId ">N° d'établissement</label>
+            <div className="form-place">
+                <label htmlFor="adminId ">N° identifiant</label>
                 <input 
                   type="number" 
                   name="adminId" 
@@ -74,7 +73,6 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div> 
-            <hr/>
             <div className="form-place">
                 <label htmlFor="phone">Téléphone</label>
                 <input 
@@ -84,7 +82,6 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div>
-            <hr/>
             <div className="form-place">
                 <label htmlFor="photo">Photo du lieu</label>
                 <input 
@@ -94,7 +91,6 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div>
-            <hr/>
             <div className="form-place">
                 <label htmlFor="attachment">Pièce jointe</label>
                 <input 
@@ -104,7 +100,6 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   required/>
             </div>
-            <hr/>
             <div className="form-place">
                 <label htmlFor="logo">Logo</label>
                 <input 
@@ -114,18 +109,16 @@ class FormPlace extends React.Component {
                   onChange={this.change}
                   equired/>
             </div>
-            <hr/>
-            <div className = 'textareaForm'>
+              <div className = 'textareaForm'>
                 <label htmlFor="description">Description</label>
                 <textarea 
-                  className='textareaForm' 
+                  className='textareaFormBox' 
                   placeholder='description du lieu' rows='5'
                   name="description"
                   id="description"
                   onChange={this.change}
                 />
             </div>
-            <hr/>
         </form>
         <button 
           className="createButton"
@@ -135,7 +128,8 @@ class FormPlace extends React.Component {
         >
           Créer
         </button>
-      </div>
+    </div>
     );
-    }}
+  }
+}
 export default FormPlace;

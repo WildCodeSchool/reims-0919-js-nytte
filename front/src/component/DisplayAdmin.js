@@ -5,7 +5,9 @@ function DisplayAdmin(props){
   return(
   <div id="pagePrinc">
     <div id="photoDeProfil">
-      <img className="photoProfil" src={props.camping.photo} alt="profil de l'établissement touristique"></img>
+      {props.camping.photo===null
+        ?<img className="photoProfil" src='https://cutt.ly/3rieGlZ' alt="profil par défaut"></img>
+        :<img className="photoProfil" src={props.camping.photo} alt="profil de l'établissement touristique"></img>}
     </div>
     <h2 className="titreProfil">{props.camping.company.toUpperCase()}</h2>
     <div className="adressePres">
@@ -20,8 +22,8 @@ function DisplayAdmin(props){
       <p>Responsable : {props.camping.firstname} {props.camping.lastname}</p>
     </div>
     <div id="mailPres">
-      <img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>
-      <p>{props.camping.email_company}</p>
+      {props.camping.email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
+      {props.camping.email===null||<p>{props.camping.email_company}</p>}
     </div>
     <p>{props.camping.description_company}</p>
   </div>

@@ -55,12 +55,12 @@ class FormVacationer extends React.Component {
 
   render() {
     return (
-      <div className='formAdminContainer'>
+      <div className='formAdminVacationer'>
         <img
           src='https://zupimages.net/up/19/50/0b2g.png'
           className='LogoNytte'
           alt='logo Nytte'></img>
-        <h3>Création d'un vacancier</h3>
+        <h1>Création d'un vacancier</h1>
         <form onSubmit={this.handleSubmit}>
           <div className='form-example'>
             <label htmlFor='lastname'>Nom</label>
@@ -72,7 +72,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='firstname'>Prénom</label>
             <input
@@ -83,7 +82,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='adminId'>N° établissement</label>
             <input
@@ -94,7 +92,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='email'>Mail</label>
             <input
@@ -105,7 +102,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='adress'>Adresse</label>
             <input
@@ -116,7 +112,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='city'>Ville</label>
             <input
@@ -127,18 +122,16 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='zip'>Code postal</label>
             <input
-              type='number'
+              type='text'
               name='zip'
               id='zip'
               onChange={this.change}
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='username'>Identifiant</label>
             <input
@@ -149,7 +142,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='password'>Mot de passe</label>
             <input
@@ -160,7 +152,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='phone'>Téléphone</label>
             <input
@@ -171,7 +162,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='birthday'>Date de naissance</label>
             <input
@@ -182,7 +172,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='form-example'>
             <label htmlFor='photo'>Photo</label>
             <input
@@ -193,7 +182,6 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <hr />
           <div className='inputForm'>
             <input
               onClick={this.postFormData}
