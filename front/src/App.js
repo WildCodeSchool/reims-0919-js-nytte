@@ -9,7 +9,6 @@ import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
-import Sidebar from './component/Sidebar.js'
 import { Switch, Route} from 'react-router-dom'
 
 class App extends React.Component {
@@ -85,7 +84,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Sidebar />
         <Switch>
           <Route exact path='/'>
             <LoginAdmin isConnected = {this.state.isConnected} />
