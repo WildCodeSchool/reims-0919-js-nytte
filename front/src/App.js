@@ -147,12 +147,17 @@ class App extends React.Component {
           ))}
           </Route>
           <Route exact path='/eventfull'>
-            {this.state.places && this.state.events && (
+            {this.state.events && this.state.events.map((event) => (
               <EventCardFull
-                place={this.state.places[this.state.currentPlace]}
-                event={this.state.events[this.state.currentEvent]}
+                photo={event.local_photo}
+                category={event.happening_category}
+                logo={event.happening_picture}
+                description={event.happening_description}
+                date={event.happening_date}
+                time={event.happening_time}
+                isItBookable={event.happening_isItBookable}
               />
-            )}
+            ))}
           </Route>
           <Route exact path='/formevents'>
             <FormEvent />
