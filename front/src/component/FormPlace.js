@@ -3,7 +3,6 @@ import './FormPlace.css'
 import axios from 'axios'
 
 
-
 class FormPlace extends React.Component {
     constructor(props) {
       super(props);
