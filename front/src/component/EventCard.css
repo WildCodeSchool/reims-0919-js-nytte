@@ -34,17 +34,6 @@
     font-weight: bold;
 }
 
-.CardFull{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    border-radius: 10px;
-    margin:2%;
-    background-color:#2d9486;
-    border:0.5px solid rgb(58, 49, 43);
-    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
-}
-
 .CardString h1{
     width:100%;
     border-radius: 10px;
@@ -66,4 +55,75 @@
     width:90%;
     margin-top:0;
     height:40px;
+}
+
+
+
+.pictureCardFull h1{
+    color:white;
+    text-align: center;
+}
+
+.CardFull{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    background-color:white;
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    height:736px;
+}
+
+.photoCardFull{
+    width:80%;
+    height:150px;
+    border-radius:10px;
+    border:5px solid rgb(58, 49, 43);
+    margin-left:8%;
+    box-shadow: 8px 8px 12px rgb(58, 49, 43);
+}
+
+.pictureCardFull{
+    width:99%;
+    border-radius: 0px 0px 10px 10px;
+    background-color:#2d9486;
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    height:280px;
+}
+
+.CardTextDescription{
+    width:80%;
+    margin-left:10%;
+    height:300px;
+    color:rgb(58, 49, 43);
+    margin-top:15px;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+    font-size:1.3em;
+    display:flex;
+    flex-direction: column;
+}
+
+.fullCardButton{
+    position:absolute;
+    bottom:0;
+    height:80px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    margin-right:1%;
+    margin-left:1%;
+}
+
+.BookButton, .MapButton{
+    height:30px;
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 2px 2px 2px rgba(70, 67, 67, 0.411);
+    margin-right:10%;
+    margin-left:10%;
+    width:200px;
+    border-radius:12px;
+    color:rgb(58, 49, 43);
+    font-weight:bold;
 }
