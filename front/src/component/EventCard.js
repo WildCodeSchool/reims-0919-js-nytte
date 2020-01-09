@@ -9,7 +9,7 @@ function EventCard({photo, category}){
       {!photo
         ?<img className="photoCardProfil" src='https://cutt.ly/JrieTtL' alt="image lieu par défaut" />
         :<img className="photoCardProfil" src={photo} alt="profil du lieu touristique" />}
-      <button type="button" onClick="">{category.toUpperCase()}></button>  
+      <button type="button" onClick="">{category.toUpperCase()}&rsaquo;</button>  
     </div>
   </div>
   )

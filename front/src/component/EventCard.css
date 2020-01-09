@@ -7,6 +7,8 @@
     background-color:rgb(58, 49, 43);
     border:0.5px solid rgb(58, 49, 43);
     box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    margin-left:15%;
+    margin-right:15%;
 }
 
 .photoCardProfil{
@@ -15,15 +17,21 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-.pictureCardLight button{
+.CardButton{
+    display:flex;
+    flex-direction:row;
     max-width:150px;
     background-color:rgb(58, 49, 43);
     border:none;
     color:white;
-    padding-left:30%;
     border-radius: 0px 0px 10px 10px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+    color:white;
+    font-size:1.1em;
+    font-weight: bold;
 }
 
 .CardFull{
@@ -42,4 +50,20 @@
     border-radius: 10px;
     margin:2%;
     background-color:#2d9486; 
+}
+
+.flèche{
+    width:10px;
+    font-size:50px;
+    color:white;
+}
+
+.flexCardButton{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width:90%;
+    margin-top:0;
+    height:40px;
 }
