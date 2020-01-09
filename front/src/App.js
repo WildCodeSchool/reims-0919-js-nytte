@@ -154,6 +154,9 @@ class App extends React.Component {
               />
             )}
           </Route>
+          <Route exact path='/formevents'>
+            <FormEvent />
+          </Route>
         </Switch>
     )
   }
