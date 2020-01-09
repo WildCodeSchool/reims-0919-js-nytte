@@ -37,7 +37,7 @@ class FormEvent extends React.Component {
     }
 
     postFormData() {
-      axios.post('http://localhost:8000/api/events', {
+      axios.post('http://localhost:8000/api/happenings', {
         happening_name: this.state.event,
         happening_picture: this.state.picture,
         happening_category: this.state.category,
