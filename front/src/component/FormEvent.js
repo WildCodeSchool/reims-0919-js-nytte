@@ -61,7 +61,7 @@ class FormEvent extends React.Component {
           </h1>
         </div>
         <form>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="Event">Nom</label>
                 <input 
                   type="text"
@@ -72,7 +72,7 @@ class FormEvent extends React.Component {
                 />
             </div> 
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="picture">Image</label>
                 <input
                   type="text"
@@ -83,7 +83,7 @@ class FormEvent extends React.Component {
                 />
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="category">Catégorie</label>
                 <input
                   type="text"
@@ -107,7 +107,7 @@ class FormEvent extends React.Component {
                 />
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="booking">Réservation</label>
                 <Switch onChange={this.handleChange} checked={this.state.checked} />
             </div> 
