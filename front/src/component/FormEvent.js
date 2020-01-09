@@ -12,6 +12,9 @@ class FormEvent extends React.Component {
         picture: null,
         category: null,
         description: null,
+        date: null,
+        time: null,
+        placeId: null,
         checked: false,
       };
       this.handleChange = this.handleChange.bind(this);
@@ -35,10 +38,13 @@ class FormEvent extends React.Component {
 
     postFormData() {
       axios.post('http://localhost:8000/api/events', {
-        event: this.state.event,
-        picture: this.state.picture,
-        category: this.state.category,
-        description: this.state.description,
+        happening_name: this.state.event,
+        happening_picture: this.state.picture,
+        happening_category: this.state.category,
+        happening_description: this.state.description,
+        happening_date: this.state.date,
+        happening_time: this.state.time,
+        place_id: this.state.placeId,
         isItBookable: this.state.checked
       })
       alert("Votre événement a bien été crée !")
