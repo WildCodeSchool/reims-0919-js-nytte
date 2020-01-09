@@ -9,8 +9,10 @@ import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
+import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 import { Switch, Route} from 'react-router-dom'
+
 
 class App extends React.Component {
   constructor(props) {
