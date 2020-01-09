@@ -122,7 +122,11 @@ class App extends React.Component {
             <FormPlace />
           </Route>
           <Route exact path='/place' >
-            <DisplayPlace place={this.state.place}/>
+          {this.state.places && (
+            <DisplayPlace 
+              place={this.state.places[this.state.currentPlace]}
+            />
+          )}
           </Route>
           <Route exact path='/vacationer'>
             {this.state.vacationers && (
