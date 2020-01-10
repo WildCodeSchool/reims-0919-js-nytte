@@ -18,16 +18,16 @@
     width: 50%;
 }
 
-.form-example {
+.form-event {
     display: flex;
     justify-content: space-between;
 }
 
-.form-example input {
+.form-event input {
     background: none;
     border: none;
     text-align: right;
-    color: white;
+    color: #2d9486;
 }
 
 .inputForm {

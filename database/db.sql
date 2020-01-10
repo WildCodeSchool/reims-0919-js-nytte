@@ -50,13 +50,13 @@ CREATE TABLE place
 INSERT INTO place 
 (local_name, local_photo, local_description,admin_id)
 VALUES
-('La Plage','https://zupimages.net/up/19/50/bvpr.jpeg','Sable fin, eau turquoise, transats et monoi pour le bronsage ...',1),
+('La Plage','https://zupimages.net/up/19/50/bvpr.jpeg','Sable fin, eau turquoise, transats et monoi pour le bronzage ...',1),
 ('La chbaraque','https://zupimages.net/up/19/50/flst.jpeg','Histoire de cultiver votre fessier pour la plage',1),
 ('La Piscine','https://zupimages.net/up/19/50/flst.jpeg','Si tu as peur des vagues de la méditerannée',1),
 ('Le Fumoir','https://zupimages.net/up/19/50/x489.jpg','Découvrez ce cadre raffiné, feutré et intime, fait de bois brûlé et verni. Le lieu est réservé aux fumeurs de havanes. Cigares, whisky, cognacs et alcools blancs sont proposés pour une dégustation hors du temps, confortablement installés au fond d’un fauteuil Club.',3),
 ('SPA','https://zupimages.net/up/19/50/2ohh.jpeg','Conçu pour s’intégrer harmonieusement dans son environnement naturel, chaque espace de relaxation tirant partie du paysage, le spa est une oasis de tranquillité propice à l’éveil des sens et au repos de l’esprit.',3),
 ('Salle de massage','https://zupimages.net/up/19/50/le5r.jpeg','Les salles de soins relaxantes au sein du spa à Marrakech les bains de l’Alhambra constituent un havre de détente ultime qui vous permet de libérer votre esprit et de vous libérer de la tension.',3),
-('La Plage','https://zupimages.net/up/19/50/7j3v.jpgg','Sable fin, eau turquoise, transats et monoi pour le bronsage ...',2),
+('La Plage','https://zupimages.net/up/19/50/7j3v.jpg','Sable fin, eau turquoise, transats et monoi pour le bronzage ...',2),
 ('Roulotte Vegan','https://zupimages.net/up/19/50/bvjt.jpeg','Pour manger bon et bio',2),
 ('La Piscine','https://zupimages.net/up/19/50/wpfg.jpg','Pour toute la famille',2),
 ('La buvette','https://zupimages.net/up/19/49/ctks.jpg', 'Pour boire un petit verre tranquille',4),

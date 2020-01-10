@@ -12,6 +12,9 @@ class FormEvent extends React.Component {
         picture: null,
         category: null,
         description: null,
+        date: null,
+        time: null,
+        placeId: null,
         checked: false,
       };
       this.handleChange = this.handleChange.bind(this);
@@ -34,11 +37,14 @@ class FormEvent extends React.Component {
     }
 
     postFormData() {
-      axios.post('http://localhost:8000/api/events', {
-        event: this.state.event,
-        picture: this.state.picture,
-        category: this.state.category,
-        description: this.state.description,
+      axios.post('http://localhost:8000/api/happenings', {
+        happening_name: this.state.event,
+        happening_picture: this.state.picture,
+        happening_category: this.state.category,
+        happening_description: this.state.description,
+        happening_date: this.state.date,
+        happening_time: this.state.time,
+        place_id: this.state.placeId,
         isItBookable: this.state.checked
       })
       alert("Votre événement a bien été crée !")
@@ -55,7 +61,7 @@ class FormEvent extends React.Component {
           </h1>
         </div>
         <form>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="Event">Nom</label>
                 <input 
                   type="text"
@@ -66,7 +72,7 @@ class FormEvent extends React.Component {
                 />
             </div> 
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="picture">Image</label>
                 <input
                   type="text"
@@ -77,12 +83,45 @@ class FormEvent extends React.Component {
                 />
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="category">Catégorie</label>
                 <input
                   type="text"
                   name="category"
                   id="category"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="placeId">N° de lieu</label>
+                <input
+                  type="text"
+                  name="placeId"
+                  id="placeId"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="date">Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={this.change}
+                  required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="time">Heure</label>
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
                   onChange={this.change}
                   required
                 />
@@ -101,7 +140,7 @@ class FormEvent extends React.Component {
                 />
             </div>
             <hr/>
-            <div className="form-example">
+            <div className="form-event">
                 <label htmlFor="booking">Réservation</label>
                 <Switch onChange={this.handleChange} checked={this.state.checked} />
             </div> 
