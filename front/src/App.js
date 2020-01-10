@@ -12,6 +12,7 @@ import EventCardFull from './component/EventCardFull'
 import CardString from './component/CardString.js'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
+import UploadImage from './component/UploadImage'
 import { Switch, Route} from 'react-router-dom'
 
 class App extends React.Component {
@@ -161,6 +162,9 @@ class App extends React.Component {
           </Route>
           <Route exact path='/formevents'>
             <FormEvent />
+          </Route>
+          <Route exact path='/uploadimages'>
+            <UploadImage />
           </Route>
         </Switch>
     )
