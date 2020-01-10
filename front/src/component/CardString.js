@@ -7,10 +7,7 @@ function CardString(props){
   return(
   <div id="CardString">
     <h1>EVENEMENTS</h1>
-    <EventCard 
-      place={props.place}
-      event={props.category}
-    />
+    <EventCard/>
   </div>
   )
 }
