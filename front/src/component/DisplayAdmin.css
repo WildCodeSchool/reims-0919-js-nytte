@@ -9,6 +9,7 @@
   border-bottom-left-radius:5%;
   box-shadow:0 19px 38px
   rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
+  padding-top:20%;
 }
 
 
@@ -20,7 +21,7 @@
 #pagePrinc{
   display:flex;
   flex-direction:column;
-  height:70%;
+  height:600px;
 }
 
 .photoProfil{
@@ -53,4 +54,8 @@ margin-bottom:0
 }
 .adressePres p{
   margin-top:0;
+}
+
+.photodeprofil{
+  margin-top:30px;
 }

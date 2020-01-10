@@ -55,6 +55,12 @@ class FormVacationer extends React.Component {
 
   render() {
     return (
+      <div>
+      <button className='arrowBack'>
+      <a className="menu-item" href="/">
+        &lsaquo;
+      </a>
+    </button>
       <div className='formAdminVacationer'>
         <img
           src='https://zupimages.net/up/19/50/0b2g.png'
@@ -190,6 +196,7 @@ class FormVacationer extends React.Component {
             />
           </div>
         </form>
+      </div>
       </div>
     )
   }

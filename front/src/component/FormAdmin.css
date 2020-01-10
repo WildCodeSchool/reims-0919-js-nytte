@@ -65,3 +65,8 @@
     color: white;
     font-size: 1.6em;
 }
+
+
+.formAdminVacationer .arrowBack a{
+  align-items:left;
+}

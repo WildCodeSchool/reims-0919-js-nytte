@@ -2,12 +2,20 @@ import React from 'react';
 import './Display.css';
 
 function DisplayVacationer(props){
+  let imgValues = {
+    src: 'https://cutt.ly/JrieTtL',
+    alt: 'image avatar par défaut',
+  }
+  if (props.vacationer.tourist_photo) {
+    imgValues = {
+      src: props.vacationer.tourist_photo,
+      alt: 'profil du vacancier',
+    }
+  }
   return(
   <div id="pageVacationer">
     <div id="ProfilVacationer">
-      {props.vacationer.tourist_photo===null
-        ? <img className="photoProfilVac" src='https://cutt.ly/JrieTtL' alt="image avatar par défaut"></img>
-        :<img className="photoProfilVac" src={props.vacationer.tourist_photo} alt="profil du vacancier"></img>}
+      <img className="photoProfilVac" src={imgValues.src} alt={imgValues.alt} />
       <h2 className="titreProfil">{props.vacationer.tourist_firstname} {props.vacationer.tourist_lastname}</h2>
     </div>
     <div className="adressePres">
