@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors')
 const app = express();
+const multer = require('multer')
 app.use(cors())
 const port = 8000;
 const connection = require("./conf");
@@ -10,6 +11,32 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
+//multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+  cb(null, '/home/wilder/upload')
+},
+filename: (req, file, cb) => {
+  cb(null, Date.now() + '-' +file.originalname )
+}
+})
+
+const upload = multer({ storage: storage,
+                        limits:{fileSize: 1000000}
+                      }).single('recfile')
+
+app.post('/api/upload', (req, res) => {
+     
+  upload(req, res, (err) => {
+         if (err instanceof multer.MulterError) {
+             return res.status(500).json(err)
+         } else if (err) {
+             return res.status(500).json(err)
+         }
+    return res.status(200).send(req.file)
+  })
+})
+//
 function verifyToken(req, res, next){
   const bearerHeader = req.headers.authorization
   console.log(req.headers)
