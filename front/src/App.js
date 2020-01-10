@@ -10,6 +10,7 @@ import DisplayVacationer from './component/DisplayVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
 import CardString from './component/CardString.js'
+import Sidebar from './component/Sidebar'
 import FormEvent from './component/FormEvent'
 import FormVacationer from './component/FormVacationer.js'
 import { Switch, Route} from 'react-router-dom'
@@ -114,6 +115,9 @@ class App extends React.Component {
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]}/>
             )}
+          </Route>
+          <Route exact path='/sidebar'>
+            <Sidebar />
           </Route>
           <Route exact path='/formadmin'>
             <FormAdmin />
