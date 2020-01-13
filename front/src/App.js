@@ -13,6 +13,8 @@ import FormEvent from './component/FormEvent'
 import EventBar from './component/EventBar'
 import FormVacationer from './component/FormVacationer.js'
 import { Route, BrowserRouter } from 'react-router-dom'
+import UploadImage from './component/UploadImage'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -174,7 +176,9 @@ class App extends React.Component {
           <Route exact path='/formevents'>
             <FormEvent />
           </Route>
-        </BrowserRouter>
+          <Route exact path='/uploadimages'>
+            <UploadImage />
+          </Route>
     )
   }
 }
