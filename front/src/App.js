@@ -147,6 +147,10 @@ class App extends React.Component {
                 id={event.id}
                 photo={event.local_photo}
                 category={event.happening_category}
+                date={event.happening_date}
+                time={event.happening_time}
+                endDate={event.happening_time_end}
+                endTime={event.happening_date_end}
               />
           )))}
           </Route>
@@ -164,6 +168,8 @@ class App extends React.Component {
                       description={event.happening_description}
                       date={event.happening_date}
                       time={event.happening_time}
+                      endDate={event.happening_time_end}
+                      endTime={event.happening_date_end}
                       isItBookable={event.happening_isItBookable}
                     />
                   </>
