@@ -132,3 +132,14 @@
     color:rgb(58, 49, 43);
     font-weight:bold;
 }
+
+.logoCategory{
+    height:32px;
+    padding-top:20px;
+}
+
+.logoTitle{
+    margin-left:90px;
+    display:flex;
+    flex-direction:row;
+}
