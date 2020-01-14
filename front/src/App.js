@@ -5,15 +5,16 @@ import DisplayAdmin from './component/DisplayAdmin.js'
 import DisplayPlace from './component/DisplayPlace.js'
 import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
-import LoginAdmin from './component/LoginAdmin.js'
 import DisplayVacationer from './component/DisplayVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
-import CardString from './component/CardString.js'
+import Sidebar from './component/Sidebar'
 import FormEvent from './component/FormEvent'
+import EventBar from './component/EventBar'
 import FormVacationer from './component/FormVacationer.js'
+import { Route, BrowserRouter } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
-import { Switch, Route} from 'react-router-dom'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -106,12 +107,11 @@ class App extends React.Component {
 
 
   render() {
+    const events = this.state.events;
     return (
-        <Switch>
+        <BrowserRouter>
           <Route exact path='/'>
-            <LoginAdmin isConnected = {this.state.isConnected} />
-          </Route>
-          <Route exact path='/adminprofil'>
+            <Sidebar />
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]}/>
             )}
@@ -140,25 +140,38 @@ class App extends React.Component {
             <FormVacationer vacationer={this.state.vacationer}/>
           </Route>
           <Route exact path='/events'>
-          {this.state.events && this.state.events.map((event) => (
+            <Sidebar/>
+            <EventBar/>
+          {this.state.events && React.Children.toArray(this.state.events.map((event) => (
               <EventCard 
+                id={event.id}
                 photo={event.local_photo}
                 category={event.happening_category}
               />
-          ))}
+          )))}
           </Route>
-          <Route exact path='/eventfull'>
-            {this.state.events && this.state.events.map((event) => (
-              <EventCardFull
-                photo={event.local_photo}
-                category={event.happening_category}
-                logo={event.happening_picture}
-                description={event.happening_description}
-                date={event.happening_date}
-                time={event.happening_time}
-                isItBookable={event.happening_isItBookable}
-              />
-            ))}
+          <Route exact path='/events/:id' render={(props) => {
+              const index = props.match.params.id - 1;
+              if (events && index < events.length) {
+                const event = events[index];
+                return (
+                  <>
+                    <Sidebar />
+                    <EventCardFull
+                      photo={event.local_photo}
+                      category={event.happening_category}
+                      logo={event.happening_picture}
+                      description={event.happening_description}
+                      date={event.happening_date}
+                      time={event.happening_time}
+                      isItBookable={event.happening_isItBookable}
+                    />
+                  </>
+                )
+              } else {
+                return <></>
+              }
+            }}>
           </Route>
           <Route exact path='/formevents'>
             <FormEvent />
@@ -166,7 +179,6 @@ class App extends React.Component {
           <Route exact path='/uploadimages'>
             <UploadImage />
           </Route>
-        </Switch>
     )
   }
 }

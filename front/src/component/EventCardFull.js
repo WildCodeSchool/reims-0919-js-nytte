@@ -15,8 +15,8 @@ function EventCardFull({photo, category,description,date,time}){
       <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
     </div>
     <div className="fullCardButton">
-      <button className="BookButton" type="button" onClick="">RESERVER</button>
-      <button className="MapButton" type="button" onClick="">S'Y RENDRE</button>
+      <button className="BookButton" type="button">RESERVER</button>
+      <button className="MapButton" type="button">S'Y RENDRE</button>
     </div>
   </div>
   )

@@ -67,11 +67,10 @@
 .CardFull{
     display:flex;
     flex-direction:column;
-    width:100%;
     background-color:white;
     border:0.5px solid rgb(58, 49, 43);
     box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
-    height:736px;
+    min-height:100vh;
 }
 
 .photoCardFull{
@@ -84,7 +83,6 @@
 }
 
 .pictureCardFull{
-    width:99%;
     border-radius: 0px 0px 10px 10px;
     background-color:#2d9486;
     border:0.5px solid rgb(58, 49, 43);
@@ -92,10 +90,19 @@
     height:280px;
 }
 
+.pictureCardBar{
+    border-radius: 0px 0px 10px 10px;
+    background-color:#2d9486;
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    height:120px;
+    color:white;
+    text-align:center;
+}
+
 .CardTextDescription{
-    width:80%;
-    margin-left:10%;
-    height:300px;
+    padding: 0 10%;
+    min-height:300px;
     color:rgb(58, 49, 43);
     margin-top:15px;
     text-align: center;
@@ -106,8 +113,6 @@
 }
 
 .fullCardButton{
-    position:absolute;
-    bottom:0;
     height:80px;
     display:flex;
     flex-direction:row;

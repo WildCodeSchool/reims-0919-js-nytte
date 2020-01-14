@@ -5,20 +5,25 @@ import './Sidebar.css'
 function Sidebar(props){
   return(
     <Menu>
-      <a className="menu-item" href="/">
+      <p id="crea">Création</p>
+      <a className="menu-item-bar" href="/">
         Accueil
       </a>
 
-      <a className="menu-item" href="/formplace">
+      <a className="menu-item-bar" href="/formplace">
         Lieux
       </a>
 
-      <a className="menu-item" href="/événements">
+      <a className="menu-item-bar" href="/formevents">
         Événements
       </a>
 
-      <a className="menu-item" href="/vacanciers">
+      <a className="menu-item-bar" href="/formvacationer">
         Vacanciers
+      </a>
+
+      <a className="menu-item-bar-actu" href="/events">
+        Fil d'actu
       </a>
     </Menu>
   );

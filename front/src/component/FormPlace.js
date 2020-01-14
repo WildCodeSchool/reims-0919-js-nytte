@@ -48,7 +48,11 @@ class FormPlace extends React.Component {
       return (
       <div className = "formContainer">
         <div className="bannerTop">
-          <button className='arrowBack'>&lsaquo;</button>
+          <button className='arrowBack'>
+            <a className="menu-item" href="/">
+              &lsaquo;
+            </a>
+          </button>
           <h1 className='title'>Création
             <br/>
               d'un lieu

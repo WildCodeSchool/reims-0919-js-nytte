@@ -79,6 +79,7 @@ textarea{
   border: 0px;
   font-size: 4em;
   position: absolute;
+  text-decoration:none;
 }
 
 .title {

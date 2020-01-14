@@ -74,6 +74,7 @@ textarea{
   border: 0px;
   font-size: 4em;
   position: absolute;
+  text-decoration:none;
 }
 
 .title {
@@ -111,4 +112,8 @@ textarea{
   width:88%;
   height:180px;
   background-color: rgb(233, 237, 241);
+}
+.menu-item{
+  text-decoration:none;
+  color:rgb(90, 88, 88)
 }
