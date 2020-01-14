@@ -14,7 +14,7 @@ router.get('/', (request, response) => {
 
 
 router.get('/:id', (request, response) => {
-  connection.query('SELECT happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, happening_date_end, isItBookable FROM happening INNER JOIN place WHERE happening.place_id=place.id AND happening.id = ?', [request.params.id], (err, results) => {
+  connection.query('SELECT happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, happening_date_end, isItBookable, local_photo FROM happening INNER JOIN place WHERE happening.place_id=place.id AND happening.id = ?', [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving happening');
    } else {
