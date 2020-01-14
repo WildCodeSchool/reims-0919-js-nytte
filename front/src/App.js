@@ -147,6 +147,11 @@ class App extends React.Component {
                 id={event.id}
                 photo={event.local_photo}
                 category={event.happening_category}
+                date={event.happening_date}
+                time={event.happening_time}
+                endDate={event.happening_time_end}
+                endTime={event.happening_date_end}
+                isItBookable={event.isItBookable}
               />
           )))}
           </Route>
@@ -159,12 +164,15 @@ class App extends React.Component {
                     <Sidebar />
                     <EventCardFull
                       photo={event.local_photo}
+                      title={event.happening_name}
                       category={event.happening_category}
                       logo={event.happening_picture}
                       description={event.happening_description}
                       date={event.happening_date}
                       time={event.happening_time}
-                      isItBookable={event.happening_isItBookable}
+                      endDate={event.happening_date_end}
+                      endTime={event.happening_time_end}
+                      isItBookable={event.isItBookable}
                     />
                   </>
                 )
