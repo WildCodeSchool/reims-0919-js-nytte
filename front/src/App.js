@@ -179,6 +179,7 @@ class App extends React.Component {
           <Route exact path='/uploadimages'>
             <UploadImage />
           </Route>
+        </BrowserRouter>
     )
   }
 }
