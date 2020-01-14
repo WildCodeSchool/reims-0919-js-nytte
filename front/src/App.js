@@ -14,6 +14,7 @@ import EventBar from './component/EventBar'
 import FormVacationer from './component/FormVacationer.js'
 import { Route, BrowserRouter } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
+import LoginAdmin from './component/LoginAdmin'
 
 
 class App extends React.Component {
@@ -111,6 +112,9 @@ class App extends React.Component {
     return (
         <BrowserRouter>
           <Route exact path='/'>
+            <LoginAdmin />
+          </Route>
+          <Route exact path='/displayadmin'>
             <Sidebar />
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]}/>
