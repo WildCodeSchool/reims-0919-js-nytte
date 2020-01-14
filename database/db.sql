@@ -19,14 +19,18 @@ CREATE TABLE admin
   longitude VARCHAR(4) NULL,
   phone_company VARCHAR(10) NOT NULL,
   email VARCHAR(320) NULL,
+  mapping VARCHAR(250) NULL,
   creation_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 );
 
+INSERT INTO admin 
+(company, firstname, lastname,login_admin,password_admin,city,zip,address1,photo,phone_company,mapping)
+VALUES
+('Camping de Max','Maxime','Thibaud','max-thi','password','Sainte Maxime','83120','1 rue Thibaud','https://zupimages.net/up/19/49/c3li.jpg','0401020304','https://zupimages.net/up/20/03/l201.jpg');
 
 INSERT INTO admin 
 (company, firstname, lastname,login_admin,password_admin,city,zip,address1,photo,phone_company)
 VALUES
-('Camping de Max','Maxime','Thibaud','max-thi','password','Sainte Maxime','83120','1 rue Thibaud','https://zupimages.net/up/19/49/c3li.jpg','0401020304'),
 ('Camping de Wojtek','Wojtek','Zdebski','woj-tek','password','Quiberon','56170','3 rue de la Steppe','https://zupimages.net/up/19/49/3ik8.jpg','0201020304'),
 ('Club de Victor','Victor','Biard','vic-bia','password','Reims','51100','6 rue du Champagne Comte Vicolatino','https://zupimages.net/up/19/49/y642.jpg','0301020304'),
 ('Hotel de plein air de Cindie', 'Cindie','Jouvin','cin-jou','password','Cassis','13260','Rue de la Framboise','https://zupimages.net/up/19/49/ctks.jpg','0406081001');
@@ -86,7 +90,7 @@ CREATE TABLE vacationer
 );
 
 INSERT INTO vacationer 
-(tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday )
+(tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday,tourist_photo )
 VALUES
 ('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');
 
