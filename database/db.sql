@@ -98,7 +98,9 @@ CREATE TABLE happening
   happening_category VARCHAR(150) NULL,
   happening_description VARCHAR(400) NULL,
   happening_date DATE NULL,
+  happening_date_end DATE NULL,
   happening_time TIME NULL,
+  happening_time_end TIME NULL,
   isItBookable BOOLEAN NULL,
   place_id INT NOT NULL,
   FOREIGN KEY (place_id) REFERENCES place(id)
@@ -108,15 +110,20 @@ INSERT INTO happening
 (happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, isItBookable, place_id)
 VALUES
 ('Soirée moules frites','https://cdn-s-www.republicain-lorrain.fr/images/327257c7-3baa-40cd-b7cb-16319b950209/BES_06/illustration-moules-frites_1-1572254400.jpg','Gastronomie','33ème soirée moules-frites au Swimming Resto. Pensez à réserver votre table !','2020-08-19','20:00:00',1,13),
-('Yoga sur la plage','https://cache.marieclaire.fr/data/photo/w1000_ci/5f/yin-yoga-bienfaits.jpg','Détente','Zen et sable chaud','2020-07-14','09:30:00',1,1),
 ('Soirée Disco','https://cdn-s-www.republicain-lorrain.fr/images/1a2d02a0-8350-4864-8194-c69337719cb1/BES_06/illustration-soiree-disco_1-1571215048.jpg','Fiesta','Viens danser sous le soleil des tropiques !','2020-08-15','21:00:00',0,14),
-('Initiation au bûcheronnage','https://img5.onthesnow.com/image/la/49/championnat_de_france_b%C3%BBcheronnage_sportif_aux_492304.jpg','Insolite','I am a lumberjack and I am OK, I sleep all night and I work all day','2020-06-25','14:00:00',1,7),
 ('Soirée American Food','https://soyummy.com/wp-content/uploads/2019/02/americanfood.jpg','Food','Venez découvrir la cuisine américaine','2020-07-15','19:00:00',0,12),
-('Aquagym','https://www.camping-location-bretagne.com/voy_content/uploads/2018/01/aquagym_2-2-1024x576.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-02','10:00:00',1,7),
 ('Histoire du cigare ','https://www.cigares.com/img/cms/cigares-cubains.jpg','Culture','Venez découvrir l’histoire du cigare cubain','2020-08-10','16:00:00',1,4),
 ('Permaculture et gastronomie vegan','https://cache.marieclaire.fr/data/photo/w1000_ci/55/potager-pemaculture.jpg','Gastronomie','Pour celles et ceux qui veulent apprendre à cultiver et consommer du bon et du bio','2020-06-15','17:00:00',1,8),
-('Aquabike','https://www.camping-les-roquilles.fr/IMG/jpg/aquabike_camping_roquilles.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-07','10:00:00',1,9),
 ('Soirée kro','https://i.f1g.fr/media/figaro/orig/2018/08/29/XVM69efbdea-ab8b-11e8-8771-8f9ab1a049e0.jpg','Fiesta','Boire, boire, boire','2020-08-25','19:00:00',0,10),
 ('Pool Party','https://static.actu.fr/uploads/2017/06/6124529712_33fae1aaaa_b-854x422.jpg','Fiesta','Bouée, grande frite et eau chlorée: encore une soirée de folie au SPA avec DJ Boris','2020-08-29','20:00:00',0,5),
-('Initiation au massage cardiaque','https://www.croix-rouge.fr/var/crf_internet/storage/images/accueil/je-me-forme/particuliers/initiation-aux-premiers-secours-enfant-et-nourrisson/15372026-5-fre-FR/Initiation-aux-premiers-secours-enfant-et-nourrisson_slideshow.jpg','Culture','Les initiations aux premiers secours, ce sont des choses importantes','2020-07-04','10:00:00',1,6),
 ('Coupe inter-campings de pétanque','https://i.skyrock.net/5272/9955272/pics/209252065_small.jpg','Sport', 'Petit tournoi entre amis','2020-08-16','10:00:00',1,2);
+
+
+INSERT INTO happening 
+(happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, isItBookable, place_id)
+VALUES
+('Initiation au bûcheronnage','https://img5.onthesnow.com/image/la/49/championnat_de_france_b%C3%BBcheronnage_sportif_aux_492304.jpg','Insolite','I am a lumberjack and I am OK, I sleep all night and I work all day','2020-06-25','14:00:00','15:00:00',1,7),
+('Aquagym','https://www.camping-location-bretagne.com/voy_content/uploads/2018/01/aquagym_2-2-1024x576.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-02','10:00:00','11:00:00',1,7),
+('Initiation au massage cardiaque','https://www.croix-rouge.fr/var/crf_internet/storage/images/accueil/je-me-forme/particuliers/initiation-aux-premiers-secours-enfant-et-nourrisson/15372026-5-fre-FR/Initiation-aux-premiers-secours-enfant-et-nourrisson_slideshow.jpg','Culture','Les initiations aux premiers secours, ce sont des choses importantes','2020-07-04','10:00:00','11:00:00',1,6),
+('Aquabike','https://www.camping-les-roquilles.fr/IMG/jpg/aquabike_camping_roquilles.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-07','10:00:00','11:00:00',1,9),
+('Yoga sur la plage','https://cache.marieclaire.fr/data/photo/w1000_ci/5f/yin-yoga-bienfaits.jpg','Détente','Zen et sable chaud','2020-07-14','09:30:00','10:30:00',1,1);
