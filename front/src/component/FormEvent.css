@@ -86,3 +86,11 @@ textarea{
   margin-left: auto;
   margin-right: auto;
 }
+
+@media screen and (min-width: 480px)
+{
+  .formContainer{
+    width:400px;
+    margin:auto;
+  }
+}

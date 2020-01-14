@@ -4,7 +4,7 @@ import './Sidebar.css'
 
 function Sidebar(props){
   return(
-    <Menu>
+    <Menu className="sideBar">
       <p id="crea">Création</p>
       <a className="menu-item-bar" href="/">
         Accueil

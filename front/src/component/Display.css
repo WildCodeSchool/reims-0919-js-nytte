@@ -74,3 +74,12 @@ text-align:center;
 .adressePres p{
   margin-top:0;
 }
+
+
+@media screen and (min-width: 480px)
+{
+  #pagePrinc, #pagePlace,#pageVacationer{
+    width:400px;
+    margin:auto;
+  }
+}
