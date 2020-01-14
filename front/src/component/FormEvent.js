@@ -55,7 +55,9 @@ class FormEvent extends React.Component {
         place_id: this.state.placeId,
         isItBookable: this.state.checked
       })
-      alert("Votre événement a bien été crée !")
+      .then(response => {
+        (response.status === 200) && (alert("Votre événement a été créé !"))
+      })
     }
 
     render() {
