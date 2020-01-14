@@ -123,11 +123,12 @@ class App extends React.Component {
             <FormPlace />
           </Route>
           <Route exact path='/place' >
-          {this.state.places && (
-            <DisplayPlace 
-              place={this.state.places[this.state.currentPlace]}
-            />
-          )}
+            {this.state.places && (
+              <DisplayPlace 
+                place={this.state.places[this.state.currentPlace]}
+              />
+            )}
+           <button  type="button" onClick={this.nextPlace}>Suivant</button>
           </Route>
           <Route exact path='/vacationer'>
             {this.state.vacationers && (
@@ -135,6 +136,7 @@ class App extends React.Component {
                 vacationer={this.state.vacationers[this.state.currentVacationer]}
               />
             )}
+            <button  type="button" onClick={this.nextVacationer}>Suivant</button>
           </Route>        
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
@@ -147,6 +149,11 @@ class App extends React.Component {
                 id={event.id}
                 photo={event.local_photo}
                 category={event.happening_category}
+                date={event.happening_date}
+                time={event.happening_time}
+                endDate={event.happening_time_end}
+                endTime={event.happening_date_end}
+                isItBookable={event.isItBookable}
               />
           )))}
           </Route>
@@ -159,12 +166,15 @@ class App extends React.Component {
                     <Sidebar />
                     <EventCardFull
                       photo={event.local_photo}
+                      title={event.happening_name}
                       category={event.happening_category}
                       logo={event.happening_picture}
                       description={event.happening_description}
                       date={event.happening_date}
                       time={event.happening_time}
-                      isItBookable={event.happening_isItBookable}
+                      endDate={event.happening_date_end}
+                      endTime={event.happening_time_end}
+                      isItBookable={event.isItBookable}
                     />
                   </>
                 )

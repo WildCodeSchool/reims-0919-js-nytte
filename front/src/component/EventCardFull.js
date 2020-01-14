@@ -23,7 +23,7 @@ function renderSwitch(category){
   }
 }
 
-function EventCardFull({photo, category,description,date,time}){
+function EventCardFull({photo, title, category,description,date,time,endTime, isItBookable}){
   return(
   <div className="CardFull">
     <div className="pictureCardFull">
@@ -34,14 +34,26 @@ function EventCardFull({photo, category,description,date,time}){
         <img className="photoCardFull" src={photo} alt="profil du lieu touristique"></img>
     </div>
     <div className="CardTextDescription">
+      <h2>{title}</h2>
       <p>{description}</p>
-      <p>Date : {date.slice(0,10)} </p>
-      <p>Heure : {time.slice(0,5)}</p>
-      <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
-    </div>
-    <div className="fullCardButton">
-      <button className="BookButton" type="button">RESERVER</button>
-      <button className="MapButton" type="button">+ D'INFOS</button>
+      {date===null
+        ?""
+        :<p>Date : {date.slice(0,10)} </p>}
+      {endTime===null
+        ?<p>à {time.slice(0,5)}</p>
+        :<p> Horaires : {time.slice(0,5)} - {endTime.slice(0,5)}</p>}
+      {isItBookable
+        ?<>
+        <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
+        <div className="fullCardButton">
+          <button className="BookButton" type="button">RESERVER</button>
+          <button className="MapButton" type="button">Y ALLER</button>
+        </div>
+        </>
+        :<div className="fullCardButton">
+          <button className="MapButton" type="button">Y ALLER</button>
+        </div>
+        }
     </div>
   </div>
   )

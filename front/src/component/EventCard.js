@@ -2,7 +2,7 @@ import React from 'react';
 import './EventCard.css';
 import {useHistory} from 'react-router-dom';
 
-function EventCard({id, photo, category}){
+function EventCard({id, photo, category, date, endDate, time, endTime}){
   let history=useHistory()
 
   let imgValues = {
@@ -22,10 +22,17 @@ function EventCard({id, photo, category}){
       <div className="flexCardButton">
         <a className="CardButton" onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} href={`/events/${id}`}>
           {category.toUpperCase()}</a>
+        <div className="viewDate">
+          {date===null?"":
+            <p>{date.slice(0,10)} </p>}
+          {time===null?"":
+            <p> à {time.slice(0,5)}</p>}
+          {endTime===null?"":
+            <p>{endTime.slice(0,5)}</p>}
+        </div>
           <div className="flèche">
-          &rsaquo;
+            &rsaquo;
           </div>
-          
       </div>
     </div>
   </div>

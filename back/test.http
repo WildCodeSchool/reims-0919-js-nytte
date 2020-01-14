@@ -1,0 +1,165 @@
+// Test for admin
+### GET ALL ADMINS
+GET http://localhost:8000/api/admins
+
+### GET ONE ADMIN
+GET http://localhost:8000/api/admins/2
+
+### POST ONE ADMIN
+POST http://localhost:8000/api/admins
+Content-Type: application/json
+
+{
+    "company" : "Hotel Neptune",
+    "firstname" : "Jean-Pierre",
+    "lastname" : "Laroche",
+    "login_admin" : "jpLaroche",
+    "password_admin" : "NeptuNe8Jp",
+    "city" : "Cannes",
+    "zip" : "06400",
+    "address1": "10 rue du Soleil",
+    "photo" : "https://zupimages.net/up/20/03/qn2w.jpg",
+    "phone_company" : "0956895310",
+    "email" : "jplaroche@neptune.com"
+}
+
+### PUT AN ADMIN
+PUT http://localhost:8000/api/admins/:id
+Content-Type: application/json
+
+{
+    "id":1,
+    "firstname" : "Gérard",
+    "lastname" : "Mansoif"
+}
+
+### DELETE THE ADMIN
+DELETE http://localhost:8000/api/admins/:id
+Content-Type: application/json
+
+{
+  "id" : 31
+}
+
+
+
+// Test for place
+### GET ALL PLACES
+GET http://localhost:8000/api/places
+
+### GET ONE PLACE
+GET http://localhost:8000/api/places/2
+
+### POST ONE PLACE
+POST http://localhost:8000/api/places
+Content-Type: application/json
+
+{
+    "local_name" : "Mini-golf",
+    "local_photo" : "https://zupimages.net/up/20/03/zio5.jpeg",
+    "local_description" : "Un mini-golf exceptionnel et unique au monde avec 27 trous et sur le thème de Verdun",
+    "admin_id" : 1
+}
+
+### PUT A PLACE
+PUT http://localhost:8000/api/places/:id
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "local_name" : "La Chtite Baraque"
+}
+
+### DELETE THE PLACE
+DELETE http://localhost:8000/api/places/:id
+Content-Type: application/json
+
+{
+  "id" : 27
+}
+
+
+
+// Test for vacationer
+### GET ALL VACATIONERS
+GET http://localhost:8000/api/vacationers
+
+### GET ONE VACATIONER
+GET http://localhost:8000/api/vacationers/1
+
+### POST ONE VACATIONER
+POST http://localhost:8000/api/vacationers
+Content-Type: application/json
+
+{
+    "tourist_firstname": "Paulin",
+    "tourist_lastname": "Noël",
+    "tourist_login": "paulin.noël",
+    "tourist_password": "paulin1234",
+    "tourist_city": "Reims",
+    "tourist_zip": "51100",
+    "tourist_address1": "6 rue de Saint Brice",
+    "tourist_phone": "0632301341",
+    "tourist_email": "paulin.noël@gmail.com",
+    "admin_id": 1,
+    "birthday": "1996-02-19",
+    "tourist_photo": "https://zupimages.net/up/20/03/dqi6.jpg"
+}
+
+### PUT A VACATIONER
+PUT http://localhost:8000/api/vacationers/:id
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "tourist_city": "Reims"
+}
+
+### DELETE THE VACATIONER
+DELETE http://localhost:8000/api/vacationers/:id
+Content-Type: application/json
+
+{
+  "id" : 4
+}
+
+
+
+// Test for happening
+### GET ALL HAPPENINGS
+GET http://localhost:8000/api/happenings
+
+### GET ONE HAPPENING
+GET http://localhost:8000/api/happenings/5
+
+### POST ONE HAPPENING
+POST http://localhost:8000/api/happenings
+Content-Type: application/json
+
+{
+    "happening_name": "Soirée foot",
+    "happening_picture": "https://zupimages.net/up/20/03/w8o4.jpg",
+    "happening_category": "Détente",
+    "happening_description": "Venez assiter à la finale de la coupe d'Europe ! Bières à moitié prix !",
+    "happening_date": "2020-07-19",
+    "happening_time" : "21:00:00",
+    "isItBookable" : 0,
+    "place_id" : 12 
+}
+
+### PUT AN HAPPENING
+PUT http://localhost:8000/api/happenings/:id
+Content-Type: application/json
+
+{
+    "id" : 5,
+    "happening_name": "Soirée American Burger"
+}
+
+### DELETE THE HAPPENING
+DELETE http://localhost:8000/api/happenings/:id
+Content-Type: application/json
+
+{
+  "id" : 17
+}

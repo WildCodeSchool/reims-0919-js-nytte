@@ -2,6 +2,9 @@ import React from 'react';
 import Switch from "react-switch";
 import axios from 'axios'
 import './FormEvent.css'
+import UploadImage from './UploadImage'
+import { Link } from 'react-router-dom'
+
 
 
 class FormEvent extends React.Component {
@@ -20,8 +23,13 @@ class FormEvent extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.postFormData = this.postFormData.bind(this);
+      this.savePicture = this.savePicture.bind(this);      
     }
-
+    
+    savePicture(picture) {
+      this.setState({picture})
+    }
+    
     handleChange(checked) {
       this.setState({ checked });
     }
@@ -47,7 +55,9 @@ class FormEvent extends React.Component {
         place_id: this.state.placeId,
         isItBookable: this.state.checked
       })
-      alert("Votre événement a bien été crée !")
+      .then(response => {
+        (response.status === 200) && (alert("Votre événement a été créé !"))
+      })
     }
 
     render() {
@@ -78,12 +88,8 @@ class FormEvent extends React.Component {
             <hr/>
             <div className="form-event">
                 <label htmlFor="picture">Image</label>
-                <input
-                  type="text"
-                  name="picture"
-                  id="picture" 
-                  onChange={this.change}
-                  required
+                <UploadImage
+                  savePicture = {this.savePicture}
                 />
             </div>
             <hr/>
