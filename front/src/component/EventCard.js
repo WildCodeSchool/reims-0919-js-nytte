@@ -2,7 +2,7 @@ import React from 'react';
 import './EventCard.css';
 import {useHistory} from 'react-router-dom';
 
-function EventCard({id, photo, category, date, endDate, time, endTime}){
+function EventCard({id, photo, category, date, endDate, time, endTime, isItBookable}){
   let history=useHistory()
 
   let imgValues = {
@@ -30,6 +30,7 @@ function EventCard({id, photo, category, date, endDate, time, endTime}){
           {endTime===null?"":
             <p>{endTime.slice(0,5)}</p>}
         </div>
+         {isItBookable ? <p className="viewBook">À réserver</p> : ""} 
           <div className="flèche">
             &rsaquo;
           </div>
