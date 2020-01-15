@@ -6,55 +6,60 @@ import UploadImage from './UploadImage'
 import { Link } from 'react-router-dom'
 
 
-
 class FormEvent extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        event: null,
-        picture: null,
-        category: null,
-        description: null,
-        date: null,
-        time: null,
-        placeId: null,
-        checked: false,
-      };
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.postFormData = this.postFormData.bind(this);
-      this.savePicture = this.savePicture.bind(this);      
-    }
-    
-    savePicture(picture) {
-      this.setState({picture})
-    }
-    
-    handleChange(checked) {
-      this.setState({ checked });
-    }
-
-    change = e => {
-      this.setState({
-        [e.target.id]: e.target.value
-      })
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: null,
+      picture: null,
+      category: null,
+      description: null,
+      date: null,
+      date_end: null,
+      time: null,
+      time_end: null,
+      placeId: null,
+      seats_bookable: null,
+      checked: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.postFormData = this.postFormData.bind(this);
+    this.savePicture = this.savePicture.bind(this);      
+  }
   
-    handleSubmit(event) {
-      event.preventDefault()
-    }
+  savePicture(picture) {
+    this.setState({picture})
+  }
+  
+  handleChange(checked) {
+    this.setState({ checked });
+  }
 
-    postFormData() {
-      axios.post('http://localhost:8000/api/happenings', {
-        happening_name: this.state.event,
-        happening_picture: this.state.picture,
-        happening_category: this.state.category,
-        happening_description: this.state.description,
-        happening_date: this.state.date,
-        happening_time: this.state.time,
-        place_id: this.state.placeId,
-        isItBookable: this.state.checked
-      })
+  change = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+  }
+
+  postFormData() {
+    axios.post('http://localhost:8000/api/happenings', {
+      happening_name: this.state.event,
+      happening_picture: this.state.picture,
+      happening_category: this.state.category,
+      happening_description: this.state.description,
+      happening_date: this.state.date,
+      happening_date_end: this.state.date_end,
+      happening_time: this.state.time,
+      happening_time_end: this.state.time_end,
+      place_id: this.state.placeId,
+      isItBookable: this.state.checked,
+      seats_bookable: this.state.seats_bookable,
+    })
       .then(response => {
         (response.status === 200) && (alert("Votre événement a été créé !"))
       })
@@ -65,10 +70,8 @@ class FormEvent extends React.Component {
       <div className = "formContainer">
         <div className="bannerTop">
         <button className='arrowBack'>
-            <a className="menu-item" href="/">
-              &lsaquo;
-            </a>
-          </button>
+          <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
+        </button>
           <h1 className='title'>Création
             <br/>
               d'un événement
@@ -95,7 +98,7 @@ class FormEvent extends React.Component {
             <hr/>
             <div className="form-event">
                 <label htmlFor="category">Catégorie</label>
-                <select value={this.state.value} onChange={this.change}>
+                <select value={this.state.value} name="category" id="category" onChange={this.change}>
                   <option value="Restauration">Restauration</option>
                   <option value="Sport">Sport</option>
                   <option value="Enfant">Enfant</option>
@@ -129,6 +132,16 @@ class FormEvent extends React.Component {
             </div> 
             <hr/>
             <div className="form-event">
+                <label htmlFor="date">Date de fin</label>
+                <input
+                  type="date"
+                  name="date_end"
+                  id="date_end"
+                  onChange={this.change}
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
                 <label htmlFor="time">Heure</label>
                 <input
                   type="time"
@@ -136,6 +149,16 @@ class FormEvent extends React.Component {
                   id="time"
                   onChange={this.change}
                   required
+                />
+            </div> 
+            <hr/>
+            <div className="form-event">
+                <label htmlFor="time">Heure de fin</label>
+                <input
+                  type="time"
+                  name="time_end"
+                  id="time_end"
+                  onChange={this.change}
                 />
             </div> 
             <hr/>
@@ -156,6 +179,16 @@ class FormEvent extends React.Component {
                 <label htmlFor="booking">Réservation</label>
                 <Switch onChange={this.handleChange} checked={this.state.checked} />
             </div> 
+            <div className="form-event">
+                <label htmlFor="time">Nombre de réservation possible</label>
+                <input
+                  type="number"
+                  name="seats_bookable"
+                  id="seats_bookable"
+                  onChange={this.change}
+                />
+            </div> 
+            <hr/>
         </form>
         <button 
           className="createButton"
