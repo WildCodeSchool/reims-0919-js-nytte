@@ -3,16 +3,22 @@ import './Display.css';
 import { Link } from 'react-router-dom'
 
 function DisplayVacationer(props){
+  let url = props.vacationer.tourist_photo;
+  if (!url.startsWith('http')) {
+    url = `http://localhost:8000/${props.vacationer.tourist_photo}`;
+  }
+  
   let imgValues = {
     src: 'https://cutt.ly/JrieTtL',
     alt: 'image avatar par défaut',
   }
   if (props.vacationer.tourist_photo) {
     imgValues = {
-      src: props.vacationer.tourist_photo,
+      src: url,
       alt: 'profil du vacancier',
     }
   }
+  
   return(
   <div id="pageVacationer">
     <button className='arrowBack'>
