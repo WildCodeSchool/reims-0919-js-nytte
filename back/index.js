@@ -4,17 +4,23 @@ const app = express();
 const multer = require('multer')
 app.use(cors())
 const port = 8000;
+const secret = 'secret'
 const connection = require("./conf");
 const jwt = require('jsonwebtoken');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
+const userData = {
+  email: 'test',
+  password: 'test'
+}
 //multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-  cb(null, '/home/wilder/upload')
+    cb(null, './public/pictures')
 },
 filename: (req, file, cb) => {
   cb(null, Date.now() + '-' +file.originalname )
@@ -23,7 +29,7 @@ filename: (req, file, cb) => {
 
 const upload = multer({ storage: storage,
                         limits:{fileSize: 1000000}
-                      }).single('recfile')
+                      }).single('myImage')
 
 app.post('/api/upload', (req, res) => {
      
@@ -64,17 +70,21 @@ app.post('/api/admins', (request, response) => {
   });
 });
 
-app.post('/api/admins/login', (request, response) => {
-    const user = {
-       loginAdmin: 'Cindie',
-       passwordAdmin: 'jaimelecode'
-    }
-    jwt.sign({ user }, 'secret', {expiresIn : '1h'}, (err, token) => {
-      response.json({
-          token
+app.post('/api/admins/login', function(req, res) {
+  const formData = req.body
+  const payload = {
+      sub: req.body.email
+  }
+  if (userData.password !== formData.password) {
+      res.send('Mauvais password')
+  } else {
+      jwt.sign(payload, secret, (err, token) => {
+          res.json({
+              token
+          })
       })
-    })
-});
+  }
+})
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secret', (err, authorizedData) => {
