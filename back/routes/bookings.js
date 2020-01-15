@@ -22,6 +22,16 @@ router.get('/status', (request, response) => {
    });
 })
 
+router.get('/:id', (request, response) => {
+  connection.query('select happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND happening.id = ? AND seats_bookable IS NOT NULL', (err, results) => {
+   if (err) {
+    response.status(500).send('Error retrieving booking');
+   } else {
+    response.json(results);
+   }
+ });
+})
+
 router.post('/', (request, response) => {
     const formData = request.body;
     connection.query('INSERT INTO booking SET ?', formData, (err, results) => {
