@@ -107,6 +107,7 @@ CREATE TABLE happening
   happening_time_end TIME NULL,
   isItBookable BOOLEAN NULL,
   place_id INT NOT NULL,
+  seats_bookable INT NULL,
   FOREIGN KEY (place_id) REFERENCES place(id)
 );
 
@@ -124,10 +125,19 @@ VALUES
 
 
 INSERT INTO happening 
-(happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, isItBookable, place_id)
+(happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, isItBookable, place_id, seats_bookable)
 VALUES
-('Initiation au bûcheronnage','https://img5.onthesnow.com/image/la/49/championnat_de_france_b%C3%BBcheronnage_sportif_aux_492304.jpg','Insolite','I am a lumberjack and I am OK, I sleep all night and I work all day','2020-06-25','14:00:00','15:00:00',1,7),
-('Aquagym','https://www.camping-location-bretagne.com/voy_content/uploads/2018/01/aquagym_2-2-1024x576.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-02','10:00:00','11:00:00',1,7),
-('Initiation au massage cardiaque','https://www.croix-rouge.fr/var/crf_internet/storage/images/accueil/je-me-forme/particuliers/initiation-aux-premiers-secours-enfant-et-nourrisson/15372026-5-fre-FR/Initiation-aux-premiers-secours-enfant-et-nourrisson_slideshow.jpg','Culture','Les initiations aux premiers secours, ce sont des choses importantes','2020-07-04','10:00:00','11:00:00',1,6),
-('Aquabike','https://www.camping-les-roquilles.fr/IMG/jpg/aquabike_camping_roquilles.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-07','10:00:00','11:00:00',1,9),
-('Yoga sur la plage','https://cache.marieclaire.fr/data/photo/w1000_ci/5f/yin-yoga-bienfaits.jpg','Détente','Zen et sable chaud','2020-07-14','09:30:00','10:30:00',1,1);
+('Initiation au bûcheronnage','https://img5.onthesnow.com/image/la/49/championnat_de_france_b%C3%BBcheronnage_sportif_aux_492304.jpg','Insolite','I am a lumberjack and I am OK, I sleep all night and I work all day','2020-06-25','14:00:00','15:00:00',1,7,20),
+('Aquagym','https://www.camping-location-bretagne.com/voy_content/uploads/2018/01/aquagym_2-2-1024x576.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-02','10:00:00','11:00:00',1,7,20),
+('Initiation au massage cardiaque','https://www.croix-rouge.fr/var/crf_internet/storage/images/accueil/je-me-forme/particuliers/initiation-aux-premiers-secours-enfant-et-nourrisson/15372026-5-fre-FR/Initiation-aux-premiers-secours-enfant-et-nourrisson_slideshow.jpg','Culture','Les initiations aux premiers secours, ce sont des choses importantes','2020-07-04','10:00:00','11:00:00',1,6,20),
+('Aquabike','https://www.camping-les-roquilles.fr/IMG/jpg/aquabike_camping_roquilles.jpg','Sport','Au camping, les vacances riment avec loisirs et bien être ! Vous pourrez profiter de plusieurs cours d’Aquagym toutes les semaines d’Avril à Octobre gratuitement. Et pour votre plus grand plaisir, nous avons également plusieurs cours d’Aqua Samba et d’Aqua Boxing gratuits.','2020-08-07','10:00:00','11:00:00',1,9,20),
+('Yoga sur la plage','https://cache.marieclaire.fr/data/photo/w1000_ci/5f/yin-yoga-bienfaits.jpg','Détente','Zen et sable chaud','2020-07-14','09:30:00','10:30:00',1,1,20);
+
+CREATE TABLE booking
+(
+  happening_id INT NOT NULL,
+  tourist_id INT NOT NULL,
+  CONSTRAINT num_book PRIMARY KEY (happening_id,tourist_id),
+  FOREIGN KEY (happening_id) REFERENCES happening(id),
+  FOREIGN KEY (tourist_id) REFERENCES vacationer(id)
+);
