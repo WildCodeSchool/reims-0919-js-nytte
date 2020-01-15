@@ -108,11 +108,13 @@ const places = require('./routes/places');
 const vacationers = require('./routes/vacationers');
 const happenings = require('./routes/happenings');
 const bookings = require('./routes/bookings');
+const logins = require('./routes/login');
 app.use('/api/admins', admins);
 app.use('/api/places', places);
 app.use('/api/vacationers', vacationers);
 app.use('/api/happenings', happenings);
 app.use('/api/bookings', bookings);
+app.use('/api/logins', logins);
 
 app.listen(port, (err) => {
   if (err) {
