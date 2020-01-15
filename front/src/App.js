@@ -15,6 +15,7 @@ import FormVacationer from './component/FormVacationer.js'
 import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
+import BookingList from './component/BookingList.js'
 
 
 class App extends React.Component {
@@ -198,6 +199,21 @@ class App extends React.Component {
                 return <></>
               }
             }}>
+          </Route>
+          <Route exact path='/bookings'>
+          <Sidebar/>
+            <EventBar/>
+          {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+              <BookingList 
+                id={book.happening_id}
+                date={book.happening_date}
+                time={book.happening_time}
+                name={book.happening_name}
+                bookable={book.seats_bookable}
+                booked={book.places_booked}
+                free={book.free_places}
+              />
+          )))}
           </Route>
           <Route exact path='/formevents'>
             <FormEvent />
