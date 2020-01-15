@@ -134,6 +134,16 @@
     font-weight:bold;
 }
 
+.logoCategory{
+    height:32px;
+    padding-top:20px;
+}
+
+.logoTitle{
+    margin-left:90px;
+    display:flex;
+    flex-direction:row;
+
 .viewDate{
     display:flex;
     flex-direction:row;

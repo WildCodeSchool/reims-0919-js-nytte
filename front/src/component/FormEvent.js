@@ -95,13 +95,15 @@ class FormEvent extends React.Component {
             <hr/>
             <div className="form-event">
                 <label htmlFor="category">Catégorie</label>
-                <input
-                  type="text"
-                  name="category"
-                  id="category"
-                  onChange={this.change}
-                  required
-                />
+                <select value={this.state.value} onChange={this.change}>
+                  <option value="Restauration">Restauration</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Enfant">Enfant</option>
+                  <option value="Fiesta">Fiesta</option>
+                  <option value="Détente">Détente</option>
+                  <option value="Nature">Nature</option>
+                  <option value="Cours">Cours</option>
+                </select>
             </div> 
             <hr/>
             <div className="form-event">
