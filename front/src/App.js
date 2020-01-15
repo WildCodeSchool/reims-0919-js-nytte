@@ -31,6 +31,7 @@ class App extends React.Component {
       events:null,
       currentEvent:0,
       token: null,
+      books:null,
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
@@ -104,7 +105,14 @@ class App extends React.Component {
       .then(data => {
         this.setState({
           events: data})
-        })
+      })
+
+    axios.get('http://localhost:8000/api/bookings/status')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          books: data})
+      })    
     }
 
   render() {
