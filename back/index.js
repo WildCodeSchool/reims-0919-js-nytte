@@ -10,11 +10,12 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 //multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-  cb(null, '/home/wilder/upload')
+    cb(null, './public/pictures')
 },
 filename: (req, file, cb) => {
   cb(null, Date.now() + '-' +file.originalname )
@@ -23,7 +24,7 @@ filename: (req, file, cb) => {
 
 const upload = multer({ storage: storage,
                         limits:{fileSize: 1000000}
-                      }).single('recfile')
+                      }).single('myImage')
 
 app.post('/api/upload', (req, res) => {
      
