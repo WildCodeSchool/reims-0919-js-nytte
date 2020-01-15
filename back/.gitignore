@@ -24,3 +24,6 @@ yarn-error.log*
 
 # ignore conf.js
 conf.js
+
+# ignore pictures
+/public
