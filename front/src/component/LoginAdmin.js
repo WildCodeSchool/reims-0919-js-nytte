@@ -2,7 +2,6 @@ import React from 'react'
 import './LoginAdmin.css'
 import axios from 'axios'
 
-
 class LoginAdmin extends React.Component {
   constructor(props) {
     super(props)
@@ -10,7 +9,7 @@ class LoginAdmin extends React.Component {
     this.postFormData = this.postFormData.bind(this)
     this.state = {
       username: null,
-      password: null
+      password: null,
     }
   }
 
@@ -27,26 +26,13 @@ class LoginAdmin extends React.Component {
   postFormData() {
     axios
       .post('http://localhost:8000/api/admins/login', {
-        loginAdmin: this.state.username,
-        passwordAdmin: this.state.password
+        email: this.state.username,
+        password: this.state.password
       })
-      .then(res => {
-        console.log('Yes! ', res.data.token)
-        axios
-          .get(
-            'http://localhost:8000/api/testVerify',
-            {
-              headers: {
-                'Authorization': `Bearer ${res.data.token}`
-              }
-            }
-          )
-          .then(res => {
-            
-            console.log('Yes again!', res.data)
-          })
-    })
+      .then(response => this.props.setToken(response.data.token))
+      .catch(alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
   }
+  
 
   render() {
     return (
@@ -88,4 +74,5 @@ class LoginAdmin extends React.Component {
     )
   }
 }
+
 export default LoginAdmin
