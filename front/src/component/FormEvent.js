@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from "react-switch";
 import axios from 'axios'
 import './FormEvent.css'
+import UploadImage from './UploadImage'
 import { Link } from 'react-router-dom'
 
 
@@ -21,8 +22,13 @@ class FormEvent extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.postFormData = this.postFormData.bind(this);
+      this.savePicture = this.savePicture.bind(this);      
     }
-
+    
+    savePicture(picture) {
+      this.setState({picture})
+    }
+    
     handleChange(checked) {
       this.setState({ checked });
     }
@@ -48,7 +54,9 @@ class FormEvent extends React.Component {
         place_id: this.state.placeId,
         isItBookable: this.state.checked
       })
-      alert("Votre événement a bien été crée !")
+      .then(response => {
+        (response.status === 200) && (alert("Votre événement a été créé !"))
+      })
     }
 
     render() {
@@ -77,24 +85,22 @@ class FormEvent extends React.Component {
             <hr/>
             <div className="form-event">
                 <label htmlFor="picture">Image</label>
-                <input
-                  type="text"
-                  name="picture"
-                  id="picture" 
-                  onChange={this.change}
-                  required
+                <UploadImage
+                  savePicture = {this.savePicture}
                 />
             </div>
             <hr/>
             <div className="form-event">
                 <label htmlFor="category">Catégorie</label>
-                <input
-                  type="text"
-                  name="category"
-                  id="category"
-                  onChange={this.change}
-                  required
-                />
+                <select value={this.state.value} onChange={this.change}>
+                  <option value="Restauration">Restauration</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Enfant">Enfant</option>
+                  <option value="Fiesta">Fiesta</option>
+                  <option value="Détente">Détente</option>
+                  <option value="Nature">Nature</option>
+                  <option value="Cours">Cours</option>
+                </select>
             </div> 
             <hr/>
             <div className="form-event">

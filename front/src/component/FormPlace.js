@@ -2,6 +2,8 @@ import React from 'react';
 import './FormPlace.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import UploadImage from './UploadImage'
+
 
 class FormPlace extends React.Component {
     constructor(props) {
@@ -17,7 +19,13 @@ class FormPlace extends React.Component {
       };
       this.handleSubmit = this.handleSubmit.bind(this)
       this.postFormData = this.postFormData.bind(this)
+      this.savePicture = this.savePicture.bind(this); 
     }
+
+    savePicture(photo) {
+      this.setState({photo})
+    }
+
     change = e => {
       this.setState({
         [e.target.id]: e.target.value
@@ -86,12 +94,9 @@ class FormPlace extends React.Component {
             </div>
             <div className="form-place">
                 <label htmlFor="photo">Photo du lieu</label>
-                <input 
-                  type="text" 
-                  name="photo" 
-                  id="photo " 
-                  onChange={this.change}
-                  required/>
+                <UploadImage
+                  savePicture = {this.savePicture}
+                />
             </div>
             <div className="form-place">
                 <label htmlFor="attachment">Pièce jointe</label>

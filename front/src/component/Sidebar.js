@@ -5,7 +5,7 @@ import './Sidebar.css'
 
 function Sidebar(props){
   return(
-    <Menu>
+    <Menu className="sideBar">
       <p id="crea">Création</p>
       <Link className="menu-item-bar" to="/displayadmin">
         Accueil

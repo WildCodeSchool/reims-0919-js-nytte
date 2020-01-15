@@ -55,7 +55,7 @@ class FormVacationer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className = "formContainer">
       <button className='arrowBack'>
         <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
       </button>
