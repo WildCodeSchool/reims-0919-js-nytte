@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from "react-switch";
 import axios from 'axios'
 import './FormEvent.css'
+import { Link } from 'react-router-dom'
 
 
 class FormEvent extends React.Component {
@@ -55,10 +56,8 @@ class FormEvent extends React.Component {
       <div className = "formContainer">
         <div className="bannerTop">
         <button className='arrowBack'>
-            <a className="menu-item" href="/">
-              &lsaquo;
-            </a>
-          </button>
+          <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
+        </button>
           <h1 className='title'>Création
             <br/>
               d'un événement

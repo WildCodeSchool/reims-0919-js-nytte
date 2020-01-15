@@ -1,7 +1,7 @@
 import React from 'react'
 import './FormAdmin.css'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 class FormVacationer extends React.Component {
   constructor(props) {
     super(props)
@@ -57,10 +57,8 @@ class FormVacationer extends React.Component {
     return (
       <div>
       <button className='arrowBack'>
-      <a className="menu-item" href="/">
-        &lsaquo;
-      </a>
-    </button>
+        <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
+      </button>
       <div className='formAdminVacationer'>
         <img
           src='https://zupimages.net/up/19/50/0b2g.png'

@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 const userData = {
-  email: 'amusant@test.com',
-  password: 'azerty'
+  email: 'test',
+  password: 'test'
 }
 //multer
 const storage = multer.diskStorage({
@@ -69,17 +69,6 @@ app.post('/api/admins', (request, response) => {
   });
 });
 
-// app.post('/api/admins/login', (request, response) => {
-//     const user = {
-//        loginAdmin: 'Cindie',
-//        passwordAdmin: 'jaimelecode'
-//     }
-//     jwt.sign({ user }, 'secret', {expiresIn : '1h'}, (err, token) => {
-//       response.json({
-//           token
-//       })
-//     })
-// });
 app.post('/api/admins/login', function(req, res) {
   const formData = req.body
   const payload = {

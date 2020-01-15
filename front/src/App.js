@@ -12,7 +12,7 @@ import Sidebar from './component/Sidebar'
 import FormEvent from './component/FormEvent'
 import EventBar from './component/EventBar'
 import FormVacationer from './component/FormVacationer.js'
-import { Route, BrowserRouter } from 'react-router-dom'
+import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 
@@ -29,7 +29,8 @@ class App extends React.Component {
       currentVacationer: 0,
       isConnected: false,
       events:null,
-      currentEvent:0
+      currentEvent:0,
+      token: null,
     }
     this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
@@ -106,18 +107,21 @@ class App extends React.Component {
         })
     }
 
-
   render() {
+    const loggedIn = (this.state.token !== null && this.state.token !== undefined);
     const events = this.state.events;
     return (
         <BrowserRouter>
-          <Route exact path='/'>
-            <LoginAdmin />
-          </Route>
+          <Route path="/">
+            <Route exact path='/login'>
+            {loggedIn ? <Redirect to="/displayadmin" /> :
+              <LoginAdmin token={this.state.token} setToken={(token) => this.setState({token})} />}
+            </Route>
+            {loggedIn ? <>
           <Route exact path='/displayadmin'>
             <Sidebar />
             {this.state.campings && (
-              <DisplayAdmin camping={this.state.campings[this.state.currentCamping]}/>
+              <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
           </Route>
           <Route exact path='/formadmin'>
@@ -182,6 +186,10 @@ class App extends React.Component {
           </Route>
           <Route exact path='/uploadimages'>
             <UploadImage />
+          </Route>
+
+            </>:<Redirect to="/login" />}
+            
           </Route>
         </BrowserRouter>
     )

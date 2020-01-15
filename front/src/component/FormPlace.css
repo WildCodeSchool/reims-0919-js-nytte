@@ -117,3 +117,8 @@ textarea{
   text-decoration:none;
   color:rgb(90, 88, 88)
 }
+
+.arrowBackLink {
+  text-decoration: none;
+  color: #373a46;
+}
