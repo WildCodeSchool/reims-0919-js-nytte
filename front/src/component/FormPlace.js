@@ -21,7 +21,7 @@ class FormPlace extends React.Component {
     }
 
     savePicture(photo) {
-      this.setState({photo})
+      this.setState({photo: `pictures/${photo}`})
     }
 
     change = e => {
