@@ -138,3 +138,15 @@ Content-Type: application/json
     "id":2,
     "happening_category":"Adults only"
 }
+
+###POST a booking
+POST http://localhost:8000/api/bookings
+Content-Type: application/json
+
+{
+    "tourist_id":1,
+    "happening_id"
+}
+
+### GET a list of bookings
+GET http://localhost:8000/api/bookings
