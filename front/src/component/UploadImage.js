@@ -7,7 +7,6 @@ class UploadImage extends React.Component {
         super(props);
         this.state ={
             file: null,
-            //picture: null
         };
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -23,7 +22,7 @@ class UploadImage extends React.Component {
         };
         axios.post('http://localhost:8000/api/upload',formData,config)
             .then((response) => {
-                this.props.savePicture(response.data.path)
+                this.props.savePicture(response.data.filename)
             }).catch((error) => {
         });
     }

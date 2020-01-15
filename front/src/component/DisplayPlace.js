@@ -2,10 +2,14 @@ import React from 'react';
 import './Display.css';
 
 function DisplayPlace(props){
+  let url = props.place.local_photo;
+  if (!url.startsWith('http')) {
+    url = `http://localhost:8000/${props.place.local_photo}`;
+  }
   return(
   <div id="pagePlace">
     <div id="ProfilPlace">
-      <img className="photoProfil" src={props.place.local_photo} alt="profil du lieu touristique"></img>
+    <img className="photoProfil" src={url} alt="profil du lieu touristique"></img>
     </div>
     <h2 className="titreProfil">{props.place.local_name}</h2>
     <div className="desc">

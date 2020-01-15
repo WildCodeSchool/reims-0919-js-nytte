@@ -1,30 +1,31 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
+import {Link} from "react-router-dom";
 import './Sidebar.css'
 
 function Sidebar(props){
   return(
     <Menu className="sideBar">
       <p id="crea">Création</p>
-      <a className="menu-item-bar" href="/">
+      <Link className="menu-item-bar" to="/displayadmin">
         Accueil
-      </a>
+      </Link>
 
-      <a className="menu-item-bar" href="/formplace">
+      <Link className="menu-item-bar" to="/formplace">
         Lieux
-      </a>
+      </Link>
 
-      <a className="menu-item-bar" href="/formevents">
+      <Link className="menu-item-bar" to="/formevents">
         Événements
-      </a>
+      </Link>
 
-      <a className="menu-item-bar" href="/formvacationer">
+      <Link className="menu-item-bar" to="/formvacationer">
         Vacanciers
-      </a>
+      </Link>
 
-      <a className="menu-item-bar-actu" href="/events">
+      <Link className="menu-item-bar-actu" to="/events">
         Fil d'actu
-      </a>
+      </Link>
     </Menu>
   );
 };
