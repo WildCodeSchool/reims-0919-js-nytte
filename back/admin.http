@@ -154,6 +154,3 @@ GET http://localhost:8000/api/bookings
 
 ### GET a list of events and volum of bookings
 GET http://localhost:8000/api/bookings/status
-
-### GET a book
-GET http://localhost:8000/api/bookings/10

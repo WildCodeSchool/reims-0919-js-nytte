@@ -3,8 +3,7 @@ const router = express.Router();
 const connection = require("../conf");
 
 router.get('/', (request, response) => {
-  connection.query(
-    "select concat(happening_id,'-',tourist_id) AS num_book, happening_id, tourist_id, seats_bookable,happening_name, happening_date, happening_time FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND seats_bookable IS NOT NULL ORDER BY happening_date ASC",
+  connection.query('select concat(happening_id,'-',tourist_id) AS num_book, happening_id, tourist_id, seats_bookable,happening_name, happening_date, happening_time FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND seats_bookable IS NOT NULL ORDER BY happening_date ASC',
     (err, results) => {
       console.log(err)
       if (err) {
