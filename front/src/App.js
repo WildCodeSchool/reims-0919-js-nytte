@@ -216,19 +216,6 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          {/*<Route exact path='/bookings/:id'>
-            <Sidebar />
-            {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
-            <ListOfBooks
-              bookid={listbook.num_book}
-              eventid={listbook.happening_id}
-              name={listbook.happening_name}
-              date={listbook.happening_date}
-              time={listbook.happening_time}
-              lastname={listbook.tourist_lastname}
-            />
-            )))}
-          </Route>*/}
           <Route exact path='/formevents'>
             <FormEvent />
           </Route>
