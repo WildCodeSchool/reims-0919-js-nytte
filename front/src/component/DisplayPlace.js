@@ -23,6 +23,7 @@ function DisplayPlace(props){
     {props.place.local_phone===null||<img className="logo" src='https://zupimages.net/up/19/49/m5nc.png' alt="logo tél"></img>}
     {props.place.local_phone===null||<p>{props.place.local_phone}</p>}
     </div>
+    <button  type="button" onClick={props.nextPlace}>Suivant</button>
   </div>
   )
 }

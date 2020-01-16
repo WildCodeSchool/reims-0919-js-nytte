@@ -37,11 +37,10 @@ class App extends React.Component {
       listbooks:null
     }
     this.nextVacationer = this.nextVacationer.bind(this)
-    this.nextPlace = this.nextPlace.bind(this)
+    this.nextPlace = this.nextPlace.bind(this)    
   }
 
-  
-  nextVacationer() {
+   nextVacationer() {
     this.setState(prevState => {
       return {
         currentVacationer:
@@ -57,7 +56,7 @@ class App extends React.Component {
           (prevState.currentPlace + 1) % prevState.places.length
       }
     })
-  }  
+  }
 
   componentDidMount() {
     axios
@@ -145,17 +144,17 @@ class App extends React.Component {
             {this.state.places && (
               <DisplayPlace 
                 place={this.state.places[this.state.currentPlace]}
+                nextPlace={this.nextPlace}
               />
-            )}
-           <button  type="button" onClick={this.nextPlace}>Suivant</button>
+            )}          
           </Route>
           <Route exact path='/vacationer'>
             {this.state.vacationers && (
               <DisplayVacationer
                 vacationer={this.state.vacationers[this.state.currentVacationer]}
+                nextVacationer={this.nextVacationer}
               />
             )}
-            <button  type="button" onClick={this.nextVacationer}>Suivant</button>
           </Route>        
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
@@ -217,7 +216,7 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          <Route exact path='/bookings/:id'>
+          {/*<Route exact path='/bookings/:id'>
             <Sidebar />
             {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
             <ListOfBooks
@@ -229,7 +228,7 @@ class App extends React.Component {
               lastname={listbook.tourist_lastname}
             />
             )))}
-          </Route>
+          </Route>*/}
           <Route exact path='/formevents'>
             <FormEvent />
           </Route>
