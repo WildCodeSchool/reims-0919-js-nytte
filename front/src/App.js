@@ -32,22 +32,11 @@ class App extends React.Component {
       currentEvent:0,
       token: null,
     }
-    this.nextCamping = this.nextCamping.bind(this)
     this.nextVacationer = this.nextVacationer.bind(this)
-    this.nextPlace = this.nextPlace.bind(this)
-    this.nextEvent = this.nextEvent.bind(this)
+    this.nextPlace = this.nextPlace.bind(this)    
   }
 
-  nextCamping() {
-    this.setState(prevState => {
-      return {
-        currentCamping:
-          (prevState.currentCamping + 1) % prevState.campings.length
-      }
-    })
-  }
-
-  nextVacationer() {
+   nextVacationer() {
     this.setState(prevState => {
       return {
         currentVacationer:
@@ -64,16 +53,6 @@ class App extends React.Component {
       }
     })
   }
-
-  nextEvent() {
-    this.setState(prevState => {
-      return {
-        currentEvent:
-          (prevState.currentEvent + 1) % prevState.events.length
-      }
-    })
-  }  
-
 
   componentDidMount() {
     axios
@@ -134,17 +113,17 @@ class App extends React.Component {
             {this.state.places && (
               <DisplayPlace 
                 place={this.state.places[this.state.currentPlace]}
+                nextPlace={this.nextPlace}
               />
-            )}
-           <button  type="button" onClick={this.nextPlace}>Suivant</button>
+            )}          
           </Route>
           <Route exact path='/vacationer'>
             {this.state.vacationers && (
               <DisplayVacationer
                 vacationer={this.state.vacationers[this.state.currentVacationer]}
+                nextVacationer={this.nextVacationer}
               />
             )}
-            <button  type="button" onClick={this.nextVacationer}>Suivant</button>
           </Route>        
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>

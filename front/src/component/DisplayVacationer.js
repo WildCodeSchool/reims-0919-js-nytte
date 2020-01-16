@@ -39,14 +39,13 @@ function DisplayVacationer(props){
         <img className="logo" src='https://zupimages.net/up/19/49/m5nc.png' alt="logo tél"></img>}
       {props.vacationer.tourist_phone==null? "": 
         <p>{props.vacationer.tourist_phone}</p>}
-      
-
     </div>
     <div id="mailPres">
       {props.vacationer.tourist_email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
       {props.vacationer.tourist_email===null||<p>{props.vacationer.tourist_email}</p>}
     </div>
-  </div>
+    <button type="button" onClick={props.nextVacationer}>Suivant</button>  
+    </div>
   )
 }
 
