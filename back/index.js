@@ -75,15 +75,24 @@ app.post('/api/admins/login', function(req, res) {
   const payload = {
       sub: req.body.email
   }
-  if (userData.password !== formData.password) {
-      res.send('Mauvais password')
-  } else {
-      jwt.sign(payload, secret, (err, token) => {
+  connection.query('SELECT login_admin, password_admin FROM admin WHERE login_admin = ?', 
+  formData.email, (error,result) => {
+    if(error) {
+      response.status(500).send('Server error 500')
+    } else if (result.lentgth === 0) {
+      response.send('Mauvais Email')
+    } else {
+      if (result[0].password_admin === formData.password) {
+        jwt.sign(payload, secret, (err, token) => {
           res.json({
               token
           })
-      })
-  }
+        })
+      } else {
+        response.send('Mauvais Password')
+      } 
+     }
+  })
 })
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
