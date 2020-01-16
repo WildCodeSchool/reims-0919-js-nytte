@@ -2,6 +2,8 @@ import React from 'react'
 import './FormAdmin.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import UploadImage from './UploadImage'
+
 class FormVacationer extends React.Component {
   constructor(props) {
     super(props)
@@ -21,6 +23,13 @@ class FormVacationer extends React.Component {
       birthday: null,
       adminId: null
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.postFormData = this.postFormData.bind(this)
+    this.savePicture = this.savePicture.bind(this); 
+  }
+
+  savePicture(photo) {
+    this.setState({photo: `pictures/${photo}`})
   }
 
   change = e => {
@@ -178,13 +187,9 @@ class FormVacationer extends React.Component {
           </div>
           <div className='form-example'>
             <label htmlFor='photo'>Photo</label>
-            <input
-              type='text'
-              name='photo'
-              id='photo'
-              onChange={this.change}
-              required
-            />
+            <UploadImage
+                  savePicture = {this.savePicture}
+           />
           </div>
           <div className='inputForm'>
             <input

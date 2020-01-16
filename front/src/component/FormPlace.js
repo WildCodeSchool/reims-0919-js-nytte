@@ -114,7 +114,7 @@ class FormPlace extends React.Component {
                   name="logo" 
                   id="logo" 
                   onChange={this.change}
-                  equired/>
+                  required/>
             </div>
               <div className = 'textareaForm'>
                 <label htmlFor="description">Description</label>

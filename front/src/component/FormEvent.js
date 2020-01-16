@@ -29,9 +29,9 @@ class FormEvent extends React.Component {
   }
   
   savePicture(picture) {
-    this.setState({picture})
+    this.setState({picture: `pictures/${picture}`})
   }
-  
+
   handleChange(checked) {
     this.setState({ checked });
   }

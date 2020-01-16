@@ -108,7 +108,8 @@ Content-Type: application/json
 ### Check login
 GET http://localhost:8000/api/testVerify
 
-
+### GET a list of logins
+GET http://localhost:8000/api/logins
 
 
 ### GET a list of happenings
