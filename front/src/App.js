@@ -96,12 +96,7 @@ class App extends React.Component {
           books: data})
       })    
     
-    axios.get('http://localhost:8000/api/bookings')
-    .then(response => response.data)
-    .then(data => {
-      this.setState({
-        listbooks: data})
-    })    
+   
   }
 
 
