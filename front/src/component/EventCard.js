@@ -30,7 +30,7 @@ function EventCard({id, photo, category, date, endDate, time, endTime, isItBooka
           {endTime===null?"":
             <p>{endTime.slice(0,5)}</p>}
         </div>
-         {isItBookable ? <p className="viewBook">À réserver</p> : ""} 
+         {isItBookable ? "" : <p className="viewBook">À réserver</p>} 
           <div className="flèche">
             &rsaquo;
           </div>
