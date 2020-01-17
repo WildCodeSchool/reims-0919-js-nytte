@@ -17,6 +17,8 @@ import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
+import BookBar from './component/BookBar.js'
+import TotalBooks from './component/TotalBooks.js'
 
 
 class App extends React.Component {
@@ -219,6 +221,7 @@ class App extends React.Component {
           </Route>
           <Route exact path='/bookings/10'>
             <Sidebar />
+            <BookBar />
             {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
             <ListOfBooks
               bookid={listbook.num_book}
@@ -228,6 +231,10 @@ class App extends React.Component {
               time={listbook.happening_time}
               lastname={listbook.tourist_lastname}
             />
+            )))}
+            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+            <TotalBooks 
+              booked={book.places_booked}/>
             )))}
             </Route>
 

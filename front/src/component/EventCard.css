@@ -214,6 +214,25 @@
     width:123px;
 }
 
+.bookTable{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width:95vh;
+}
+
+.bookTable th, .bookTable td{
+    min-width:90px;
+    text-align:center;
+    border:1px solid grey;
+}
+
+.TotalBooks{
+    text-align:right;
+    width:50vh;
+}
+
+
 @media screen and (min-width: 480px)
 {
   .CardLight, .CardFull,.pictureCardBar{
