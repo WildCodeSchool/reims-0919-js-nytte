@@ -11,6 +11,11 @@
   rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
 }
 
+#pagePrinc{
+  position: fixed;
+  min-width: 98%;
+}
+
 
  .info{
   border: 2px solid white;
@@ -73,6 +78,11 @@ text-align:center;
 }
 .adressePres p{
   margin-top:0;
+}
+
+#pageVacationer .arrowBack{
+  display:flex;
+  flex-direction:row;
 }
 
 

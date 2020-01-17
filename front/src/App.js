@@ -32,7 +32,7 @@ class App extends React.Component {
       vacationer :null,
       currentVacationer: 0,
       isConnected: false,
-      events:null,
+      events: [],
       currentEvent:0,
       token: null,
       books:null,
@@ -110,7 +110,6 @@ class App extends React.Component {
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
-    const events = this.state.events;
     return (
         <BrowserRouter>
           <Route path="/">
@@ -124,9 +123,10 @@ class App extends React.Component {
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
-            {this.state.events && React.Children.toArray(this.state.events.map((event) => (
+            {React.Children.toArray(this.state.events.map((event, index) => (
               <EventCard 
                 id={event.id}
+                index={index}
                 photo={event.local_photo}
                 category={event.happening_category}
                 date={event.happening_date}
@@ -165,10 +165,11 @@ class App extends React.Component {
           <Route exact path='/events'>
             <Sidebar/>
             <EventBar/>
-            {this.state.events && React.Children.toArray(this.state.events.map((event) => (
+            {React.Children.toArray(this.state.events.map((event) => (
                 <EventCard 
                   id={event.id}
                   photo={event.local_photo}
+                  title={event.happening_name}
                   category={event.happening_category}
                   date={event.happening_date}
                   time={event.happening_time}
@@ -178,10 +179,10 @@ class App extends React.Component {
                 />
             )))}
           </Route>
-          <Route exact path='/events/:id' render={(props) => {
-              const index = props.match.params.id - 1;
-              if (events && index < events.length) {
-                const event = events[index];
+          <Route exact path={`/events/:id`} render={(props) => {
+              const {id} = props.match.params;
+              const event = this.state.events.find(event => event.id === parseInt(id));
+              if (event) {
                 return (
                   <>
                     <Sidebar />
@@ -200,7 +201,7 @@ class App extends React.Component {
                   </>
                 )
               } else {
-                return <></>
+                return <Redirect to="/events" />
               }
             }}>
           </Route>
