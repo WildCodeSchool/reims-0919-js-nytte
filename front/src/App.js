@@ -96,6 +96,12 @@ class App extends React.Component {
           books: data})
       })    
     
+    axios.get('http://localhost:8000/api/bookings/10')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          listbooks: data})
+      }) 
    
   }
 
@@ -211,6 +217,20 @@ class App extends React.Component {
               />
           )))}
           </Route>
+          <Route exact path='/bookings/10'>
+            <Sidebar />
+            {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
+            <ListOfBooks
+              bookid={listbook.num_book}
+              eventid={listbook.happening_id}
+              name={listbook.happening_name}
+              date={listbook.happening_date}
+              time={listbook.happening_time}
+              lastname={listbook.tourist_lastname}
+            />
+            )))}
+            </Route>
+
           <Route exact path='/formevents'>
             <FormEvent />
           </Route>

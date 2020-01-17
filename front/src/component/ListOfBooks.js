@@ -6,8 +6,7 @@ function ListOfBooks({eventid,date,time,name,lastname}){
   let history=useHistory()
   return(
     <div className="BookingList">
-      <a className="nameButton" onClick={event=> { event.preventDefault(); history.push(`/events/${eventid}`) }} href={`/events/${eventid}`}>
-          {name} &rsaquo;</a>
+      <p>{name}</p>
       <div className="horodateur">
         <p>Date : {date.slice(0,10)}</p>
         <p>Heure : {time.slice(0,5)}</p>
