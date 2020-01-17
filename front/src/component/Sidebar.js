@@ -32,6 +32,9 @@ function Sidebar(props){
       <Link className="menu-item-bar-actu" to="/vacationer">
         Vacanciers
       </Link>
+      <Link className="menu-item-bar-actu" to="/bookings">
+        Réservations
+      </Link>
     </Menu>
   );
 };

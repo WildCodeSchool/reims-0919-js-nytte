@@ -74,6 +74,48 @@
     min-height:100vh;
 }
 
+.nameButton{
+    background-color:rgb(58, 49, 43);
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    min-height:7vh;
+    text-decoration:none;
+    color:white;
+    font-size:2em;
+    border-radius:10px 10px 0 0;
+    text-align: center;
+}
+
+.BookingList{
+    max-width:80%;
+    display:flex;
+    flex-direction:column;
+    background-color:white;
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    min-height:30vh;
+    margin:10px 10px 10% 10%;
+    border-radius: 10px;
+}
+
+.bookTable{
+    display:flex;
+    flex-direction:column;
+    margin:5px 5px 5px 15px;
+}
+
+.bookTable p{
+    margin:5px 5px 5px 5px;
+}
+
+.horodateur{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    margin:0px 0px 0px 20px;
+    max-width:80%;
+}
+
 .photoCardFull{
     width:80%;
     height:150px;
@@ -171,6 +213,25 @@
 .CardButton a{
     width:123px;
 }
+
+.bookTable{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width:95vh;
+}
+
+.bookTable th, .bookTable td{
+    min-width:90px;
+    text-align:center;
+    border:1px solid grey;
+}
+
+.TotalBooks{
+    text-align:right;
+    width:50vh;
+}
+
 
 @media screen and (min-width: 480px)
 {
