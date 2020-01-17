@@ -31,7 +31,7 @@ function DisplayAdmin(props){
       <div className="buttonGO">
         <button className="ButtonGO" type="button" onClick={event=>history.push("/events")}>GO</button>
       </div>
-    </div>
+</div>
   )
 }
 
