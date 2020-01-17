@@ -42,7 +42,7 @@ class LoginAdmin extends React.Component {
           className='LogoNytte'
           alt='logo Nytte'></img>
         <form onSubmit={this.handleSubmit}>
-          <div className='form-example'>
+          <div className='form-login-admin'>
             <label htmlFor='username'>Identifiant</label>
             <input
               type='text'
@@ -52,7 +52,7 @@ class LoginAdmin extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-login-admin'>
             <label htmlFor='password'>Mot de passe</label>
             <input
               type='password'
