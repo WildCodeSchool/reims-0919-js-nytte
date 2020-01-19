@@ -244,7 +244,10 @@
     z-index:5;
 }
 
-
+.Map img{
+    min-height:600px;
+    width:auto;
+}
 
 
 

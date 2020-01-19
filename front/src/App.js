@@ -177,6 +177,7 @@ class App extends React.Component {
                   endDate={event.happening_time_end}
                   endTime={event.happening_date_end}
                   isItBookable={event.isItBookable}
+                  map={event.mapping}
                 />
             )))}
           </Route>

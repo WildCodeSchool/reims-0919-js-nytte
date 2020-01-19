@@ -24,7 +24,7 @@ function renderSwitch(category){
   }
 }
 
-function EventCardFull({id,photo, title, category,description,date,time,endTime, isItBookable}){
+function EventCardFull({id,photo, title, category,description,date,time,endTime, isItBookable,map}){
   let history=useHistory()
   return(
   <div className="CardFull">
@@ -49,9 +49,12 @@ function EventCardFull({id,photo, title, category,description,date,time,endTime,
         <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
         <div className="fullCardButton">
           <button className="BookButton" type="button">RESERVER</button>
-          <button className="MapButton" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/map/${id}`) }} href={`/events/map/${id}`}>Y ALLER</button>
         </div>
         </>
+        :""
+        }
+        {map===null
+        ?""
         :<div className="fullCardButton">
           <button className="MapButton" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/map/${id}`) }} href={`/events/map/${id}`}>Y ALLER</button>
         </div>
