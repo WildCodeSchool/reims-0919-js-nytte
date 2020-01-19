@@ -5,7 +5,7 @@ import './EventCard.css';
 function Map({map}){
   return(
     <div className="Map">
-      <p>Total : {map}</p>
+      <img className="planCamping" src={map} alt="Plan du lieu"></img>
     </div>
   )
 }

@@ -19,6 +19,7 @@ import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
 import BookBar from './component/BookBar.js'
 import TotalBooks from './component/TotalBooks.js'
+import Map from './component/Map.js'
 
 
 class App extends React.Component {
@@ -187,6 +188,7 @@ class App extends React.Component {
                   <>
                     <Sidebar />
                     <EventCardFull
+                      id={event.id}
                       photo={event.local_photo}
                       title={event.happening_name}
                       category={event.happening_category}
@@ -206,6 +208,36 @@ class App extends React.Component {
               }
             }}>
           </Route>
+          <Route exact path={`/events/map/:id`} render={(props) => {
+              const {id} = props.match.params;
+              const eventMap = this.state.events.find(eventMap => eventMap.id === parseInt(id));
+              console.log(id)
+              if (eventMap) {
+                return (
+                  <>
+                    <Sidebar />
+                    <Map
+                      photo={eventMap.local_photo}
+                      title={eventMap.happening_name}
+                      category={eventMap.happening_category}
+                      logo={eventMap.happening_picture}
+                      description={eventMap.happening_description}
+                      date={eventMap.happening_date}
+                      time={eventMap.happening_time}
+                      endDate={eventMap.happening_date_end}
+                      endTime={eventMap.happening_time_end}
+                      isItBookable={eventMap.isItBookable}
+                      map={eventMap.mapping}
+                    />
+                  </>
+                )
+              } else {
+                return <Redirect to="/events" />
+              }
+            }}>
+          </Route>
+
+
           <Route exact path='/bookings'>
           <Sidebar/>
             <EventBar/>
