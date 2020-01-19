@@ -19,6 +19,7 @@ import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
 import BookBar from './component/BookBar.js'
 import TotalBooks from './component/TotalBooks.js'
+import Map from './component/Map.js'
 
 
 class App extends React.Component {
@@ -32,7 +33,7 @@ class App extends React.Component {
       vacationer :null,
       currentVacationer: 0,
       isConnected: false,
-      events:null,
+      events: [],
       currentEvent:0,
       token: null,
       books:null,
@@ -110,7 +111,6 @@ class App extends React.Component {
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
-    const events = this.state.events;
     return (
         <BrowserRouter>
           <Route path="/">
@@ -124,9 +124,10 @@ class App extends React.Component {
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
-            {this.state.events && React.Children.toArray(this.state.events.map((event) => (
+            {React.Children.toArray(this.state.events.map((event, index) => (
               <EventCard 
                 id={event.id}
+                index={index}
                 photo={event.local_photo}
                 category={event.happening_category}
                 date={event.happening_date}
@@ -165,27 +166,30 @@ class App extends React.Component {
           <Route exact path='/events'>
             <Sidebar/>
             <EventBar/>
-            {this.state.events && React.Children.toArray(this.state.events.map((event) => (
+            {React.Children.toArray(this.state.events.map((event) => (
                 <EventCard 
                   id={event.id}
                   photo={event.local_photo}
+                  title={event.happening_name}
                   category={event.happening_category}
                   date={event.happening_date}
                   time={event.happening_time}
                   endDate={event.happening_time_end}
                   endTime={event.happening_date_end}
                   isItBookable={event.isItBookable}
+                  map={event.mapping}
                 />
             )))}
           </Route>
-          <Route exact path='/events/:id' render={(props) => {
-              const index = props.match.params.id - 1;
-              if (events && index < events.length) {
-                const event = events[index];
+          <Route exact path={`/events/:id`} render={(props) => {
+              const {id} = props.match.params;
+              const event = this.state.events.find(event => event.id === parseInt(id));
+              if (event) {
                 return (
                   <>
                     <Sidebar />
                     <EventCardFull
+                      id={event.id}
                       photo={event.local_photo}
                       title={event.happening_name}
                       category={event.happening_category}
@@ -196,14 +200,45 @@ class App extends React.Component {
                       endDate={event.happening_date_end}
                       endTime={event.happening_time_end}
                       isItBookable={event.isItBookable}
+                      map={event.mapping}
                     />
                   </>
                 )
               } else {
-                return <></>
+                return <Redirect to="/events" />
               }
             }}>
           </Route>
+          <Route exact path={`/events/map/:id`} render={(props) => {
+              const {id} = props.match.params;
+              const eventMap = this.state.events.find(eventMap => eventMap.id === parseInt(id));
+              console.log(id)
+              if (eventMap) {
+                return (
+                  <>
+                    <Sidebar />
+                    <Map
+                      photo={eventMap.local_photo}
+                      title={eventMap.happening_name}
+                      category={eventMap.happening_category}
+                      logo={eventMap.happening_picture}
+                      description={eventMap.happening_description}
+                      date={eventMap.happening_date}
+                      time={eventMap.happening_time}
+                      endDate={eventMap.happening_date_end}
+                      endTime={eventMap.happening_time_end}
+                      isItBookable={eventMap.isItBookable}
+                      map={eventMap.mapping}
+                    />
+                  </>
+                )
+              } else {
+                return <Redirect to="/events" />
+              }
+            }}>
+          </Route>
+
+
           <Route exact path='/bookings'>
           <Sidebar/>
             <EventBar/>
