@@ -11,27 +11,26 @@
     width: 85%;
 }
 
-.formAdminContainer hr {
-    color: lightgray;
-}
-
-
-
 .LogoNytte {
-    width: 50%;
+    width: 71%;
+    margin-top: 5%;
 }
 
-.form-example {
+.form-login-admin {
+
     display: flex;
-    justify-content: space-between;
 
 }
 
-.form-example input {
+.form-login-admin input {
+    border: none;
     background: none;
     text-align: right;
     color: white;
     margin-top: 8%;
+    outline: none;
+    font-size: 1em;
+
 }
 
 .inputForm {
@@ -39,12 +38,28 @@
     align-items: center;
     justify-content: center;
 }
+.form-login-admin label {
+    margin-left: 2%;
+    margin-top: 4%;
+    padding-top: 1%;
+    border: none;
+    font-weight: 448;
+    text-shadow: #ffffff28 1px 1px 0, 0px 0px 9px rgba(155, 155, 155, 0);
+}
 
 .inputForm input {
     background: none;
     border: none;
     color: white;
-    font-size: 1.6em;
-    margin-top: 8%;
+    font-size: 1.5em;
+    margin-top: 20%;
+    font-weight: 448;
+    text-shadow: #ffffff5e 1px 1px 0, 0px 0px 9px rgba(255, 255, 255, 0.219);
 
+
+}
+
+.divHR {
+    height: 0.15em;
+    background-color: rgba(211, 211, 211, 0.644);
 }
