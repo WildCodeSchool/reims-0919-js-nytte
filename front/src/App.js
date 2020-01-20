@@ -63,34 +63,34 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          campings: data
+          campings: response.data
         })
       })
 
     axios.get('http://localhost:8000/api/places')
-    .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          places: data})
-       })
+          places: response.data
+        })
+      })
 
     axios.get('http://localhost:8000/api/vacationers')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          vacationers: data})
+          vacationers: response.data
+        })
       })
 
     axios.get('http://localhost:8000/api/happenings')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          events: data})
+          events: response.data
+        })
       })
-
+    }
+  
     axios.get('http://localhost:8000/api/bookings/status')
       .then(response => response.data)
       .then(data => {
@@ -106,7 +106,6 @@ class App extends React.Component {
       }) 
    
   }
-
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
