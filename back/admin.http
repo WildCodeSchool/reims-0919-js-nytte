@@ -101,8 +101,8 @@ POST http://localhost:8000/api/admins/login
 Content-Type: application/json
 
 {
-  "loginAdmin" : "Cindie",
-  "passwordAdmin" : "jaimelecode"
+  "email" : "vic-bia",
+  "password" : "password"
 }
 
 ### Check login
@@ -157,3 +157,12 @@ GET http://localhost:8000/api/bookings/status
 
 ### GET a book
 GET http://localhost:8000/api/bookings/10
+
+### POST a login vacationer
+POST http://localhost:8000/api/vacationer/login
+Content-Type: application/json
+
+{
+  "email" : "vic-bia",
+  "password" : "password"
+}

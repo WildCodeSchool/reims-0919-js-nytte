@@ -67,33 +67,58 @@ app.post('/api/admins', (request, response) => {
     } else {
       response.sendStatus(200);
     }
-  });
-});
+  })
+})
 
 app.post('/api/admins/login', function(request, response) {
   const formData = request.body
   const payload = {
-  sub: request.body.email
+    sub: request.body.email
   }
   connection.query('SELECT login_admin, password_admin FROM admin WHERE login_admin = ?', 
   formData.email, (error,result) => {
-  if(error) {
-  response.status(500).send('Server error 500')
-  } else if (result.lentgth === 0) {
-  response.status(400).send('Mauvais Email')
-  } else {
-  if (result[0].password_admin === formData.password) {
-  jwt.sign(payload, secret, (err, token) => {
-  response.json({
-  token
+    if(error) {
+      response.status(500).send('Server error 500')
+    } else if (result.lentgth === 0) {
+      response.status(400).send('Mauvais Email')
+    } else {
+    if (result[0].password_admin === formData.password) {
+      jwt.sign(payload, secret, (err, token) => {
+        response.json({
+          token
+        })
+      })
+    } else {
+      response.status(400).send('Mauvais Password')
+    } 
+    }
   })
-  })
-  } else {
-  response.status(400).send('Mauvais Password')
+});
+
+app.post('/api/vacationer/login', function(request, response) {
+  const formData = request.body
+  const payload = {
+    sub: request.body.email
   } 
-  }
-  })
-  })
+  connection.query('SELECT tourist_login, tourist_password FROM vacationer WHERE tourist_login = ?', 
+  formData.email, (error,result) => {
+    if(error) {
+      response.status(500).send('Server error 500')
+    } else if (result.lentgth === 0) {
+      response.status(400).send('Mauvais Email')
+    } else {
+    if (result[0].tourist_password === formData.password) {
+      jwt.sign(payload, secret, (err, token) => {
+        response.json({
+          token
+        })
+      })
+    } else {
+      response.status(400).send('Mauvais Password')
+      }     
+  }});
+})
+
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secret', (err, authorizedData) => {
@@ -110,7 +135,7 @@ app.get('/api/testVerify', verifyToken, (req, res) => {
         console.log('SUCCESS: Connected to protected route');
     }
 })
-});
+})
 
 const admins = require('./routes/admins');
 const places = require('./routes/places');
@@ -131,4 +156,4 @@ app.listen(port, (err) => {
   }
 
   console.log(`Server is listening on ${port}`);
-});
+})
