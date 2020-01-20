@@ -89,7 +89,7 @@ class App extends React.Component {
           events: response.data
         })
       })
-    }
+    
   
     axios.get('http://localhost:8000/api/bookings/status')
       .then(response => response.data)
