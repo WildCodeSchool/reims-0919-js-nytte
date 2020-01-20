@@ -116,7 +116,7 @@ GET http://localhost:8000/api/logins
 GET http://localhost:8000/api/happenings
 
 ### GET one happenings
-GET http://localhost:8000/api/happenings/:id
+GET http://localhost:8000/api/happenings/10
 
 ### POST a happening
 POST http://localhost:8000/api/happenings
@@ -145,7 +145,7 @@ POST http://localhost:8000/api/bookings
 Content-Type: application/json
 
 {
-    "tourist_id":4,
+    "tourist_id":1,
     "happening_id":10
 }
 
