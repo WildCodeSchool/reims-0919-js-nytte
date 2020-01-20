@@ -59,4 +59,29 @@ router.post('/', (request, response) => {
 });
 
 
+router.delete('/tourist/:id', (req, res) => {
+  const idVacationer = req.params.id;
+  connection.query('DELETE FROM booking WHERE tourist_id = ?', [idVacationer], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un booking`);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.delete('/event/:id', (req, res) => {
+  const idVacationer = req.params.id;
+  connection.query('DELETE FROM booking WHERE happening_id = ?', [idVacationer], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un booking`);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
 module.exports = router

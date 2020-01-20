@@ -48,4 +48,16 @@ router.put('/:id', (request, response) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+  const idVacationer = req.params.id;
+  connection.query('DELETE FROM vacationer WHERE id = ?', [idVacationer], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un vacancier, supprimer les réservations sur ${idVacationer}`);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
   module.exports = router
