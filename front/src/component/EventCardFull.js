@@ -1,5 +1,7 @@
 import React from 'react';
 import './EventCard.css';
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
 
 function renderSwitch(category){
   switch({category}){
@@ -23,7 +25,24 @@ function renderSwitch(category){
   }
 }
 
-function EventCardFull({photo, title, category,description,date,time,endTime, isItBookable}){
+function book (eventId, token) {
+  const booking = {
+    eventId,
+    token
+  }
+
+  axios.post('http://localhost:8000/api/bookings', {
+    happening_id: eventId,
+    tourist_id: token
+  })
+  console.log(eventId);
+  console.log(token);
+  return
+}
+
+function EventCardFull({photo, title, category,description,date,time,endTime, isItBookable, token}){
+  const eventId = useParams().id;
+
   return(
   <div className="CardFull">
     <div className="pictureCardFull">
@@ -46,7 +65,7 @@ function EventCardFull({photo, title, category,description,date,time,endTime, is
         ?<>
         <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
         <div className="fullCardButton">
-          <button className="BookButton" type="button">RESERVER</button>
+          <button className="BookButton" type="button" onClick={() => book(eventId, token)}>RESERVER</button>
           <button className="MapButton" type="button">Y ALLER</button>
         </div>
         </>

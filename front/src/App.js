@@ -195,6 +195,7 @@ class App extends React.Component {
                       endDate={event.happening_date_end}
                       endTime={event.happening_time_end}
                       isItBookable={event.isItBookable}
+                      token={this.state.token}
                     />
                   </>
                 )
