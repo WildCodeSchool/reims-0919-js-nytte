@@ -29,8 +29,10 @@ class LoginAdmin extends React.Component {
         email: this.state.username,
         password: this.state.password
       })
-      .then(response => this.props.setToken(response.data.token))
-      .catch(alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
+      .then(response => {
+        this.props.setToken(response.data.token)
+      })
+      .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
   }
   
 
@@ -52,6 +54,7 @@ class LoginAdmin extends React.Component {
               required
             />
           </div>
+          <div className='divHR'></div>
           <div className='form-login-admin'>
             <label htmlFor='password'>Mot de passe</label>
             <input
@@ -62,11 +65,12 @@ class LoginAdmin extends React.Component {
               required
             />
           </div>
+          <div className='divHR'></div>
           <div className='inputForm'>
             <input
               onClick={this.postFormData}
               type='submit'
-              value='VALIDER >'
+              value='CONTINUER >'
             />
           </div>
         </form>
