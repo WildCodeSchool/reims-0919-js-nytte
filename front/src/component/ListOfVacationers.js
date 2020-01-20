@@ -1,8 +1,7 @@
 import React from 'react';
 import './Display.css';
-import { Link } from 'react-router-dom'
 
-function ListOfVacationers(id, lastname, firstname, zip, city){
+function ListOfVacationers({lastname, firstname, zip, city}){
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">

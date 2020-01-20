@@ -161,15 +161,17 @@ class App extends React.Component {
             )}
           </Route>        
           <Route exact path='/vacationer/delete'>
-          {this.state.vacationers.map ((vacationer) => (
-              <ListOfVacationers
-                id={this.state.vacationer.id}
-                firstname={this.state.vacationer.tourist_firstname}
-                lastname={this.state.vacationer.tourist_lastname}
-                city={this.state.vacationer.tourist_city}
-                zip={this.state.vacationer.tourist_zip}
-              />
-          ))}
+            <>
+              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+                  <ListOfVacationers
+                    id={vacationer.id}
+                    firstname={vacationer.tourist_firstname}
+                    lastname={vacationer.tourist_lastname}
+                    city={vacationer.tourist_city}
+                    zip={vacationer.tourist_zip}
+                  />
+              )))}
+            </>
           </Route>        
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
