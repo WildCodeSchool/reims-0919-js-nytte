@@ -20,7 +20,7 @@ import ListOfBooks from './component/ListOfBooks.js'
 import BookBar from './component/BookBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-
+import ListOfVacationers from './component/ListOfVacationers.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class App extends React.Component {
       currentCamping: 0,
       places : null,
       currentPlace: 0,
-      vacationer :null,
+      vacationer :[],
       currentVacationer: 0,
       isConnected: false,
       events: [],
@@ -159,6 +159,17 @@ class App extends React.Component {
                 nextVacationer={this.nextVacationer}
               />
             )}
+          </Route>        
+          <Route exact path='/vacationer/delete'>
+          {this.state.vacationers.map ((vacationer) => (
+              <ListOfVacationers
+                id={this.state.vacationer.id}
+                firstname={this.state.vacationer.tourist_firstname}
+                lastname={this.state.vacationer.tourist_lastname}
+                city={this.state.vacationer.tourist_city}
+                zip={this.state.vacationer.tourist_zip}
+              />
+          ))}
           </Route>        
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationer}/>
