@@ -3,25 +3,24 @@ const router = express.Router();
 const connection = require("../conf");
 
 router.get('/', (request, response) => {
-  connection.query('SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo FROM happening INNER JOIN place WHERE happening.place_id=place.id AND happening_date>=DATE(NOW()) OR happening_date IS NULL ORDER BY happening_date ASC', (err, results) => {
-   if (err) {
-    response.status(500).send('Error retrieving happening');
-   } else {
-    response.json(results);
-   }
- });
-})
-
-
-router.get('/:id', (request, response) => {
-  connection.query('SELECT happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, happening_date_end, isItBookable, seats_bookable, local_photo FROM happening INNER JOIN place WHERE happening.place_id=place.id AND happening.id = ? AND happening_date>=DATE(NOW()) OR happening_date ORDER BY happening_date ASC', [request.params.id], (err, results) => {
-   if (err) {
-    response.status(500).send('Error retrieving happening');
-   } else {
-    response.json(results);
-   }
- });
-})
+  connection.query('SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL ORDER BY happening_date ASC', (err, results) => {
+  if (err) {
+  response.status(500).send('Error retrieving happening');
+  } else {
+  response.json(results);
+  }
+  });
+  })
+  
+  router.get('/:id', (request, response) => {
+  connection.query('SELECT happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, happening_date_end, isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening.id = ? AND happening_date>=DATE(NOW()) OR happening_date IS NULL ORDER BY happening_date ASC', [request.params.id], (err, results) => {
+  if (err) {
+  response.status(500).send('Error retrieving happening');
+  } else {
+  response.json(results);
+  }
+  });
+  })
 
 router.post('/', (request, response) => {
   const formData = request.body;
