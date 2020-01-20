@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
 
-router.get('/', (request, response) => {
+{/*router.get('/', (request, response) => {
   connection.query(
     "select concat(happening_id,'-',tourist_id) AS num_book, happening_id, tourist_id, seats_bookable,happening_name, happening_date, happening_time FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND seats_bookable IS NOT NULL ORDER BY happening_date ASC",
     (err, results) => {
@@ -12,19 +12,19 @@ router.get('/', (request, response) => {
         response.json(results);
       }
   });
-})
+})*/}
 
-router.get('/status', (request, response) => {
-    connection.query('select happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL GROUP BY happening_id ORDER BY happening_date ASC', (err, results) => {
+{/*router.get('/', (request, response) => {
+    connection.query("SELECT concat(happening_id,'-',tourist_id) AS num_book, happening_id, seats_bookable, happening_name, happening_date, happening_time, tourist_id, tourist_lastname FROM booking INNER JOIN happening ON happening_id=happening.id INNER JOIN vacationer ON tourist_id=vacationer.id", (err, results) => {
      if (err) {
       response.status(500).send('Error retrieving booking');
      } else {
       response.json(results);
      }
    });
-})
+})*/}
 
-router.get('/status', (request, response) => {
+router.get('/', (request, response) => {
   connection.query("SELECT happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL GROUP BY happening_id ORDER BY happening_date ASC", (err, results) => {
       console.log(results);
      if (err) {

@@ -10,6 +10,7 @@ import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
 import Sidebar from './component/Sidebar'
 import FormEvent from './component/FormEvent'
+import PutEvent from './component/PutEvent'
 import EventBar from './component/EventBar'
 import FormVacationer from './component/FormVacationer.js'
 import { Route, BrowserRouter, Redirect } from 'react-router-dom'
@@ -92,19 +93,19 @@ class App extends React.Component {
           events: data})
       })
 
-    axios.get('http://localhost:8000/api/bookings/status')
+    axios.get('http://localhost:8000/api/bookings')
       .then(response => response.data)
       .then(data => {
         this.setState({
           books: data})
       })    
     
-    axios.get('http://localhost:8000/api/bookings/10')
+    {/*axios.get('http://localhost:8000/api/bookings/10')
       .then(response => response.data)
       .then(data => {
         this.setState({
           listbooks: data})
-      }) 
+      }) */}
    
   }
 
@@ -143,6 +144,9 @@ class App extends React.Component {
           </Route>
           <Route exact path='/formplace'>
             <FormPlace />
+          </Route>
+          <Route exact path='/events/put'>
+            <PutEvent />
           </Route>
           <Route exact path='/place' >
             {this.state.places && (
@@ -254,23 +258,31 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          <Route exact path='/bookings/10'>
+          <Route exact path='/bookings/:id'  render={(props) => {
+              const {id} = props.match.params;
+              const book = this.state.books.find(book => book.happening_id === parseInt(id));
+              console.log({id})
+              if (book) {
+                return (
+                  <>
             <Sidebar />
             <BookBar />
-            {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
             <ListOfBooks
-              bookid={listbook.num_book}
-              eventid={listbook.happening_id}
-              name={listbook.happening_name}
-              date={listbook.happening_date}
-              time={listbook.happening_time}
-              lastname={listbook.tourist_lastname}
+              bookid={book.num_book}
+              eventid={book.happening_id}
+              name={book.happening_name}
+              date={book.happening_date}
+              time={book.happening_time}
+              lastname={book.tourist_lastname}
             />
-            )))}
-            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
             <TotalBooks 
               booked={book.places_booked}/>
-            )))}
+            </>
+                )
+              } else {
+                return <Redirect to="/events" />
+              }
+            }}>
             </Route>
 
           <Route exact path='/formevents'>
