@@ -17,11 +17,8 @@ import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
-import ListOfBooks from './component/ListOfBooks.js'
-import BookBar from './component/BookBar.js'
-import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-
+import DisplayListOfBooks from "./component/DisplayListOfBooks"
 
 class App extends React.Component {
   constructor(props) {
@@ -37,11 +34,10 @@ class App extends React.Component {
       events: [],
       currentEvent:0,
       token: null,
-      books:null,
-      listbooks:null
+      books:null
     }
     this.nextVacationer = this.nextVacationer.bind(this)
-    this.nextPlace = this.nextPlace.bind(this)    
+    this.nextPlace = this.nextPlace.bind(this)
   }
 
    nextVacationer() {
@@ -97,14 +93,7 @@ class App extends React.Component {
       .then(data => {
         this.setState({
           books: data})
-      })    
-    
-    {/*axios.get('http://localhost:8000/api/bookings/10')
-      .then(response => response.data)
-      .then(data => {
-        this.setState({
-          listbooks: data})
-      }) */}
+      })
    
   }
 
@@ -124,10 +113,8 @@ class App extends React.Component {
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
             {React.Children.toArray(this.state.events.map((event, index) => (
-              <EventCard 
-                id={event.id}
-                index={index}
-                photo={event.local_photo}
+              <EventCard
+                booksFilteredByHappeningId
                 category={event.happening_category}
                 date={event.happening_date}
                 time={event.happening_time}
@@ -240,7 +227,6 @@ class App extends React.Component {
             }}>
           </Route>
 
-
           <Route exact path='/bookings'>
           <Sidebar/>
             <EventBar/>
@@ -256,32 +242,11 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          <Route exact path='/bookings/:id'  render={(props) => {
-              const {id} = props.match.params;
-              const book = this.state.books.find(book => book.happening_id === parseInt(id));
-              console.log({id})
-              if (book) {
-                return (
-                  <>
-            <Sidebar />
-            <BookBar />
-            <ListOfBooks
-              bookid={book.num_book}
-              eventid={book.happening_id}
-              name={book.happening_name}
-              date={book.happening_date}
-              time={book.happening_time}
-              lastname={book.tourist_lastname}
-            />
-            <TotalBooks 
-              booked={book.places_booked}/>
-            </>
-                )
-              } else {
-                return <Redirect to="/events" />
-              }
-            }}>
-            </Route>
+          <Route
+            exact
+            path='/bookings/:id'
+            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
+          />
 
           <Route exact path='/formevents'>
             <FormEvent />

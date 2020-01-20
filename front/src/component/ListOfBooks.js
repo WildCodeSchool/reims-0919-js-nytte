@@ -1,9 +1,7 @@
 import React from 'react';
 import './EventCard.css';
-import {useHistory} from 'react-router-dom';
 
 function ListOfBooks({eventid,date,time,name,lastname}){
-  let history=useHistory()
   return(
     <div className="ListOfBooks">
       <table className="bookTable">
