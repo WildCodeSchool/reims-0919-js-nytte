@@ -1,16 +1,23 @@
 import React from 'react';
 import './Display.css';
+import axios from 'axios'
 
-function ListOfVacationers({lastname, firstname, zip, city}){
+const deleteFormData = id => 
+  axios.delete(`http://localhost:8000/api/vacationers/${id}`)
+    .then(response => {
+      (response.status === 200) && (alert("le compte Vacancier est supprimé !"))
+    })
+
+function ListOfVacationers({id, lastname, firstname, zip, city}){
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
-      <h2 className="titreProfil">{firstname} {lastname}</h2>
+      <p className="nameVac">ID:{id} {firstname} {lastname}</p>
     </div>
-    <div className="adressePres">
-      <p>{zip} {city}</p>
+    <div className="adresseVac">
+      <p>{city}</p>
     </div>
-    <button type="button">X</button>  
+    <button id="buttonDelete" type="button" onClick={deleteFormData} type='submit' value='Supprimer'> </button>  
   </div>
   )
 }
