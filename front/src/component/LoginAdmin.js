@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoginAdmin.css'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 class LoginAdmin extends React.Component {
   constructor(props) {
     super(props)
@@ -74,6 +74,8 @@ class LoginAdmin extends React.Component {
             />
           </div>
         </form>
+        <Link to='/login'>Vous êtes client?</Link>
+        
       </div>
     )
   }
