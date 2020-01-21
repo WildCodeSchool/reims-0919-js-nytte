@@ -49,6 +49,7 @@ export default class DisplayListOfBooks extends React.Component {
                                         date={book.happening_date}
                                         time={book.happening_time}
                                         lastname={book.tourist_lastname}
+                                        firstname={book.tourist_firstname}
                                         />
                                     ))}
                                 <TotalBooks 
