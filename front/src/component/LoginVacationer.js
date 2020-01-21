@@ -2,7 +2,8 @@ import React from 'react'
 import './LoginAdmin.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-class LoginAdmin extends React.Component {
+
+class LoginVacationer extends React.Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,14 +26,18 @@ class LoginAdmin extends React.Component {
 
   postFormData() {
     axios
-      .post('http://localhost:8000/api/admins/login', {
+      .post('http://localhost:8000/api/vacationer/login', {
         email: this.state.username,
         password: this.state.password
       })
       .then(response => {
+        console.log(response)
         this.props.setToken(response.data.token)
       })
-      .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
+      .catch(err => {
+        console.log(err)
+        alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")
+      }) 
   }
   
 
@@ -74,11 +79,10 @@ class LoginAdmin extends React.Component {
             />
           </div>
         </form>
-        <Link to='/login'>Vous êtes client?</Link>
-        
+      <Link to='/loginadmin'>Vous êtes professionnel?</Link>
       </div>
     )
   }
 }
 
-export default LoginAdmin
+export default LoginVacationer

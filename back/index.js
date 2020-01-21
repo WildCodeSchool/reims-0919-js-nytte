@@ -13,10 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-const userData = {
-  email: 'test',
-  password: 'test'
-}
 //multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -96,6 +92,31 @@ app.post('/api/admins/login', function(request, response) {
       } 
     }
   })
+})
+  
+app.post('/api/vacationer/login', function(request, response) {
+const formData = request.body
+const payload = {
+  sub: request.body.email
+} 
+connection.query('SELECT tourist_login, tourist_password FROM vacationer WHERE tourist_login = ?', 
+  formData.email, (error,result) => {
+    if(error) {
+      response.status(500).send('Server error 500')
+    } else if (result.length === 0) {
+      response.status(400).send('Mauvais Email')
+    } else {
+      if (result[0].tourist_password === formData.password) {
+        jwt.sign(payload, secret, (err, token) => {
+          response.json({
+            token
+          })
+        })
+      } else {
+          response.status(400).send('Mauvais Password')
+        }     
+    }
+  });
 })
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
