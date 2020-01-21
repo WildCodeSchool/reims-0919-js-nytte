@@ -7,6 +7,19 @@ function DisplayPlace(props){
   if (!url.startsWith('http')) {
     url = `http://localhost:8000/${props.place.local_photo}`;
   }
+
+  let imgValues = {
+    src: 'https://cutt.ly/JrieTtL',
+    alt: 'image lieu par défaut',
+  }
+  if (props.place.local_photo) {
+    imgValues = {
+      src: url,
+      alt: 'profil du lieux',
+    }
+  }
+
+
   return(
   <div id="pagePlace">
     <button className='arrowBack'>
