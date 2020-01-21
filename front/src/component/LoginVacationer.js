@@ -31,9 +31,13 @@ class LoginVacationer extends React.Component {
         password: this.state.password
       })
       .then(response => {
+        console.log(response)
         this.props.setToken(response.data.token)
       })
-      .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
+      .catch(err => {
+        console.log(err)
+        alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")
+      }) 
   }
   
 

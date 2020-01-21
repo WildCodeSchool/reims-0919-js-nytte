@@ -101,8 +101,8 @@ POST http://localhost:8000/api/admins/login
 Content-Type: application/json
 
 {
-  "loginAdmin" : "Cindie",
-  "passwordAdmin" : "jaimelecode"
+  "email" : "max-thi",
+  "password" : "password"
 }
 
 ### Check login
