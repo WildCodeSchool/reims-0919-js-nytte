@@ -1,6 +1,7 @@
 import React from 'react'
 import './LoginAdmin.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class LoginVacationer extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class LoginVacationer extends React.Component {
 
   postFormData() {
     axios
-      .post('http://localhost:8000/api/admins/login', {
+      .post('http://localhost:8000/api/vacationer/login', {
         email: this.state.username,
         password: this.state.password
       })
@@ -74,6 +75,7 @@ class LoginVacationer extends React.Component {
             />
           </div>
         </form>
+      <Link to='/loginadmin'>Vous êtes professionnel?</Link>
       </div>
     )
   }

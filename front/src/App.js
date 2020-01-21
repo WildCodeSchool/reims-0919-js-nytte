@@ -19,6 +19,7 @@ import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
 import BookBar from './component/BookBar.js'
 import TotalBooks from './component/TotalBooks.js'
+import LoginVacationer from './component/LoginVacationer'
 
 
 class App extends React.Component {
@@ -114,6 +115,10 @@ class App extends React.Component {
         <BrowserRouter>
           <Route path="/">
             <Route exact path='/login'>
+            {loggedIn ? <Redirect to="/displayadmin" /> :
+              <LoginVacationer token={this.state.token} setToken={(token) => this.setState({token})} />}
+            </Route>
+            <Route exact path='/loginadmin'>
             {loggedIn ? <Redirect to="/displayadmin" /> :
               <LoginAdmin token={this.state.token} setToken={(token) => this.setState({token})} />}
             </Route>
