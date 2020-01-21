@@ -72,31 +72,34 @@ app.post('/api/admins', (request, response) => {
 
 app.post('/api/admins/login', function(request, response) {
   const formData = request.body
-  const payload = {
-  sub: request.body.email
-  }
-  connection.query('SELECT login_admin, password_admin FROM admin WHERE login_admin = ?', 
+  connection.query('SELECT id, login_admin, password_admin FROM admin WHERE login_admin = ?', 
   formData.email, (error,result) => {
-  if(error) {
-  response.status(500).send('Server error 500')
-  } else if (result.lentgth === 0) {
-  response.status(400).send('Mauvais Email')
-  } else {
-  if (result[0].password_admin === formData.password) {
-  jwt.sign(payload, secret, (err, token) => {
-  response.json({
-  token
+    if(error) {
+      response.status(500).send('Server error 500')
+    } else if (result.lentgth === 0) {
+      response.status(400).send('Mauvais Email')
+    } else {
+      if (result[0].password_admin === formData.password) {
+        const payload = {
+          user: {
+            password: request.body.password,
+            id: result[0].id
+          }
+        }
+        jwt.sign(payload, secret, (err, token) => {
+          response.json({
+            token
+          })
+        })
+      } else {
+        response.status(400).send('Mauvais Password')
+      } 
+    }
   })
-  })
-  } else {
-  response.status(400).send('Mauvais Password')
-  } 
-  }
-  })
-  })
+})
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
-  jwt.verify(req.token, 'secret', (err, authorizedData) => {
+  jwt.verify(req.token, secret, (err, authorizedData) => {
     if(err){
         //If error send Forbidden (403)
         console.log('ERROR: Could not connect to the protected route');
