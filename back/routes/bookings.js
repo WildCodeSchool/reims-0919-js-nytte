@@ -52,10 +52,10 @@ router.post('/', (request, response) => {
   const happeningId = request.body.happening_id;
   jwt.verify(token, 'secret', (err, authorizedData) => {
     const userId = authorizedData.user.id;
-    connection.query('INSERT INTO booking VALUES (?, ?)', [happeningId, userId], (err, results) => {
+    connection.query('INSERT INTO booking VALUES (?, ?)', [happeningId, userId], (SQLerr, results) => {
       console.log(results)
-      if (err) {
-        console.log(err);
+      if (SQLerr) {
+        console.log(SQLerr);
         response.status(500).send("Error saving a new booking");
       } else {
         response.sendStatus(200);
