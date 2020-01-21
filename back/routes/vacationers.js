@@ -4,7 +4,7 @@ const connection = require("../conf");
 
 
 router.get('/', (request, response) => {
-  connection.query('SELECT tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
+  connection.query('SELECT vacationer.id, tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving vacationers');
    } else {
@@ -14,7 +14,7 @@ router.get('/', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
-  connection.query('SELECT tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id AND vacationer.id = ?', [request.params.id], (err, results) => {
+  connection.query('SELECT vacationer.id, tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id AND vacationer.id = ?', [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving vacationers');
    } else {
@@ -44,6 +44,18 @@ router.put('/:id', (request, response) => {
       response.status(500).send("Error editing the vacationer");
     } else {
       response.sendStatus(200);
+    }
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  const idVacationer = req.params.id;
+  connection.query('DELETE FROM vacationer WHERE id = ?', [idVacationer], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un vacancier, supprimer les réservations sur ${idVacationer}`);
+    } else {
+      res.sendStatus(200);
     }
   });
 });

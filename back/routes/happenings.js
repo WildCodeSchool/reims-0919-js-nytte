@@ -47,17 +47,17 @@ router.put('/:id', (request, response) => {
   });
 });
 
-router.delete('/:id', (request, response) => {
-  const idEvent = request.params.id;
-
-      connection.query(`DELETE FROM happening WHERE id = ?`, [idEvent], err => {
-      if (err) {
-        console.log(err);
-        response.status(500).send(`Error deleting the event`);
-      } else {
-        response.sendStatus(200);
-      }
-    });
+router.delete('/:id', (req, res) => {
+  const idEvent = req.params.id;
+  connection.query('DELETE FROM event WHERE tourist_id = ?', [idEvent], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un lieu, supprimer les évènements sur ${idEvent}`);
+    } else {
+      res.sendStatus(200);
+    }
   });
+});
+
 
 module.exports = router
