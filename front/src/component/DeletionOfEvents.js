@@ -3,21 +3,26 @@ import './Display.css';
 import axios from 'axios'
 
 const deleteFormData = id => 
-  axios.delete(`http://localhost:8000/api/vacationers/${id}`)
+  axios.delete(`http://localhost:8000/api/happenings/${id}`)
     .then(response => {
-      (response.status === 200) && (alert("le compte Vacancier est supprimé !"))
+      (response.status === 200) && (alert("l'évènement est supprimé !"))
     })
 
 function DeletionOfEvents({id, title, date, time}){
+  console.log(title.lenght)
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
-      <p className="nameVac">ID:{id} {title}</p>
+      {title===title.slice(0,20)
+      ?<p className="nameVac">{id}-{title}</p>
+      :<p className="nameVac">{id}-{title.slice(0,20)}...</p>}
+      
     </div>
     <div className="adresseVac">
-      <p>{date.slice(0,10)} {time.slice(0,5)}</p>
+      <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
     </div>
-    <button id="buttonDelete" type="button" onClick={deleteFormData} type='submit' value='Supprimer'> </button>  
+    <button id="buttonEye" type="button"></button>
+    <button id="buttonDelete" type="button" onClick={deleteFormData} value='Supprimer'> </button>  
   </div>
   )
 }

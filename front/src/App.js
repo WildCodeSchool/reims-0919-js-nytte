@@ -219,7 +219,7 @@ class App extends React.Component {
             <CancelBar />
             <div>
               <h1 style={{textAlign:'center'}}>Evènements</h1>
-              <p style={{textAlign:'center'}}>Attention ! la suppression d'un évènement est définitive !</p>
+              <p style={{textAlign:'center'}}>Attention ! la suppression est définitive !</p>
             </div>
               {React.Children.toArray(this.state.events.map((event) => (
                   <DeletionOfEvents
@@ -239,13 +239,10 @@ class App extends React.Component {
               <h1 style={{textAlign:'center'}}>Lieux</h1>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'un lieu est définitive !</p>
             </div>
-              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+              {React.Children.toArray(this.state.places.map((place) => (
                   <DeletionOfPlaces
-                    id={vacationer.id}
-                    firstname={vacationer.tourist_firstname}
-                    lastname={vacationer.tourist_lastname}
-                    city={vacationer.tourist_city}
-                    zip={vacationer.tourist_zip}
+                    id={place.id}
+                    name={place.local_name}
                   />
               )))}
             </>
