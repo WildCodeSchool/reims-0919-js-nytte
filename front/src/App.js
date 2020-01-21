@@ -18,9 +18,10 @@ import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
 import BookBar from './component/BookBar.js'
+import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-
+import ListOfVacationers from './component/ListOfVacationers.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class App extends React.Component {
       currentCamping: 0,
       places : null,
       currentPlace: 0,
-      vacationer :null,
+      vacationers :[],
       currentVacationer: 0,
       isConnected: false,
       events: [],
@@ -159,8 +160,27 @@ class App extends React.Component {
               />
             )}
           </Route>        
+          <Route path='/vacationer/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Profils vacancier</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'un profil est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+                  <ListOfVacationers
+                    id={vacationer.id}
+                    firstname={vacationer.tourist_firstname}
+                    lastname={vacationer.tourist_lastname}
+                    city={vacationer.tourist_city}
+                    zip={vacationer.tourist_zip}
+                  />
+              )))}
+            </>
+          </Route>        
           <Route exact path='/formvacationer'>
-            <FormVacationer vacationer={this.state.vacationer}/>
+            <FormVacationer vacationer={this.state.vacationers}/>
           </Route>
           <Route exact path='/events'>
             <Sidebar/>
