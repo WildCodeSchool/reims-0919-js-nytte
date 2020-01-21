@@ -28,7 +28,7 @@ class App extends React.Component {
     this.state = {
       campings: null,
       currentCamping: 0,
-      places : null,
+      places : [],
       currentPlace: 0,
       vacationer :null,
       currentVacationer: 0,
@@ -40,7 +40,8 @@ class App extends React.Component {
       listbooks:null
     }
     this.nextVacationer = this.nextVacationer.bind(this)
-    this.nextPlace = this.nextPlace.bind(this)    
+    this.nextPlace = this.nextPlace.bind(this)
+    this.postFormData = this.postFormData.bind(this)
   }
 
    nextVacationer() {
@@ -108,6 +109,29 @@ class App extends React.Component {
    
   }
 
+  postFormData(formData) {
+    axios.post('http://localhost:8000/api/places', {
+      local_name: formData.name,
+      local_photo: formData.photo,
+      local_description: formData.description,
+      local_phone: formData.phone,
+      local_pj: formData.attachment,
+      local_logo: formData.logo,
+      admin_id: formData.adminId,
+    })
+    .then(response => {
+      if (response.status === 201) {
+        this.setState(prevState => {
+          return {places: [...prevState.places, response.data]}
+        }, () => {
+          alert("Votre lieu a été créé !")
+        })
+      } else {
+        console.log(response)
+      }
+    })
+  }
+
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
     const events = this.state.events;
@@ -145,7 +169,7 @@ class App extends React.Component {
             <FormAdmin />
           </Route>
           <Route exact path='/formplace'>
-            <FormPlace />
+            <FormPlace postFormData={this.postFormData} />
           </Route>
           <Route exact path='/place' >
             {this.state.places && (

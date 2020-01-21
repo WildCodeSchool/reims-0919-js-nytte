@@ -18,7 +18,6 @@ class FormPlace extends React.Component {
         adminId: null,
       };
       this.handleSubmit = this.handleSubmit.bind(this)
-      this.postFormData = this.postFormData.bind(this)
       this.savePicture = this.savePicture.bind(this); 
     }
 
@@ -35,22 +34,6 @@ class FormPlace extends React.Component {
     handleSubmit(event) {
       event.preventDefault()
     }
-
-    postFormData() {
-      axios.post('http://localhost:8000/api/places', {
-        local_name: this.state.name,
-        local_photo: this.state.photo,
-        local_description: this.state.description,
-        local_phone: this.state.phone,
-        local_pj: this.state.attachment,
-        local_logo: this.state.logo,
-        admin_id: this.state.adminId,
-      })
-      .then(response => {
-        (response.status === 200) && (alert("Votre lieu a été créé !"))
-      })
-    }
-
 
     render() {
       return (
@@ -129,7 +112,7 @@ class FormPlace extends React.Component {
         </form>
         <button 
           className="createButton"
-          onClick={this.postFormData}
+          onClick={() => this.props.postFormData(this.state)}
           type='submit'
           value='Créer'
         >
