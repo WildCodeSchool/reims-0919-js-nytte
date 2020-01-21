@@ -21,7 +21,10 @@ import BookBar from './component/BookBar.js'
 import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-import ListOfVacationers from './component/ListOfVacationers.js'
+import DeletionOfPlaces from './component/DeletionOfPlaces.js'
+import DeletionOfEvents from './component/DeletionOfEvents'
+import DeletionOfVacationers from './component/DeletionOfVacationers.js'
+import DeletionOfBookings from './component/DeletionOfBookings.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -160,7 +163,7 @@ class App extends React.Component {
               />
             )}
           </Route>        
-          <Route path='/vacationer/delete'>
+          <Route path='/vacationers/delete'>
             <>
             <Sidebar/>
             <CancelBar />
@@ -169,7 +172,7 @@ class App extends React.Component {
               <p style={{textAlign:'center'}}>Attention ! la suppression d'un profil est définitive !</p>
             </div>
               {React.Children.toArray(this.state.vacationers.map((vacationer) => (
-                  <ListOfVacationers
+                  <DeletionOfVacationers
                     id={vacationer.id}
                     firstname={vacationer.tourist_firstname}
                     lastname={vacationer.tourist_lastname}
@@ -178,7 +181,63 @@ class App extends React.Component {
                   />
               )))}
             </>
-          </Route>        
+            </Route>
+            <Route path='/happens/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Evènements</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'un évènement est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.events.map((event) => (
+                  <DeletionOfEvents
+                    id={event.id}
+                    title={event.happening_name}
+                    date={event.happening_date}
+                    time={event.happening_time}
+                  />
+              )))}
+            </>
+          </Route>    
+          <Route path='/places/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Lieux</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'un lieu est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+                  <DeletionOfPlaces
+                    id={vacationer.id}
+                    firstname={vacationer.tourist_firstname}
+                    lastname={vacationer.tourist_lastname}
+                    city={vacationer.tourist_city}
+                    zip={vacationer.tourist_zip}
+                  />
+              )))}
+            </>
+          </Route>    
+          <Route path='/bookings/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Réservation</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+                  <DeletionOfBookings
+                    id={vacationer.id}
+                    firstname={vacationer.tourist_firstname}
+                    lastname={vacationer.tourist_lastname}
+                    city={vacationer.tourist_city}
+                    zip={vacationer.tourist_zip}
+                  />
+              )))}
+            </>
+          </Route>  
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationers}/>
           </Route>

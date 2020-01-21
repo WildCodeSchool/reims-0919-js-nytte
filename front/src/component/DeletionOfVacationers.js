@@ -8,7 +8,7 @@ const deleteFormData = id =>
       (response.status === 200) && (alert("le compte Vacancier est supprimé !"))
     })
 
-function ListOfVacationers({id, lastname, firstname, zip, city}){
+function DeleteOfVacationers({id, lastname, firstname, zip, city}){
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
@@ -22,4 +22,4 @@ function ListOfVacationers({id, lastname, firstname, zip, city}){
   )
 }
 
-export default ListOfVacationers;
+export default DeleteOfVacationers;

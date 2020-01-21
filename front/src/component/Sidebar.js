@@ -9,22 +9,31 @@ function Sidebar(props){
       <Link className="menu-item-bar-actu" to="/displayadmin">
         Accueil
       </Link>
+
       <p id="crea">Création</p>
       <Link className="menu-item-bar" to="/formplace">
         Lieux
       </Link>
-
       <Link className="menu-item-bar" to="/formevents">
         Événements
       </Link>
-
       <Link className="menu-item-bar" to="/formvacationer">
         Vacanciers
       </Link>
+
       <p id="sup">Suppression</p>
-      <Link className="menu-item-bar" to="/vacationer/delete">
+      <Link className="menu-item-bar" to="/places/delete">
+        Lieux
+      </Link>
+      <Link className="menu-item-bar" to="/happens/delete">
+        Evènements
+      </Link>       
+      <Link className="menu-item-bar" to="/vacationers/delete">
         Vacanciers
-      </Link>      
+      </Link>
+      <Link className="menu-item-bar" to="/bookings/delete">
+        Réservations
+      </Link>     
 
       <Link className="menu-item-bar-actu" to="/events">
         Fil d'actu

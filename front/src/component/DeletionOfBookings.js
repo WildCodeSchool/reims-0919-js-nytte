@@ -8,18 +8,18 @@ const deleteFormData = id =>
       (response.status === 200) && (alert("le compte Vacancier est supprimé !"))
     })
 
-function DeletionOfEvents({id, title, date, time}){
+function DeleteOfBookings({id, lastname, firstname, zip, city}){
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
-      <p className="nameVac">ID:{id} {title}</p>
+      <p className="nameVac">ID:{id} {firstname} {lastname}</p>
     </div>
     <div className="adresseVac">
-      <p>{date.slice(0,10)} {time.slice(0,5)}</p>
+      <p>{city}</p>
     </div>
     <button id="buttonDelete" type="button" onClick={deleteFormData} type='submit' value='Supprimer'> </button>  
   </div>
   )
 }
 
-export default DeletionOfEvents;
+export default DeleteOfBookings;
