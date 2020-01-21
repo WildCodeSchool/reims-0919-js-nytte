@@ -101,8 +101,8 @@ POST http://localhost:8000/api/admins/login
 Content-Type: application/json
 
 {
-  "loginAdmin" : "Cindie",
-  "passwordAdmin" : "jaimelecode"
+  "email" : "max-thi",
+  "password" : "password"
 }
 
 ### Check login
@@ -157,3 +157,18 @@ GET http://localhost:8000/api/bookings/status
 
 ### GET a book
 GET http://localhost:8000/api/bookings/10
+
+### DELETE a vacationer
+DELETE http://localhost:8000/api/vacationers/14
+
+### DELETE a booking
+DELETE http://localhost:8000/api/tourist/bookings/1
+
+### DELETE a booking
+DELETE http://localhost:8000/api/event/bookings/1
+
+### DELETE a place
+DELETE http://localhost:8000/api/places/3
+
+### DELETE en event
+DELETE http://localhost:8000/api/happenings/3

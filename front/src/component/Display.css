@@ -85,6 +85,29 @@ text-align:center;
   flex-direction:row;
 }
 
+#ListOfVacationers{
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  vertical-align: baseline;
+}
+
+#ProfilVacationer{
+  font-size:1em;
+  min-width:230px;
+}
+
+.adresseVac{
+  min-width:100px;
+}
+
+#buttonDelete{
+  height: 28px;
+  width: 28px;
+  margin-top:10px; 
+  background-image:url('https://zupimages.net/up/20/04/noz2.png')
+}
+
 
 @media screen and (min-width: 480px)
 {

@@ -29,7 +29,7 @@ router.post('/', (request, response) => {
       console.log(err);
       response.status(500).send("Error saving a new place");
     } else {
-      response.sendStatus(200);
+      response.status(201).send({...formData, id: results.insertId});
     }
   });
 });
@@ -43,6 +43,18 @@ router.put('/:id', (request, response) => {
       response.status(500).send("Error editing the place");
     } else {
       response.sendStatus(200);
+    }
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  const idPlace = req.params.id;
+  connection.query('DELETE FROM place WHERE id = ?', [idPlace], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un lieu, supprimer les évènements sur ${idPlace}`);
+    } else {
+      res.sendStatus(200);
     }
   });
 });
