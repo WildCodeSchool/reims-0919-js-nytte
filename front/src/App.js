@@ -21,7 +21,7 @@ import BookBar from './component/BookBar.js'
 import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-// import ListOfVacationers from './component/ListOfVacationers.js'
+import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
 
 
@@ -200,14 +200,7 @@ class App extends React.Component {
             </div>
               {React.Children.toArray(this.state.vacationers.map((vacationer) => (
                 <></>
-                  // <ListOfVacationers
-                  //   id={vacationer.id}
-                  //   firstname={vacationer.tourist_firstname}
-                  //   lastname={vacationer.tourist_lastname}
-                  //   city={vacationer.tourist_city}
-                  //   zip={vacationer.tourist_zip}
-                  // />
-              )))}
+                                )))}
             </>
           </Route>        
           <Route exact path='/formvacationer'>
@@ -305,24 +298,11 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          <Route exact path='/bookings/10'>
-            <Sidebar />
-            <BookBar />
-            {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
-            <ListOfBooks
-              bookid={listbook.num_book}
-              eventid={listbook.happening_id}
-              name={listbook.happening_name}
-              date={listbook.happening_date}
-              time={listbook.happening_time}
-              lastname={listbook.tourist_lastname}
-            />
-            )))}
-            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
-            <TotalBooks 
-              booked={book.places_booked}/>
-            )))}
-            </Route>
+          <Route
+            exact
+            path='/bookings/:id'
+            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
+          />
 
           <Route exact path='/formevents'>
             <FormEvent />
