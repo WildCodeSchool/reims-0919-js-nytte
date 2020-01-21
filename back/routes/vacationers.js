@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
 
-
 router.get('/', (request, response) => {
   connection.query('SELECT vacationer.id, tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
    if (err) {
@@ -30,7 +29,7 @@ router.post('/', (request, response) => {
       console.log(err);
       response.status(500).send("Error saving a new vacationer");
     } else {
-      response.sendStatus(200);
+      response.status(201).send({...formData, id: results.insertId});
     }
   });
 });
