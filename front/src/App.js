@@ -21,7 +21,9 @@ import BookBar from './component/BookBar.js'
 import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
-import ListOfVacationers from './component/ListOfVacationers.js'
+// import ListOfVacationers from './component/ListOfVacationers.js'
+import LoginVacationer from './component/LoginVacationer'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class App extends React.Component {
     this.state = {
       campings: null,
       currentCamping: 0,
-      places : null,
+      places : [],
       currentPlace: 0,
       vacationers :[],
       currentVacationer: 0,
@@ -41,7 +43,8 @@ class App extends React.Component {
       listbooks:null
     }
     this.nextVacationer = this.nextVacationer.bind(this)
-    this.nextPlace = this.nextPlace.bind(this)    
+    this.nextPlace = this.nextPlace.bind(this)
+    this.postFormData = this.postFormData.bind(this)
   }
 
    nextVacationer() {
@@ -65,34 +68,34 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          campings: data
+          campings: response.data
         })
       })
 
     axios.get('http://localhost:8000/api/places')
-    .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          places: data})
-       })
+          places: response.data
+        })
+      })
 
     axios.get('http://localhost:8000/api/vacationers')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          vacationers: data})
+          vacationers: response.data
+        })
       })
 
     axios.get('http://localhost:8000/api/happenings')
-      .then(response => response.data)
-      .then(data => {
+      .then(response => {
         this.setState({
-          events: data})
+          events: response.data
+        })
       })
-
+    
+  
     axios.get('http://localhost:8000/api/bookings/status')
       .then(response => response.data)
       .then(data => {
@@ -109,6 +112,28 @@ class App extends React.Component {
    
   }
 
+  postFormData(formData) {
+    axios.post('http://localhost:8000/api/places', {
+      local_name: formData.name,
+      local_photo: formData.photo,
+      local_description: formData.description,
+      local_phone: formData.phone,
+      local_pj: formData.attachment,
+      local_logo: formData.logo,
+      admin_id: formData.adminId,
+    })
+    .then(response => {
+      if (response.status === 201) {
+        this.setState(prevState => {
+          return {places: [...prevState.places, response.data]}
+        }, () => {
+          alert("Votre lieu a été créé !")
+        })
+      } else {
+        console.log(response)
+      }
+    })
+  }
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
@@ -116,6 +141,10 @@ class App extends React.Component {
         <BrowserRouter>
           <Route path="/">
             <Route exact path='/login'>
+            {loggedIn ? <Redirect to="/displayadmin" /> :
+              <LoginVacationer token={this.state.token} setToken={(token) => this.setState({token})} />}
+            </Route>
+            <Route exact path='/loginadmin'>
             {loggedIn ? <Redirect to="/displayadmin" /> :
               <LoginAdmin token={this.state.token} setToken={(token) => this.setState({token})} />}
             </Route>
@@ -143,7 +172,7 @@ class App extends React.Component {
             <FormAdmin />
           </Route>
           <Route exact path='/formplace'>
-            <FormPlace />
+            <FormPlace postFormData={this.postFormData} />
           </Route>
           <Route exact path='/place' >
             {this.state.places && (
@@ -170,13 +199,14 @@ class App extends React.Component {
               <p style={{textAlign:'center'}}>Attention ! la suppression d'un profil est définitive !</p>
             </div>
               {React.Children.toArray(this.state.vacationers.map((vacationer) => (
-                  <ListOfVacationers
-                    id={vacationer.id}
-                    firstname={vacationer.tourist_firstname}
-                    lastname={vacationer.tourist_lastname}
-                    city={vacationer.tourist_city}
-                    zip={vacationer.tourist_zip}
-                  />
+                <></>
+                  // <ListOfVacationers
+                  //   id={vacationer.id}
+                  //   firstname={vacationer.tourist_firstname}
+                  //   lastname={vacationer.tourist_lastname}
+                  //   city={vacationer.tourist_city}
+                  //   zip={vacationer.tourist_zip}
+                  // />
               )))}
             </>
           </Route>        
@@ -221,6 +251,7 @@ class App extends React.Component {
                       endTime={event.happening_time_end}
                       isItBookable={event.isItBookable}
                       map={event.mapping}
+                      token={this.state.token}
                     />
                   </>
                 )

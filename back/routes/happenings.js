@@ -47,4 +47,17 @@ router.put('/:id', (request, response) => {
   });
 });
 
+router.delete('/:id', (request, response) => {
+  const idEvent = request.params.id;
+
+      connection.query(`DELETE FROM happening WHERE id = ?`, [idEvent], err => {
+      if (err) {
+        console.log(err);
+        response.status(500).send(`Error deleting the event`);
+      } else {
+        response.sendStatus(200);
+      }
+    });
+  });
+
 module.exports = router

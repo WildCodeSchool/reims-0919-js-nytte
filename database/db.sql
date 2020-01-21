@@ -26,7 +26,7 @@ CREATE TABLE admin
 INSERT INTO admin 
 (company, firstname, lastname,login_admin,password_admin,city,zip,address1,photo,phone_company,mapping)
 VALUES
-('Camping de Max','Maxime','Thibaud','max-thi','password','Sainte Maxime','83120','1 rue Thibaud','https://zupimages.net/up/19/49/c3li.jpg','0401020304','https://zupimages.net/up/20/03/l201.jpg');
+('Camping de Max','Maxime','Thibaud','max-thi','password','Sainte Maxime','83120','1 rue Thibaud','https://zupimages.net/up/19/49/c3li.jpg','0401020304','https://zupimages.net/up/20/03/nou7.jpg');
 
 INSERT INTO admin 
 (company, firstname, lastname,login_admin,password_admin,city,zip,address1,photo,phone_company)
@@ -92,7 +92,10 @@ CREATE TABLE vacationer
 INSERT INTO vacationer 
 (tourist_firstname, tourist_lastname, tourist_login,tourist_password,tourist_city,tourist_zip,tourist_address1,tourist_email,admin_id,birthday,tourist_photo )
 VALUES
-('Cindie','Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/01/p8yh.jpg');
+('Cindie','Geny Jouvin','cindie.jouvin', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'1979-08-19','https://zupimages.net/up/20/03/fgqf.jpg'),
+('Romain','Geny','romain.geny', 'password','Sillery','51500','4 rue du Parc','romain.geny@laposte.net',4,'1988-06-07','https://zupimages.net/up/20/03/rvz5.jpg'),
+('Lola','Geny Jouvin','Lola.geny', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'2010-06-22','https://zupimages.net/up/20/03/lcih.jpg'),
+('Daphné','Geny Jouvin','daphne.geny', 'password','Sillery','51500','4 rue du Parc','cindie.jouvin@gmail.com',4,'2014-08-13','https://zupimages.net/up/20/01/p8yh.jpg');
 
 CREATE TABLE happening
 (
@@ -141,3 +144,11 @@ CREATE TABLE booking
   FOREIGN KEY (happening_id) REFERENCES happening(id),
   FOREIGN KEY (tourist_id) REFERENCES vacationer(id)
 );
+
+INSERT INTO booking
+(happening_id,tourist_id)
+VALUES
+(10,10),
+(10,11),
+(10,12),
+(10,14);
