@@ -32,7 +32,7 @@ function EventCard({id, title, photo, category, date, endDate, time, endTime, is
           {endTime===null?"":
             <p>{endTime.slice(0,5)}</p>}
         </div>
-         {isItBookable ? "" : <p className="viewBook">À réserver</p>} 
+         {isItBookable ? <p className="viewBook">À réserver</p> : ""} 
           <div className="flèche">
           <a className="CardButtonF" onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} href={`/events/${id}`}>&rsaquo;</a>
           </div>
