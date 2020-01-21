@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
+const jwt = require('jsonwebtoken');
 
 router.get('/', (request, response) => {
   connection.query(
@@ -47,15 +48,20 @@ router.get('/:id', (request, response) => {
 
 
 router.post('/', (request, response) => {
-    const formData = request.body;
-    connection.query('INSERT INTO booking SET ?', formData, (err, results) => {
-      if (err) {
-        console.log(err);
+  const token = request.body.tourist_id;
+  const happeningId = request.body.happening_id;
+  jwt.verify(token, 'secret', (err, authorizedData) => {
+    const userId = authorizedData.user.id;
+    connection.query('INSERT INTO booking VALUES (?, ?)', [happeningId, userId], (SQLerr, results) => {
+      console.log(results)
+      if (SQLerr) {
+        console.log(SQLerr);
         response.status(500).send("Error saving a new booking");
       } else {
         response.sendStatus(200);
       }
     });
+  })
 });
 
 
