@@ -25,7 +25,7 @@ import DeletionOfPlaces from './component/DeletionOfPlaces.js'
 import DeletionOfEvents from './component/DeletionOfEvents'
 import DeletionOfVacationers from './component/DeletionOfVacationers.js'
 import DeletionOfBookings from './component/DeletionOfBookings.js'
-// import ListOfVacationers from './component/ListOfVacationers.js'
+import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
 
 
@@ -361,24 +361,11 @@ class App extends React.Component {
               />
           )))}
           </Route>
-          <Route exact path='/bookings/10'>
-            <Sidebar />
-            <BookBar />
-            {this.state.listbooks && React.Children.toArray(this.state.listbooks.map((listbook) => (
-            <ListOfBooks
-              bookid={listbook.num_book}
-              eventid={listbook.happening_id}
-              name={listbook.happening_name}
-              date={listbook.happening_date}
-              time={listbook.happening_time}
-              lastname={listbook.tourist_lastname}
-            />
-            )))}
-            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
-            <TotalBooks 
-              booked={book.places_booked}/>
-            )))}
-            </Route>
+          <Route
+            exact
+            path='/bookings/:id'
+            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
+          />
 
           <Route exact path='/formevents'>
             <FormEvent />
