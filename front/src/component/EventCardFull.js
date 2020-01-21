@@ -1,5 +1,6 @@
 import React from 'react';
 import './EventCard.css';
+import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 
@@ -25,25 +26,16 @@ function renderSwitch(category){
   }
 }
 
-function book (eventId, token) {
-  const booking = {
-    eventId,
-    token
-  }
-
+const book = (eventId, token) =>
   axios.post('http://localhost:8000/api/bookings', {
     happening_id: eventId,
     tourist_id: token
   })
-  console.log(eventId);
-  console.log(token);
-  return
-}
 
-function EventCardFull({photo, title, category,description,date,time,endTime, isItBookable, token}){
+function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, map, token}){
   const eventId = useParams().id;
-
-  return(
+  let history=useHistory()
+  return (
   <div className="CardFull">
     <div className="pictureCardFull">
       <div className="logoTitle">
@@ -69,8 +61,12 @@ function EventCardFull({photo, title, category,description,date,time,endTime, is
           <button className="MapButton" type="button">Y ALLER</button>
         </div>
         </>
+        :""
+        }
+        {map===null
+        ?""
         :<div className="fullCardButton">
-          <button className="MapButton" type="button">Y ALLER</button>
+          <button className="MapButton" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/map/${id}`) }} href={`/events/map/${id}`}>Y ALLER</button>
         </div>
         }
     </div>

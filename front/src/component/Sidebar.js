@@ -6,11 +6,10 @@ import './Sidebar.css'
 function Sidebar(props){
   return(
     <Menu className="sideBar">
-      <p id="crea">Création</p>
-      <Link className="menu-item-bar" to="/displayadmin">
+      <Link className="menu-item-bar-actu" to="/displayadmin">
         Accueil
       </Link>
-
+      <p id="crea">Création</p>
       <Link className="menu-item-bar" to="/formplace">
         Lieux
       </Link>
@@ -22,6 +21,10 @@ function Sidebar(props){
       <Link className="menu-item-bar" to="/formvacationer">
         Vacanciers
       </Link>
+      <p id="sup">Suppression</p>
+      <Link className="menu-item-bar" to="/vacationer/delete">
+        Vacanciers
+      </Link>      
 
       <Link className="menu-item-bar-actu" to="/events">
         Fil d'actu

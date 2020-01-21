@@ -2,6 +2,7 @@ import React from 'react'
 import './LoginAdmin.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+
 class LoginAdmin extends React.Component {
   constructor(props) {
     super(props)
@@ -29,10 +30,8 @@ class LoginAdmin extends React.Component {
         email: this.state.username,
         password: this.state.password
       })
-      .then(response => {
-        this.props.setToken(response.data.token)
-      })
-      .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect")) 
+      .then(response => this.props.setToken(response.data.token))
+      .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect"))
   }
   
 

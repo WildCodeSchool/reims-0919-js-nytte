@@ -2,7 +2,7 @@ import React from 'react';
 import './EventCard.css';
 import {useHistory} from 'react-router-dom';
 
-function EventCard({id, photo, category, date, endDate, time, endTime, isItBookable}){
+function EventCard({id, title, photo, category, date, endDate, time, endTime, isItBookable}){
   let history=useHistory()
 
   let imgValues = {
@@ -18,7 +18,9 @@ function EventCard({id, photo, category, date, endDate, time, endTime, isItBooka
   return(
   <div className="CardLight">
     <div className="pictureCardLight">
-      <img className="photoCardProfil" src={imgValues.src} alt={imgValues.alt} />
+            
+      <img className="photoCardProfil" src={imgValues.src} alt={imgValues.alt}/>
+      <p className="titleOfEvent">{title}</p>
       <div className="flexCardButton">
         <a className="CardButton" onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} href={`/events/${id}`}>
           {category.toUpperCase()}</a>
@@ -32,7 +34,7 @@ function EventCard({id, photo, category, date, endDate, time, endTime, isItBooka
         </div>
          {isItBookable ? "" : <p className="viewBook">À réserver</p>} 
           <div className="flèche">
-            &rsaquo;
+          <a className="CardButtonF" onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} href={`/events/${id}`}>&rsaquo;</a>
           </div>
       </div>
     </div>

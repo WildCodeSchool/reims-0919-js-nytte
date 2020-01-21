@@ -213,6 +213,10 @@
 .CardButton a{
     width:123px;
 }
+.CardButtonF{
+    text-decoration:none;
+    color:white;
+}
 
 .bookTable{
     display:flex;
@@ -231,6 +235,20 @@
     text-align:right;
     width:50vh;
 }
+
+.titleOfEvent{
+    margin:2px ;
+    text-align:center;
+    color:white;
+    font-size:0.8em;
+    z-index:5;
+}
+
+.Map img{
+    min-height:600px;
+    width:auto;
+}
+
 
 
 @media screen and (min-width: 480px)

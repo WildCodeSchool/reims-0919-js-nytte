@@ -70,3 +70,7 @@
 .formAdminVacationer .arrowBack a{
   align-items:left;
 }
+
+.formContainer{
+  display:flex;
+}
