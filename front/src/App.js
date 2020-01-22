@@ -40,7 +40,8 @@ class App extends React.Component {
       currentEvent:0,
       token: null,
       books:null,
-      listbooks:null
+      listbooks:null,
+      isAdmin:false,
     }
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
@@ -203,11 +204,11 @@ class App extends React.Component {
             </Route>
             <Route exact path='/loginadmin'>
             {loggedIn ? <Redirect to="/displayadmin" /> :
-              <LoginAdmin token={this.state.token} setToken={(token) => this.setState({token})} />}
+              <LoginAdmin isAdmin={this.state.isAdmin} setAsAdmin={(isAdmin)=> this.setState({isAdmin})}token={this.state.token} setToken={(token) => this.setState({token})} />}
             </Route>
             {loggedIn ? <>
           <Route exact path='/displayadmin'>
-            <Sidebar />
+            <Sidebar isAdmin={this.state.isAdmin} />
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
