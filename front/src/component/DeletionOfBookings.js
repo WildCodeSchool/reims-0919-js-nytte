@@ -17,7 +17,9 @@ function DeleteOfBookings({id, lastname, firstname, zip, city}){
     <div className="adresseVac">
       <p>{city}</p>
     </div>
-    <button id="buttonDelete" type="button" onClick={deleteFormData} type='submit' value='Supprimer'> </button>  
+    <button id="buttonEye" type="button"></button>
+    <button id="buttonEdit" type="button"></button>
+    <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} type='submit' value='Supprimer'> </button>  
   </div>
   )
 }

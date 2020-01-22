@@ -13,7 +13,7 @@ function BookBar(){
         <th>Evenement</th>
         <th>Date</th>
         <th>Nom</th>
-        <th>Nb place</th>
+        <th>Prénom</th>
       </tr>
     </table>
     </>
