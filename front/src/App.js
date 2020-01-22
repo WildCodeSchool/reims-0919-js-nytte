@@ -46,6 +46,7 @@ class App extends React.Component {
     this.nextPlace = this.nextPlace.bind(this)
     this.postFormDataPlace = this.postFormDataPlace.bind(this)
     this.postFormDataVacat = this.postFormDataVacat.bind(this)
+    this.postFormDataEvent = this.postFormDataEvent.bind(this)
   }
 
    nextVacationer() {
@@ -164,6 +165,33 @@ class App extends React.Component {
     })
   }
 
+  postFormDataEvent(formData) {
+    axios.post('http://localhost:8000/api/happenings', {
+      happening_name: formData.event,
+      happening_picture: formData.picture,
+      happening_category: formData.category,
+      happening_description: formData.description,
+      happening_date: formData.date,
+      happening_date_end: formData.date_end,
+      happening_time: formData.time,
+      happening_time_end: formData.time_end,
+      place_id: formData.placeId,
+      isItBookable: formData.checked,
+      seats_bookable: formData.seats_bookable,
+    })
+      .then(response => {
+        if (response.status === 201) {
+          this.setState(prevState => {
+            return {events: [...prevState.events, response.data]}
+          }, () => {        
+            alert("Votre événement a été créé!")
+          })
+          } else {
+            console.log(response)
+          }
+      })
+    }
+
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
     return (
@@ -221,6 +249,9 @@ class App extends React.Component {
           </Route>
           <Route exact path='/formvacationer'>
             <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
+          </Route>
+          <Route exact path='/formevents'>
+            <FormEvent postFormDataEvent={this.postFormDataEvent}/>
           </Route>
           <Route path='/vacationer/delete'>
             <>
@@ -354,9 +385,7 @@ class App extends React.Component {
             )))}
             </Route>
 
-          <Route exact path='/formevents'>
-            <FormEvent />
-          </Route>
+         
           <Route exact path='/uploadimages'>
             <UploadImage />
           </Route>
