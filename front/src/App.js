@@ -44,7 +44,8 @@ class App extends React.Component {
     }
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
-    this.postFormData = this.postFormData.bind(this)
+    this.postFormDataPlace = this.postFormDataPlace.bind(this)
+    this.postFormDataVacat = this.postFormDataVacat.bind(this)
   }
 
    nextVacationer() {
@@ -112,7 +113,7 @@ class App extends React.Component {
    
   }
 
-  postFormData(formData) {
+  postFormDataPlace(formData) {
     axios.post('http://localhost:8000/api/places', {
       local_name: formData.name,
       local_photo: formData.photo,
@@ -132,6 +133,34 @@ class App extends React.Component {
       } else {
         console.log(response)
       }
+    })
+  }
+
+  postFormDataVacat(formData) {
+    axios.post('http://localhost:8000/api/vacationers', {
+      tourist_firstname: formData.firstname,
+      tourist_lastname: formData.lastname,
+      tourist_login: formData.username,
+      tourist_password: formData.password,
+      tourist_city: formData.city,
+      tourist_zip: formData.zip,
+      tourist_address1: formData.adress,
+      tourist_phone: formData.phone,
+      tourist_email: formData.email,
+      tourist_photo: formData.photo,
+      birthday: formData.birthday,
+      admin_id: formData.adminId
+    })
+    .then(response => {
+      if (response.status === 201) { 
+        this.setState(prevState => {
+          return {vacationers: [...prevState.vacationers, response.data]}
+        }, () => {        
+          alert("Votre compte a été créé!")
+        })
+        } else {
+          console.log(response)
+        }
     })
   }
 
@@ -171,9 +200,6 @@ class App extends React.Component {
           <Route exact path='/formadmin'>
             <FormAdmin />
           </Route>
-          <Route exact path='/formplace'>
-            <FormPlace postFormData={this.postFormData} />
-          </Route>
           <Route exact path='/place' >
             {this.state.places && (
               <DisplayPlace 
@@ -189,7 +215,13 @@ class App extends React.Component {
                 nextVacationer={this.nextVacationer}
               />
             )}
-          </Route>        
+          </Route>  
+          <Route exact path='/formplace'>
+            <FormPlace postFormDataPlace={this.postFormDataPlace} />
+          </Route>
+          <Route exact path='/formvacationer'>
+            <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
+          </Route>
           <Route path='/vacationer/delete'>
             <>
             <Sidebar/>
@@ -210,9 +242,7 @@ class App extends React.Component {
               )))}
             </>
           </Route>        
-          <Route exact path='/formvacationer'>
-            <FormVacationer vacationer={this.state.vacationers}/>
-          </Route>
+          
           <Route exact path='/events'>
             <Sidebar/>
             <EventBar/>
