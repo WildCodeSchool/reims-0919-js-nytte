@@ -14,7 +14,6 @@ function DeletionOfplaces({id, name, }){
     <div id="ProfilVacationer">
       <p className="nameVac">ID:{id} {name}</p>
     </div>
-    <button id="buttonEye" type="button"></button>
     <button id="buttonEdit" type="button"></button>
     <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} value='Supprimer'/>   
   </div>

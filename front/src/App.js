@@ -17,14 +17,15 @@ import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
-import BookBar from './component/BookBar.js'
+import BookBarLight from './component/BookBarLight.js'
 import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
 import DeletionOfPlaces from './component/DeletionOfPlaces.js'
 import DeletionOfEvents from './component/DeletionOfEvents'
 import DeletionOfVacationers from './component/DeletionOfVacationers.js'
-import DeletionOfBookings from './component/DeletionOfBookings.js'
+import DeletionOfBookingsByEvent from './component/DeletionOfBookingsByEvent.js'
+import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
 
@@ -107,7 +108,7 @@ class App extends React.Component {
           books: data})
       })    
     
-    axios.get('http://localhost:8000/api/bookings/10')
+    axios.get('http://localhost:8000/api/bookings/:id')
       .then(response => response.data)
       .then(data => {
         this.setState({
@@ -247,7 +248,7 @@ class App extends React.Component {
               )))}
             </>
           </Route>    
-          <Route path='/bookings/delete'>
+          <Route exact path='/bookings/event/delete'>
             <>
             <Sidebar/>
             <CancelBar />
@@ -255,17 +256,38 @@ class App extends React.Component {
               <h1 style={{textAlign:'center'}}>Réservation</h1>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
             </div>
-              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
-                  <DeletionOfBookings
-                    id={vacationer.id}
-                    firstname={vacationer.tourist_firstname}
-                    lastname={vacationer.tourist_lastname}
-                    city={vacationer.tourist_city}
-                    zip={vacationer.tourist_zip}
+            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+                  <DeletionOfBookingsByEvent
+                    id={book.happening_id}
+                    date={book.happening_date}
+                    time={book.happening_time}
+                    name={book.happening_name}
+                    bookable={book.seats_bookable}
+                    booked={book.places_booked}
+                    free={book.free_places}
                   />
               )))}
             </>
           </Route>  
+          <Route path='/bookings/tourist'>
+            <>
+            <Sidebar/>
+            <BookBarLight />
+            <div>
+              <h1 style={{textAlign:'center'}}>Réservation</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
+            </div>
+            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+                  <DeletionOfBookingsByTourist
+                    id={book.happening_id}
+                    date={book.happening_date}
+                    time={book.happening_time}
+                    name={book.happening_name}
+                  />
+              )))}
+            </>
+          </Route>  
+
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationers}/>
           </Route>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Display.css';
 import axios from 'axios'
+import {useHistory} from 'react-router-dom';
 
 const deleteFormData = id => 
   axios.delete(`http://localhost:8000/api/happenings/${id}`)
@@ -9,7 +10,7 @@ const deleteFormData = id =>
     })
 
 function DeletionOfEvents({id, title, date, time}){
-  console.log(title.lenght)
+  let history=useHistory()
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
@@ -21,7 +22,7 @@ function DeletionOfEvents({id, title, date, time}){
     <div className="adresseVac">
       <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
     </div>
-    <button id="buttonEye" type="button"></button>
+    <button id="buttonEye" type="button" onClick={event=> { event.preventDefault(); history.push(`/bookings/tourist/delete`) }} href={'/bookings/event/delete'}></button>
     <button id="buttonEdit" type="button"></button>
     <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} value='Supprimer'> </button>  
   </div>
