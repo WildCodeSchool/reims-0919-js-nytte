@@ -19,7 +19,7 @@ function DeleteOfVacationers({id, lastname, firstname, zip, city}){
     </div>
     <button id="buttonEye" type="button"></button>
     <button id="buttonEdit" type="button"></button>
-    <button id="buttonDelete" type="button" onClick={deleteFormData} type='submit' value='Supprimer'> </button>  
+    <button id="buttonDelete" type="button" onClick={() =>deleteFormData()} type='submit' value='Supprimer'> </button>  
   </div>
   )
 }

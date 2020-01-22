@@ -5,7 +5,6 @@ import axios from 'axios'
 const deleteFormData = id => 
   axios.delete(`http://localhost:8000/api/places/${id}`)
     .then(response => {
-      console.log(response)
       (response.status === 200) && (alert("le lieu est supprimé !"))
     })
 
