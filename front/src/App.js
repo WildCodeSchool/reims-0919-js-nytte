@@ -44,7 +44,9 @@ class App extends React.Component {
     }
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
-    this.postFormData = this.postFormData.bind(this)
+    this.postFormDataPlace = this.postFormDataPlace.bind(this)
+    this.postFormDataVacat = this.postFormDataVacat.bind(this)
+    this.postFormDataEvent = this.postFormDataEvent.bind(this)
   }
 
    nextVacationer() {
@@ -112,7 +114,7 @@ class App extends React.Component {
    
   }
 
-  postFormData(formData) {
+  postFormDataPlace(formData) {
     axios.post('http://localhost:8000/api/places', {
       local_name: formData.name,
       local_photo: formData.photo,
@@ -134,6 +136,61 @@ class App extends React.Component {
       }
     })
   }
+
+  postFormDataVacat(formData) {
+    axios.post('http://localhost:8000/api/vacationers', {
+      tourist_firstname: formData.firstname,
+      tourist_lastname: formData.lastname,
+      tourist_login: formData.username,
+      tourist_password: formData.password,
+      tourist_city: formData.city,
+      tourist_zip: formData.zip,
+      tourist_address1: formData.adress,
+      tourist_phone: formData.phone,
+      tourist_email: formData.email,
+      tourist_photo: formData.photo,
+      birthday: formData.birthday,
+      admin_id: formData.adminId
+    })
+    .then(response => {
+      if (response.status === 201) { 
+        this.setState(prevState => {
+          return {vacationers: [...prevState.vacationers, response.data]}
+        }, () => {        
+          alert("Votre compte a été créé!")
+        })
+        } else {
+          console.log(response)
+        }
+    })
+  }
+
+  postFormDataEvent(formData) {
+    axios.post('http://localhost:8000/api/happenings', {
+      happening_name: formData.event,
+      happening_picture: formData.picture,
+      happening_category: formData.category,
+      happening_description: formData.description,
+      happening_date: formData.date,
+      happening_date_end: formData.date_end,
+      happening_time: formData.time,
+      happening_time_end: formData.time_end,
+      place_id: formData.placeId,
+      isItBookable: formData.checked,
+      seats_bookable: formData.seats_bookable,
+    })
+      .then(response => {
+        if (response.status === 201) {
+          this.setState(prevState => {
+            return {events: [...prevState.events, response.data]}
+          }, () => {        
+            alert("Votre événement a été créé!")
+          })
+          } else {
+            console.log(response)
+          }
+      })
+    }
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
@@ -171,9 +228,6 @@ class App extends React.Component {
           <Route exact path='/formadmin'>
             <FormAdmin />
           </Route>
-          <Route exact path='/formplace'>
-            <FormPlace postFormData={this.postFormData} />
-          </Route>
           <Route exact path='/place' >
             {this.state.places && (
               <DisplayPlace 
@@ -189,7 +243,16 @@ class App extends React.Component {
                 nextVacationer={this.nextVacationer}
               />
             )}
-          </Route>        
+          </Route>  
+          <Route exact path='/formplace'>
+            <FormPlace postFormDataPlace={this.postFormDataPlace} />
+          </Route>
+          <Route exact path='/formvacationer'>
+            <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
+          </Route>
+          <Route exact path='/formevents'>
+            <FormEvent postFormDataEvent={this.postFormDataEvent}/>
+          </Route>
           <Route path='/vacationer/delete'>
             <>
             <Sidebar/>
@@ -203,9 +266,7 @@ class App extends React.Component {
                                 )))}
             </>
           </Route>        
-          <Route exact path='/formvacationer'>
-            <FormVacationer vacationer={this.state.vacationers}/>
-          </Route>
+          
           <Route exact path='/events'>
             <Sidebar/>
             <EventBar/>
@@ -304,9 +365,7 @@ class App extends React.Component {
             render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
           />
 
-          <Route exact path='/formevents'>
-            <FormEvent />
-          </Route>
+         
           <Route exact path='/uploadimages'>
             <UploadImage />
           </Route>

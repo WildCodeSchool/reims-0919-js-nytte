@@ -1,14 +1,11 @@
 import React from 'react'
 import './FormAdmin.css'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import UploadImage from './UploadImage'
 
 class FormVacationer extends React.Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.postFormData = this.postFormData.bind(this)
     this.state = {
       lastname: null,
       firstname: null,
@@ -24,7 +21,6 @@ class FormVacationer extends React.Component {
       adminId: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.postFormData = this.postFormData.bind(this)
     this.savePicture = this.savePicture.bind(this); 
   }
 
@@ -42,29 +38,9 @@ class FormVacationer extends React.Component {
     event.preventDefault()
   }
 
-  postFormData() {
-    axios.post('http://localhost:8000/api/vacationers', {
-      tourist_firstname: this.state.firstname,
-      tourist_lastname: this.state.lastname,
-      tourist_login: this.state.username,
-      tourist_password: this.state.password,
-      tourist_city: this.state.city,
-      tourist_zip: this.state.zip,
-      tourist_address1: this.state.adress,
-      tourist_phone: this.state.phone,
-      tourist_email: this.state.email,
-      tourist_photo: this.state.photo,
-      birthday: this.state.birthday,
-      admin_id: this.state.adminId
-    })
-    .then(response => {
-      (response.status === 200) && (alert("Votre compte a été créé!"))
-    })
-  }
-
   render() {
     return (
-      <div className = "formContainer">
+    <div className = "formContainer">
       <button className='arrowBack'>
         <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
       </button>
@@ -74,7 +50,7 @@ class FormVacationer extends React.Component {
           className='LogoNytte'
           alt='logo Nytte'></img>
         <h1>Création d'un vacancier</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className='form-example'>
             <label htmlFor='lastname'>Nom</label>
             <input
@@ -191,17 +167,18 @@ class FormVacationer extends React.Component {
                   savePicture = {this.savePicture}
            />
           </div>
-          <div className='inputForm'>
-            <input
-              onClick={this.postFormData}
-              type='submit'
-              value='VALIDER >'
-            />
-          </div>
         </form>
+        <button 
+          className="createButton"
+          onClick={() => this.props.postFormDataVacat(this.state)}
+          type='submit'
+          value='Créer'
+        >
+          Valider
+        </button>
       </div>
-      </div>
+    </div>
     )
   }
 }
-export default FormVacationer
+export default FormVacationer;

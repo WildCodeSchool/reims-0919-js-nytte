@@ -1,39 +1,37 @@
 import React from 'react';
 import './FormPlace.css'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import UploadImage from './UploadImage'
 
-
 class FormPlace extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        name: null,
-        photo: null,
-        description: null,
-        phone: null,
-        attachment: null,
-        logo: null,
-        adminId: null,
-      };
-      this.handleSubmit = this.handleSubmit.bind(this)
-      this.savePicture = this.savePicture.bind(this); 
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: null,
+      photo: null,
+      description: null,
+      phone: null,
+      attachment: null,
+      logo: null,
+      adminId: null,
+    };
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.savePicture = this.savePicture.bind(this); 
+  }
 
-    savePicture(photo) {
-      this.setState({photo: `pictures/${photo}`})
-    }
+  savePicture(photo) {
+    this.setState({photo: `pictures/${photo}`})
+  }
 
-    change = e => {
-      this.setState({
-        [e.target.id]: e.target.value
-      })
-    }
+  change = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
     
-    handleSubmit(event) {
-      event.preventDefault()
-    }
+  handleSubmit(event) {
+    event.preventDefault()
+  }
 
     render() {
       return (
@@ -112,14 +110,14 @@ class FormPlace extends React.Component {
         </form>
         <button 
           className="createButton"
-          onClick={() => this.props.postFormData(this.state)}
+          onClick={() => this.props.postFormDataPlace(this.state)}
           type='submit'
           value='Créer'
         >
           Créer
         </button>
     </div>
-    );
+    )
   }
 }
 export default FormPlace;
