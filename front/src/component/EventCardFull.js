@@ -26,11 +26,14 @@ function renderSwitch(category){
   }
 }
 
-const book = (eventId, token) =>
-  axios.post('http://localhost:8000/api/bookings', {
+const book = (eventId, token) => {
+    axios.post('http://localhost:8000/api/bookings', {
     happening_id: eventId,
     tourist_id: token
-  })
+    })
+    .then(response => response.status === 200 && alert("Votre réservation a été effectuée !"))
+    .catch(error => alert('Vous avez déjà réservé cet événement'))
+}
 
 function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, map, token}){
   const eventId = useParams().id;

@@ -1,16 +1,48 @@
 const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
+const jwt = require('jsonwebtoken');
+const secret = "secret";
+const verifyToken = require("../verifyToken");
 
-router.get('/', (request, response) => {
-  connection.query('SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL ORDER BY happening_date ASC', (err, results) => {
-    if (err) {
-      response.status(500).send('Error retrieving happening');
+
+router.get('/', verifyToken, (request, response) => {
+  jwt.verify(request.token, secret, (errJwt, authData) => {
+    if (errJwt) {
+      res.status(401).send("Erreur d'authentification");
     } else {
-      response.json(results);
-    }
-  });
-  })
+      if (authData.user.type === "1") {
+        // vacationer
+        connection.query(
+          'SELECT DISTINCT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id INNER JOIN vacationer ON admin.id=vacationer.admin_id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND vacationer.id=? ORDER BY happening_date ASC',
+          [authData.user.id],
+          (errSql, results) => {
+            if (errSql) {
+              response.status(500).send('Error retrieving places');
+            } else {
+              response.json(results);
+            }
+          }
+        );
+      } else if (authData.user.type === "2") {
+        // admin
+        connection.query(
+          'SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND place.admin_id=? ORDER BY happening_date ASC',
+              [authData.user.id],
+              (errSql, results) => {
+                if (errSql) {
+                  response.status(500).send('Error retrieving places');
+                } else {
+                  response.json(results);
+                }
+              }
+            );
+          } else {
+            response.sendStatus(421)
+          }
+        }
+      })
+    })
   
   router.get('/:id', (request, response) => {
     connection.query('SELECT happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time, happening_time_end, happening_date_end, isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening.id = ? AND happening_date>=DATE(NOW()) OR happening_date IS NULL ORDER BY happening_date ASC', [request.params.id], (err, results) => {
@@ -48,22 +80,15 @@ router.put('/:id', (request, response) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const idBook = req.params.id;
-  connection.query('SELECT concat(happening_id,'-',tourist_id) AS num_book, happening_id, seats_bookable,	happening_name, happening_date, happening_time, tourist_id, tourist_lastname, tourist_firstname FROM booking INNER JOIN happening  ON happening_id=happening.id INNER JOIN vacationer ON tourist_id=vacationer.id WHERE happening.id=?', idBook, (errGet, resultsGet) => {
-    if(resultsGet && resultsGet.length){
-      res.send("Merci de supprimer les réservations liées au préalable")
-    }else if(resultsGet.length===0){
-      connection.query('DELETE FROM happening WHERE happening_id = ?', [idBook], err => {
-        if (err) {
-          console.log(err);
-          res.status(500).send(`Erreur lors de la suppression d'un évènement, supprimer les réservations sur ${idBook}`);
-        } else {
-          res.sendStatus(200);
-      }
-    })}
-  })
-})
-
-
+  const idEvent = req.params.id;
+  connection.query('DELETE FROM event WHERE tourist_id = ?', [idEvent], err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Erreur lors de la suppression d'un lieu, supprimer les évènements sur ${idEvent}`);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
 
 module.exports = router

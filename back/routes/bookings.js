@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
 const jwt = require('jsonwebtoken');
+const secret = "secret";
+const verifyToken = require("../verifyToken");
 
 router.get('/', (request, response) => {
   connection.query(
@@ -14,6 +16,45 @@ router.get('/', (request, response) => {
       }
   });
 })
+
+router.get('/status', verifyToken, (request, response) => {
+  jwt.verify(request.token, secret, (errJwt, authData) => {
+    if (errJwt) {
+      res.status(401).send("Erreur d'authentification");
+    } else {
+      if (authData.user.type === "1") {
+        // vacationer
+        connection.query(
+          "SELECT happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening ON happening_id=happening.id INNER JOIN place ON happening.place_id=place.id INNER JOIN vacationer ON booking.tourist_id=vacationer.id WHERE happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL AND booking.tourist_id=? GROUP BY happening_id ORDER BY happening_date ASC"
+          [authData.user.id],
+          (errSql, results) => {
+            if (errSql) {
+              response.status(500).send('Error retrieving booking');
+            } else {
+              response.json(results);
+            }
+          }
+        );
+      } else if (authData.user.type === "2") {
+        // admin
+        connection.query(
+          "SELECT happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening ON  happening_id=happening.id INNER JOIN place ON happening.place_id=place.id WHERE happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL AND place.admin_id=? GROUP BY happening_id ORDER BY happening_date ASC",
+              [authData.user.id],
+              (errSql, results) => {
+                if (errSql) {
+                  response.status(500).send('Error retrieving booking');
+                } else {
+                  response.json(results);
+                }
+              }
+            );
+          } else {
+            response.sendStatus(421)
+          }
+        }
+      })
+    })
+
 
 router.get('/status', (request, response) => {
     connection.query('select happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening  WHERE happening_id=happening.id AND happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL GROUP BY happening_id ORDER BY happening_date ASC', (err, results) => {
@@ -65,8 +106,12 @@ router.post('/', (request, response) => {
     connection.query('INSERT INTO booking VALUES (?, ?)', [happeningId, userId], (SQLerr, results) => {
       console.log(results)
       if (SQLerr) {
-        console.log(SQLerr);
-        response.status(500).send("Error saving a new booking");
+        if (SQLerr.code === "ER_DUP_ENTRY") {
+          response.status(409).send("Réservation déjà effectuée !");
+        } else {
+          console.log(SQLerr.code);
+          response.status(500).send("Error saving a new booking");
+        }
       } else {
         response.sendStatus(200);
       }
