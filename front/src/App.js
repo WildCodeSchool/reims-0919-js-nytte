@@ -77,13 +77,6 @@ class App extends React.Component {
         })
       })
 
-    axios.get('http://localhost:8000/api/places')
-      .then(response => {
-        this.setState({
-          places: response.data
-        })
-      })
-
     axios.get('http://localhost:8000/api/vacationers')
       .then(response => {
         this.setState({
@@ -115,7 +108,16 @@ class App extends React.Component {
    
   }
 
-  postFormDataPlace(formData) {
+  componentDidUpdate() {
+    this.state.token && !this.state.places.length && axios.get('http://localhost:8000/api/places')
+    .then(response => {
+      this.setState({
+        places: response.data
+      })
+    })
+  }
+
+  postFormData(formData) {
     axios.post('http://localhost:8000/api/places', {
       local_name: formData.name,
       local_photo: formData.photo,
@@ -137,6 +139,8 @@ class App extends React.Component {
       }
     })
   }
+
+  setToken = token => this.setState({token})
 
   postFormDataVacat(formData) {
     axios.post('http://localhost:8000/api/vacationers', {
@@ -200,11 +204,11 @@ class App extends React.Component {
           <Route path="/">
             <Route exact path='/login'>
             {loggedIn ? <Redirect to="/displayadmin" /> :
-              <LoginVacationer token={this.state.token} setToken={(token) => this.setState({token})} />}
+              <LoginVacationer token={this.state.token} setToken={this.setToken} />}
             </Route>
             <Route exact path='/loginadmin'>
             {loggedIn ? <Redirect to="/displayadmin" /> :
-              <LoginAdmin isAdmin={this.state.isAdmin} setAsAdmin={(isAdmin)=> this.setState({isAdmin})}token={this.state.token} setToken={(token) => this.setState({token})} />}
+              <LoginAdmin isAdmin={this.state.isAdmin} setAsAdmin={(isAdmin)=> this.setState({isAdmin})}token={this.state.token} setToken={this.setToken} />}
             </Route>
             {loggedIn ? <>
           <Route exact path='/displayadmin'>
