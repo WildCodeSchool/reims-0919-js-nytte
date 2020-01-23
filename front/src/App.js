@@ -23,7 +23,7 @@ import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
-
+import ModifPlace from './component/ModifPlace.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -266,6 +266,9 @@ class App extends React.Component {
           <Route exact path='/formevents'>
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
+          </Route>
+          <Route exact path='/modifplace'>
+            <ModifPlace place={this.state.places[this.state.currentPlace]} />
           </Route>
           <Route path='/vacationer/delete'>
             <>
