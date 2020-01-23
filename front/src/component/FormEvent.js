@@ -91,14 +91,21 @@ class FormEvent extends React.Component {
             </div> 
             <hr/>
             <div className="form-event">
-                <label htmlFor="placeId">N° de lieu</label>
-                <input
+                <label htmlFor="placeId">Lieu</label>
+                <select value={this.state.value} name="placeId" id="placeId" onChange={this.change}>
+                  {this.props.places.map((place) => 
+                      <option key={this.props.places.id} 
+                        value={place.id}>{place.local_name}</option>            
+                  )}
+                </select>
+
+                {/* <input
                   type="text"
                   name="placeId"
                   id="placeId"
                   onChange={this.change}
                   required
-                />
+                /> */}
             </div> 
             <hr/>
             <div className="form-event">
