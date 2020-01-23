@@ -1,6 +1,5 @@
 import React from 'react';
 import Switch from "react-switch";
-import axios from 'axios'
 import './FormEvent.css'
 import UploadImage from './UploadImage'
 import { Link } from 'react-router-dom'
@@ -24,7 +23,6 @@ class FormEvent extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.postFormData = this.postFormData.bind(this);
     this.savePicture = this.savePicture.bind(this);      
   }
   
@@ -46,24 +44,7 @@ class FormEvent extends React.Component {
     event.preventDefault()
   }
 
-  postFormData() {
-    axios.post('http://localhost:8000/api/happenings', {
-      happening_name: this.state.event,
-      happening_picture: this.state.picture,
-      happening_category: this.state.category,
-      happening_description: this.state.description,
-      happening_date: this.state.date,
-      happening_date_end: this.state.date_end,
-      happening_time: this.state.time,
-      happening_time_end: this.state.time_end,
-      place_id: this.state.placeId,
-      isItBookable: this.state.checked,
-      seats_bookable: this.state.seats_bookable,
-    })
-      .then(response => {
-        (response.status === 200) && (alert("Votre événement a été créé !"))
-      })
-    }
+
 
     render() {
       return (
@@ -110,14 +91,14 @@ class FormEvent extends React.Component {
             </div> 
             <hr/>
             <div className="form-event">
-                <label htmlFor="placeId">N° de lieu</label>
-                <input
-                  type="text"
-                  name="placeId"
-                  id="placeId"
-                  onChange={this.change}
-                  required
-                />
+                <label htmlFor="placeId">Lieu</label>
+                <select value={this.state.value} name="placeId" id="placeId" onChange={this.change}>
+                  {this.props.places.map((place) => 
+                      <option key={this.props.places.id} 
+                        value={place.id}>{place.local_name}</option>            
+                  )}
+                </select>
+
             </div> 
             <hr/>
             <div className="form-event">
@@ -192,7 +173,7 @@ class FormEvent extends React.Component {
         </form>
         <button 
           className="createButton"
-          onClick={this.postFormData}
+          onClick={() => this.props.postFormDataEvent(this.state)}
           type='submit'
           value='Créer'
         >

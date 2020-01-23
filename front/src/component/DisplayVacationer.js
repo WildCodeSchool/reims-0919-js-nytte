@@ -3,22 +3,20 @@ import './Display.css';
 import { Link } from 'react-router-dom'
 
 function DisplayVacationer(props){
-  let url = props.vacationer.tourist_photo;
+
+
+  let url = 'https://cutt.ly/JrieTtL'
+  if (props.vacationer.tourist_photo) {
+    url = props.vacationer.tourist_photo;
   if (!url.startsWith('http')) {
     url = `http://localhost:8000/${props.vacationer.tourist_photo}`;
-  }
-  
+  }}
+
   let imgValues = {
-    src: 'https://cutt.ly/JrieTtL',
-    alt: 'image avatar par défaut',
+    src: url,
+    alt: 'profil du vacancier'
   }
-  if (props.vacationer.tourist_photo) {
-    imgValues = {
-      src: url,
-      alt: 'profil du vacancier',
-    }
-  }
-  
+ 
   return(
   <div id="pageVacationer">
     <button className='arrowBack'>
