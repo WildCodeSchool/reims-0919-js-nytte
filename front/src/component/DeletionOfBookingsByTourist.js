@@ -3,12 +3,13 @@ import './Display.css';
 import axios from 'axios'
 
 const deleteFormData = id => 
-  axios.delete(`http://localhost:8000/api/tourist/bookings/${id}`)
+  axios.delete(`http://localhost:8000/api/bookings/tourist/${id}`)
     .then(response => {
       (response.status === 200) && (alert("la réservation est supprimée !"))
     })
 
 function DeleteOfBookingsByTourist({date, time, name, id}){
+  console.log({id})
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
