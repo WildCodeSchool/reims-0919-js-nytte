@@ -16,7 +16,7 @@ function EventCard({id, title, photo, category, date, endDate, time, endTime, is
     }
   }
   return(
-  <div className="CardLight">
+  <div onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} className="CardLight">
     <div className="pictureCardLight">
             
       <img className="photoCardProfil" src={imgValues.src} alt={imgValues.alt}/>
@@ -34,7 +34,6 @@ function EventCard({id, title, photo, category, date, endDate, time, endTime, is
         </div>
          {isItBookable ? <p className="viewBook">À réserver</p> : ""} 
           <div className="flèche">
-          <a className="CardButtonF" onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} href={`/events/${id}`}>&rsaquo;</a>
           </div>
       </div>
     </div>

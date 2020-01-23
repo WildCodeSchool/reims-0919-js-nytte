@@ -95,32 +95,32 @@ app.post('/api/admins/login', function(request, response) {
 })
   
 app.post('/api/vacationer/login', function(request, response) {
-const formData = request.body
-connection.query('SELECT id, tourist_login, tourist_password FROM vacationer WHERE tourist_login = ?', 
-  formData.email, (error,result) => {
-    if(error) {
-      response.status(500).send('Server error 500')
-    } else if (result.length === 0) {
-      response.status(400).send('Mauvais Email')
-    } else {
-      if (result[0].tourist_password === formData.password) {
-        const payload = {
-          user: {
-            sub: request.body.email,
-            id: result[0].id
-          }
-        }
-        jwt.sign(payload, secret, (err, token) => {
-          response.json({
-            token
-          })
-        })
+  const formData = request.body
+  connection.query('SELECT id, tourist_login, tourist_password FROM vacationer WHERE tourist_login = ?', 
+    formData.email, (error,result) => {
+      if(error) {
+        response.status(500).send('Server error 500')
+      } else if (result.length === 0) {
+        response.status(400).send('Mauvais Email')
       } else {
-          response.status(400).send('Mauvais Password')
-        }     
-    }
-  });
-})
+        if (result[0].tourist_password === formData.password) {
+          const payload = {
+            user: {
+              sub: request.body.email,
+              id: result[0].id
+            }
+          }
+          jwt.sign(payload, secret, (err, token) => {
+            response.json({
+              token
+            })
+          })
+        } else {
+            response.status(400).send('Mauvais Password')
+          }     
+      }
+    });
+  })
 
 app.get('/api/testVerify', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authorizedData) => {
@@ -145,12 +145,16 @@ const vacationers = require('./routes/vacationers');
 const happenings = require('./routes/happenings');
 const bookings = require('./routes/bookings');
 const logins = require('./routes/login');
+const tourist=require('./routes/bookings');
+const event=require('./routes/bookings');
 app.use('/api/admins', admins);
 app.use('/api/places', places);
 app.use('/api/vacationers', vacationers);
 app.use('/api/happenings', happenings);
 app.use('/api/bookings', bookings);
 app.use('/api/logins', logins);
+app.use('/api/bookings/tourist', tourist);
+app.use('/api/bookings/event', event);
 
 app.listen(port, (err) => {
   if (err) {

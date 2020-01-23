@@ -162,10 +162,10 @@ GET http://localhost:8000/api/bookings/10
 DELETE http://localhost:8000/api/vacationers/14
 
 ### DELETE a booking
-DELETE http://localhost:8000/api/tourist/bookings/1
+DELETE http://localhost:8000/api/bookings/tourist/10
 
 ### DELETE a booking
-DELETE http://localhost:8000/api/event/bookings/1
+DELETE http://localhost:8000/api/bookings/event/1
 
 ### DELETE a place
 DELETE http://localhost:8000/api/places/3
