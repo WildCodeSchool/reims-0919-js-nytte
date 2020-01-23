@@ -7,6 +7,7 @@ const port = 8000;
 const secret = 'secret'
 const connection = require("./conf");
 const jwt = require('jsonwebtoken');
+const verifyToken = require("./verifyToken");
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -38,20 +39,6 @@ app.post('/api/upload', (req, res) => {
     return res.status(200).send(req.file)
   })
 })
-//
-function verifyToken(req, res, next){
-  const bearerHeader = req.headers.authorization
-  console.log(req.headers)
-  if(typeof bearerHeader !== 'undefined'){
-      const bearer = bearerHeader.split(' ') // split bearerHeader in a new Array
-      const bearerToken = bearer[1] // store index 1 of the newly created array in a new variable bearToken
-      req.token = bearerToken
-      next() // step to the next middleware
-  } else{
-      res.sendStatus(403)
-      console.log('hello im here')
-  }
-}
 
 app.post('/api/admins', (request, response) => {
   const formData = request.body;
