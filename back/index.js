@@ -145,12 +145,16 @@ const vacationers = require('./routes/vacationers');
 const happenings = require('./routes/happenings');
 const bookings = require('./routes/bookings');
 const logins = require('./routes/login');
+const tourist=require('./routes/bookings');
+const event=require('./routes/bookings');
 app.use('/api/admins', admins);
 app.use('/api/places', places);
 app.use('/api/vacationers', vacationers);
 app.use('/api/happenings', happenings);
 app.use('/api/bookings', bookings);
 app.use('/api/logins', logins);
+app.use('/api/bookings/tourist', tourist);
+app.use('/api/bookings/event', event);
 
 app.listen(port, (err) => {
   if (err) {
