@@ -31,8 +31,8 @@ const book = (eventId, token) => {
     happening_id: eventId,
     tourist_id: token
     })
-    .then(response => response.status === 200 && alert("Votre événement a été créé !"))
-    .catch(error => console.log(error))
+    .then(response => response.status === 200 && alert("Votre réservation a été effectuée !"))
+    .catch(error => alert('Vous avez déjà réservé cet événement'))
 }
 
 function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, map, token}){
