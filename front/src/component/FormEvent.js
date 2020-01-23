@@ -99,13 +99,6 @@ class FormEvent extends React.Component {
                   )}
                 </select>
 
-                {/* <input
-                  type="text"
-                  name="placeId"
-                  id="placeId"
-                  onChange={this.change}
-                  required
-                /> */}
             </div> 
             <hr/>
             <div className="form-event">
