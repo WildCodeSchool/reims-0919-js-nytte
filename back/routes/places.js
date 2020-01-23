@@ -10,14 +10,35 @@ router.get('/', verifyToken, (request, response) => {
     if (errJwt) {
       res.status(401).send("Erreur d'authentification");
     } else {
-      console.log(authData.user.type === "1" ? "vacancier" : authData.user.type === "2" ? "admin" : "...")
-      connection.query('SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (errSql, results) => {
-        if (errSql) {
-          response.status(500).send('Error retrieving places');
-        } else {
-          response.json(results);
-        }
-      });
+      if (authData.user.type === "1") {
+        // vacationer
+        connection.query(
+          'SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo,vacationer.admin_id FROM place INNER JOIN admin ON place.admin_id=admin.id INNER JOIN vacationer ON vacationer.admin_id=admin.id WHERE vacationer.id=?',
+          [authData.user.id],
+          (errSql, results) => {
+            if (errSql) {
+              response.status(500).send('Error retrieving places');
+            } else {
+              response.json(results);
+            }
+          }
+        );
+      } else if (authData.user.type === "2") {
+        // admin
+        connection.query(
+          'SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin ON place.admin_id=admin.id WHERE place.admin_id=?',
+          [authData.user.id],
+          (errSql, results) => {
+            if (errSql) {
+              response.status(500).send('Error retrieving places');
+            } else {
+              response.json(results);
+            }
+          }
+        );
+      } else {
+        response.sendStatus(421)
+      }
     }
   })
 })
