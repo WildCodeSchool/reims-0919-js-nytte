@@ -55,8 +55,12 @@ router.post('/', (request, response) => {
     connection.query('INSERT INTO booking VALUES (?, ?)', [happeningId, userId], (SQLerr, results) => {
       console.log(results)
       if (SQLerr) {
-        console.log(SQLerr);
-        response.status(500).send("Error saving a new booking");
+        if (SQLerr.code === "ER_DUP_ENTRY") {
+          response.status(409).send("Réservation déjà effectuée !");
+        } else {
+          console.log(SQLerr.code);
+          response.status(500).send("Error saving a new booking");
+        }
       } else {
         response.sendStatus(200);
       }
