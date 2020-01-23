@@ -126,6 +126,16 @@ text-align:center;
   background-image:url('https://zupimages.net/up/20/04/noz2.png')
 }
 
+.logout {
+  margin-top: 33%;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: lightsteelblue;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 
 @media screen and (min-width: 480px)
 {

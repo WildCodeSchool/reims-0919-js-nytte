@@ -16,6 +16,7 @@ function Sidebar(props){
         <Link className="menu-item-bar-actu" to="/vacationer">
           Vacanciers
         </Link>
+        <Link className='logout' onClick={props.deleteToken} to='/login'>Se déconnecter</Link>
       </Menu>)
   } else {
     return(
@@ -52,6 +53,7 @@ function Sidebar(props){
         <Link className="menu-item-bar" to="/bookings">
           Réservations
         </Link>
+        <Link className='logout' onClick={props.deleteToken} to='/login'>Se déconnecter</Link>
       </Menu>
     );
   }
