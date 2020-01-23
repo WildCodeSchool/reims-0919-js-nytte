@@ -73,6 +73,7 @@ textarea{
 }
 
 .arrowBack {
+  right: 88%;
   width: 30px;
   height: 60px;
   background-color:#2d9486;

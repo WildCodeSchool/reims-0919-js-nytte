@@ -40,16 +40,16 @@ function Sidebar(props){
           Vacanciers
         </Link>      
   
-        <Link className="menu-item-bar-actu" to="/events">
+        <Link className="menu-item-bar" to="/events">
           Fil d'actu
         </Link>
-        <Link className="menu-item-bar-actu" to="/place">
+        <Link className="menu-item-bar" to="/place">
           Lieux
         </Link>
-        <Link className="menu-item-bar-actu" to="/vacationer">
+        <Link className="menu-item-bar" to="/vacationer">
           Vacanciers
         </Link>
-        <Link className="menu-item-bar-actu" to="/bookings">
+        <Link className="menu-item-bar" to="/bookings">
           Réservations
         </Link>
       </Menu>

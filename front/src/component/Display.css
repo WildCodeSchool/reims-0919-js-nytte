@@ -22,17 +22,24 @@
   border-radius: 2%;
 } 
 
-#pagePrinc, #pagePlace, #pageVacationer{
+#pagePrinc, #pagePlace{
   display:flex;
   flex-direction:column;
   height:70%;
   top: 0;
 }
 
+#mailPres p {
+  margin-left: 13%;
+}
+
 #pageVacationer{
+  border-radius: 0;
+  height: 100vh;
   display:flex;
   flex-direction:column;
-  height:100%;
+  align-items: center;
+
 }
 
 .photoProfil{
@@ -64,12 +71,10 @@
   height:30px;
 }
 
+
 #phonePres, #responsablePres, #mailPres{
   display:flex;
-  justify-content: space-between;
-  width:70%;
   align-items: center;
-  margin-left:15%;
 }
 .titreProfil{
 font-size:1.8em;
@@ -96,10 +101,19 @@ text-align:center;
 #ProfilVacationer{
   font-size:1em;
   min-width:230px;
+  height: 55%;
 }
 
 .adresseVac{
   min-width:100px;
+}
+.FlexRow p {
+  margin-left: 13%;
+  margin-top: 17%;
+}
+.FlexRow {
+  display: flex;
+  align-items: center;
 }
 
 #buttonDelete{
