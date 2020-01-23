@@ -109,7 +109,15 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    this.state.token && !this.state.places.length && axios.get('http://localhost:8000/api/places')
+    this.state.token && !this.state.places.length && axios.get(
+      'http://localhost:8000/api/places',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )
     .then(response => {
       this.setState({
         places: response.data
@@ -117,7 +125,7 @@ class App extends React.Component {
     })
   }
 
-  postFormData(formData) {
+  postFormDataPlace(formData) {
     axios.post('http://localhost:8000/api/places', {
       local_name: formData.name,
       local_photo: formData.photo,
