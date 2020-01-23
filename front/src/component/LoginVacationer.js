@@ -79,7 +79,8 @@ class LoginVacationer extends React.Component {
             />
           </div>
         </form>
-      <Link to='/loginadmin'>Vous êtes professionnel?</Link>
+      <p className='haveMystake'>Si vous rencontrez des problèmes pour vous connecter, veuillez vous rendre à l'accueil de votre lieu de vacances</p>
+      <Link className='uarepro' to='/loginadmin'>COMPTE PROFESSIONEL</Link>
       </div>
     )
   }

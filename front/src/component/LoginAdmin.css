@@ -39,6 +39,7 @@
     justify-content: center;
 }
 .form-login-admin label {
+    font-size: 18px;
     margin-left: 2%;
     margin-top: 4%;
     padding-top: 1%;
@@ -62,4 +63,21 @@
 .divHR {
     height: 0.15em;
     background-color: rgba(211, 211, 211, 0.644);
+}
+
+.haveMystake {
+    font-size: 14px;
+    text-decoration: underline;
+    width: 80%;
+    text-align: center;
+    margin: 15%;
+}
+
+.uarepro {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
 }
