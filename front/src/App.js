@@ -252,7 +252,8 @@ class App extends React.Component {
             <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
           </Route>
           <Route exact path='/formevents'>
-            <FormEvent postFormDataEvent={this.postFormDataEvent}/>
+            <FormEvent postFormDataEvent={this.postFormDataEvent}
+                       places={this.state.places}/>
           </Route>
           <Route path='/vacationer/delete'>
             <>
