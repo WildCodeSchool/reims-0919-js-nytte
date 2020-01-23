@@ -73,8 +73,7 @@ class LoginAdmin extends React.Component {
             />
           </div>
         </form>
-        <Link to='/login'>Vous êtes client?</Link>
-        
+        <Link className='uarepro, inadminlog' to='/login'>Vous êtes client?</Link>
       </div>
     )
   }
