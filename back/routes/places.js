@@ -3,6 +3,7 @@ const router = express.Router();
 const connection = require("../conf");
 
 router.get('/', (request, response) => {
+  console.log("Je suis ici", request.params.id)
   connection.query('SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving places');
@@ -13,6 +14,7 @@ router.get('/', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
+  console.log("Je suis dans :id", request.params.id)
   connection.query('SELECT local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id AND place.id = ?', [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving places');

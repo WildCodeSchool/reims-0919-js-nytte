@@ -79,7 +79,8 @@ app.post('/api/admins/login', function(request, response) {
         const payload = {
           user: {
             sub: request.body.email,
-            id: result[0].id
+            id: result[0].id,
+            type:"2"
           }
         }
         jwt.sign(payload, secret, (err, token) => {
@@ -107,7 +108,8 @@ app.post('/api/vacationer/login', function(request, response) {
           const payload = {
             user: {
               sub: request.body.email,
-              id: result[0].id
+              id: result[0].id,
+              type:"1"
             }
           }
           jwt.sign(payload, secret, (err, token) => {
