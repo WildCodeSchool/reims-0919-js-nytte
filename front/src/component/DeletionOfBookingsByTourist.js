@@ -1,10 +1,11 @@
 import React from 'react';
 import './Display.css';
 import axios from 'axios'
-import ListOfBooks from './ListOfBooks.js'
+import ListOfBooksByTourist from './ListOfBooksByTourist.js'
 import BookBarLight from './BookBarLight.js'
 import Sidebar from './Sidebar'
 import { Redirect } from "react-router-dom"
+import TotalBooks from './TotalBooks.js'
 
 export default class DeletionOfBookingsByTourist extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class DeletionOfBookingsByTourist extends React.Component {
             isLoaded: false
         }
         this.getRegisteredPeople = this.getRegisteredPeople.bind(this);
+        this.deleteFormData=this.deleteFormData.bind(this)
     }
 
     componentDidMount() {
@@ -44,12 +46,12 @@ export default class DeletionOfBookingsByTourist extends React.Component {
             <>
                 {!this.state.isLoaded
                     ? <p>Loading...</p>
-                    : this.state.listbooks.length
+                    : this.state.touristbooks.length
                         ?   <>
                                 <Sidebar />
                                 <BookBarLight />
                                     {(this.state.touristbooks.map(book =>
-                                        <ListOfBooks
+                                        <ListOfBooksByTourist
                                         id={book.tourist_id}
                                         idevent={book.happening_id}
                                         idbook={book.num_book}
@@ -61,6 +63,9 @@ export default class DeletionOfBookingsByTourist extends React.Component {
                                 <TotalBooks 
                                     booked={this.state.touristbooks.length}
                                 />
+                                <>
+                                <button id="buttonDelete" type="button" onClick={() => this.deleteFormData(this.id)} type='submit' value='Supprimer'> </button>
+                                </>  
                             </>
                         : <Redirect to="/events" />
                 }
@@ -71,19 +76,3 @@ export default class DeletionOfBookingsByTourist extends React.Component {
 
 
 
-function DeletionOfBookingsByTourist({date, time, name, id,idbook}){
-  console.log({idbook})
-  return(
-  <div id="ListOfVacationers">
-    <div id="ProfilVacationer">
-    {name===name.slice(0,20)
-      ?<p className="nameVac">{idbook}-{name}</p>
-      :<p className="nameVac">{idbook}-{name.slice(0,20)}...</p>}
-    </div>
-    <div className="adresseVac">
-      <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
-    </div>
-    <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} type='submit' value='Supprimer'> </button>  
-  </div>
-  )
-}

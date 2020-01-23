@@ -6,6 +6,7 @@ import DisplayPlace from './component/DisplayPlace.js'
 import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import DisplayProfileVacationer from './component/DisplayProfileVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
 import Sidebar from './component/Sidebar'
@@ -203,6 +204,21 @@ class App extends React.Component {
               />
             )}
           </Route>        
+          <Route exact path='/profilevacationer'>
+          {this.state.vacationers && React.Children.toArray(this.state.vacationers.map((vacationer) => (
+              <DisplayProfileVacationer
+                firstname={vacationer.tourist_firstname}
+                lastname={vacationer.tourist_lastname}
+                city={vacationer.tourist_city}
+                zip={vacationer.tourist_zip}
+                address={vacationer.tourist_address1}
+                birthday={vacationer.birthday}
+                photo={vacationer.tourist_photo}
+                phone={vacationer.tourist_phone}
+                email={vacationer.tourist_email}
+              />
+          )))}
+          </Route>    
           <Route path='/vacationers/delete'>
             <>
             <Sidebar/>
@@ -211,7 +227,7 @@ class App extends React.Component {
               <h1 style={{textAlign:'center'}}>Profils vacancier</h1>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'un profil est définitive !</p>
             </div>
-              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
+              {this.state.vacationers&&React.Children.toArray(this.state.vacationers.map((vacationer) => (
                   <DeletionOfVacationers
                     id={vacationer.id}
                     firstname={vacationer.tourist_firstname}
@@ -277,7 +293,7 @@ class App extends React.Component {
               )))}
             </>
           </Route>  
-          <Route path='/bookings/tourist/delete'>
+          {/*<Route path='/bookings/tourist/delete'>
             <>
             <Sidebar/>
             <BookBarLight />
@@ -295,7 +311,7 @@ class App extends React.Component {
                   />
               )))}
             </>
-          </Route>  
+            </Route>  */}
 
           <Route exact path='/formvacationer'>
             <FormVacationer vacationer={this.state.vacationers}/>
@@ -392,6 +408,13 @@ class App extends React.Component {
               />
           )))}
           </Route>
+
+          <Route
+            exact
+            path='/bookings/tourist/delete'
+            render={(props) => <DeletionOfBookingsByTourist />}
+          />
+
           <Route
             exact
             path='/bookings/:id'

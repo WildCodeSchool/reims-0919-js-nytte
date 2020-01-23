@@ -34,7 +34,7 @@ function Sidebar(props){
       <Link className="menu-item-bar" to="/bookings/event/delete">
         Réservations par évènement
       </Link> 
-      <Link className="menu-item-bar-actu" to="/bookings/tourist/delete">
+      <Link className="menu-item-bar" to="/bookings/tourist/delete">
         Réservations par vacancier
       </Link>    
 
@@ -45,6 +45,9 @@ function Sidebar(props){
         Lieux
       </Link>
       <Link className="menu-item-bar-actu" to="/vacationer">
+        Vacanciers
+      </Link>
+      <Link className="menu-item-bar-actu" to="/profilevacationer">
         Vacanciers
       </Link>
       <Link className="menu-item-bar-actu" to="/bookings">
