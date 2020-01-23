@@ -45,7 +45,8 @@ class App extends React.Component {
       currentEvent:0,
       token: null,
       books:null,
-      listbooks:null
+      listbooks:null,
+      touristbooks:null
     }
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
@@ -113,6 +114,13 @@ class App extends React.Component {
       .then(data => {
         this.setState({
           listbooks: data})
+      })
+
+    axios.get('http://localhost:8000/api/bookings/tourist/11')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          touristbooks: data})
       }) 
    
   }
@@ -269,20 +277,21 @@ class App extends React.Component {
               )))}
             </>
           </Route>  
-          <Route path='/bookings/tourist'>
+          <Route path='/bookings/tourist/delete'>
             <>
             <Sidebar/>
             <BookBarLight />
             <div>
-              <h1 style={{textAlign:'center'}}>Réservation</h1>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
             </div>
-            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+            {this.state.touristbooks && React.Children.toArray(this.state.touristbooks.map((touristbook) => (
                   <DeletionOfBookingsByTourist
-                    id={book.happening_id}
-                    date={book.happening_date}
-                    time={book.happening_time}
-                    name={book.happening_name}
+                    id={touristbook.tourist_id}
+                    idevent={touristbook.happening_id}
+                    idbook={touristbook.num_book}
+                    date={touristbook.tourist_date}
+                    time={touristbook.happening_time}
+                    name={touristbook.happening_name}
                   />
               )))}
             </>
