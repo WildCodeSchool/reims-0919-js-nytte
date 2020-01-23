@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
+const jwt = require('jsonwebtoken');
+const secret = "secret";
+const verifyToken = require("../verifyToken");
 
-router.get('/', (request, response) => {
-  console.log("Je suis ici", request.params.id)
-  connection.query('SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (err, results) => {
-   if (err) {
-    response.status(500).send('Error retrieving places');
-   } else {
-    response.json(results);
-   }
- });
+router.get('/', verifyToken, (request, response) => {
+  jwt.verify(request.token, secret, (errJwt, authData) => {
+    if (errJwt) {
+      res.status(401).send("Erreur d'authentification");
+    } else {
+      console.log(authData.user.type === "1" ? "vacancier" : authData.user.type === "2" ? "admin" : "...")
+      connection.query('SELECT place.id,local_name,local_photo,local_description,local_phone,local_pj,local_logo FROM place INNER JOIN admin WHERE place.admin_id=admin.id', [request.params.id], (errSql, results) => {
+        if (errSql) {
+          response.status(500).send('Error retrieving places');
+        } else {
+          response.json(results);
+        }
+      });
+    }
+  })
 })
 
 router.get('/:id', (request, response) => {
