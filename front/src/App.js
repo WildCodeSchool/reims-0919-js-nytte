@@ -39,7 +39,7 @@ class App extends React.Component {
       events: [],
       currentEvent:0,
       token: null,
-      books:null,
+      books:[],
       listbooks:null,
       isAdmin:false,
     }
@@ -76,35 +76,13 @@ class App extends React.Component {
           campings: response.data
         })
       })
-
-    axios.get('http://localhost:8000/api/vacationers')
-      .then(response => {
-        this.setState({
-          vacationers: response.data
-        })
-      })
-
-    axios.get('http://localhost:8000/api/happenings')
-      .then(response => {
-        this.setState({
-          events: response.data
-        })
-      })
-    
   
-    axios.get('http://localhost:8000/api/bookings/status')
-      .then(response => response.data)
-      .then(data => {
-        this.setState({
-          books: data})
-      })    
-    
-    axios.get('http://localhost:8000/api/bookings/10')
+    {/*axios.get('http://localhost:8000/api/bookings')
       .then(response => response.data)
       .then(data => {
         this.setState({
           listbooks: data})
-      }) 
+      }) */}
    
   }
 
@@ -121,6 +99,51 @@ class App extends React.Component {
     .then(response => {
       this.setState({
         places: response.data
+      })
+    })
+
+    this.state.token && !this.state.events.length && axios.get(
+      'http://localhost:8000/api/happenings',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        events: response.data
+      })
+    })
+    
+    this.state.token && !this.state.vacationers.length && axios.get(
+      'http://localhost:8000/api/vacationers',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        vacationers: response.data
+      })
+    })
+
+    this.state.token && !this.state.books.length && axios.get(
+      'http://localhost:8000/api/bookings/status',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        books: response.data
       })
     })
   }
@@ -204,6 +227,7 @@ class App extends React.Component {
           }
       })
     }
+
 
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
