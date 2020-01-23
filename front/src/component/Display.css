@@ -14,6 +14,8 @@
 #pagePrinc{
   position: fixed;
   min-width: 98%;
+  align-items: center;
+
 }
 
 
@@ -22,17 +24,24 @@
   border-radius: 2%;
 } 
 
-#pagePrinc, #pagePlace, #pageVacationer{
+#pagePrinc, #pagePlace{
   display:flex;
   flex-direction:column;
   height:70%;
   top: 0;
 }
 
+#mailPres p {
+  margin-left: 13%;
+}
+
 #pageVacationer{
+  border-radius: 0;
+  height: 100vh;
   display:flex;
   flex-direction:column;
-  height:100%;
+  align-items: center;
+
 }
 
 .photoProfil{
@@ -64,12 +73,10 @@
   height:30px;
 }
 
+
 #phonePres, #responsablePres, #mailPres{
   display:flex;
-  justify-content: space-between;
-  width:70%;
   align-items: center;
-  margin-left:15%;
 }
 .titreProfil{
 font-size:1.8em;
@@ -96,13 +103,23 @@ text-align:center;
 }
 
 #ProfilVacationer{
-  font-size:0.8em;
-  min-width:200px;
+  font-size:1em;
+  min-width:230px;
+  height: 55%;
 }
 
 .adresseVac{
   min-width:100px;
   font-size:0.8em;
+}
+.FlexRow p {
+  margin-left: 13%;
+  margin-top: 17%;
+}
+.FlexRow {
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
 }
 
 #buttonDelete{
@@ -127,6 +144,16 @@ text-align:center;
   background-image:url('https://zupimages.net/up/20/04/wo3n.png');
   background-repeat:no-repeat;
   background-position:center center;
+}
+
+.logout {
+  margin-top: 33%;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: lightsteelblue;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 

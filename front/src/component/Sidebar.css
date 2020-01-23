@@ -13,6 +13,9 @@
 .bm-item:hover {
   color: white;
 }
+.sideBar {
+  top: 0;
+}
 
 /* The rest copied directly from react-burger-menu docs */
 
@@ -21,7 +24,7 @@
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
+  left: 15px;
   top: 36px;
 }
 
@@ -60,6 +63,7 @@
 
 /* Styling of overlay */
 .bm-overlay {
+  top: 0;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -71,6 +75,7 @@
 .menu-item-bar{
   margin-left:30px;
 }
+
 
 @media screen and (min-width: 480px)
 {
