@@ -37,7 +37,7 @@ router.get('/status', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
-  connection.query("SELECT concat(happening_id,'-',tourist_id) AS num_book, happening_id, seats_bookable,	happening_name, happening_date, happening_time, tourist_id, tourist_lastname FROM booking INNER JOIN happening  ON happening_id=happening.id INNER JOIN vacationer ON tourist_id=vacationer.id WHERE happening.id=?", [request.params.id], (err, results) => {
+  connection.query("SELECT concat(happening_id,'-',tourist_id) AS num_book, happening_id, seats_bookable,	happening_name, happening_date, happening_time, tourist_id, tourist_lastname, tourist_firstname FROM booking INNER JOIN happening  ON happening_id=happening.id INNER JOIN vacationer ON tourist_id=vacationer.id WHERE happening.id=?", [request.params.id], (err, results) => {
    if (err) {
     response.status(500).send('Error retrieving booking');
    } else {

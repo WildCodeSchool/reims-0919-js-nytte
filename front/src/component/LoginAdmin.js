@@ -30,7 +30,7 @@ class LoginAdmin extends React.Component {
         email: this.state.username,
         password: this.state.password
       })
-      .then(response => this.props.setToken(response.data.token))
+      .then(response => this.props.setToken(response.data.token),this.props.setAsAdmin(true))
       .catch(() => alert("Erreur de connexion : Combinaison Nom d'utilisateur/Mot de passe incorrect"))
   }
   

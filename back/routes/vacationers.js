@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const connection = require("../conf");
 
-
 router.get('/', (request, response) => {
   connection.query('SELECT vacationer.id, tourist_firstname,tourist_lastname,tourist_city,tourist_zip,tourist_address1,tourist_address2,tourist_photo,tourist_phone,tourist_email FROM vacationer INNER JOIN admin WHERE vacationer.admin_id=admin.id', [request.params.id], (err, results) => {
    if (err) {
@@ -30,7 +29,7 @@ router.post('/', (request, response) => {
       console.log(err);
       response.status(500).send("Error saving a new vacationer");
     } else {
-      response.sendStatus(200);
+      response.status(201).send({...formData, id: results.insertId});
     }
   });
 });
@@ -50,14 +49,20 @@ router.put('/:id', (request, response) => {
 
 router.delete('/:id', (req, res) => {
   const idVacationer = req.params.id;
-  connection.query('DELETE FROM vacationer WHERE id = ?', [idVacationer], err => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(`Erreur lors de la suppression d'un vacancier, supprimer les réservations sur ${idVacationer}`);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
+  connection.query('SELECT concat(happening_id,'-',tourist_id) AS num_book, happening_id, seats_bookable,	happening_name, happening_date, happening_time, tourist_id, tourist_lastname, tourist_firstname FROM booking INNER JOIN happening  ON happening_id=happening.id INNER JOIN vacationer ON tourist_id=vacationer.id WHERE vacationer.id=?"', idVacationer, (errGet, resultsGet) => {
+    if(resultsGet && resultsGet.length){
+      res.send("Merci de supprimer les réservations liées au préalable")
+    }else if(resultsGet.length===0){
+      connection.query('DELETE FROM vacationer WHERE id = ?', [idVacationer], err => {
+        if (err) {
+          console.log(err);
+          res.status(500).send(`Erreur lors de la suppression d'un vacancier, supprimer les réservations sur ${idVacationer}`);
+        } else {
+          res.sendStatus(200);
+      }
+    })}
+  })
+})
+
 
   module.exports = router

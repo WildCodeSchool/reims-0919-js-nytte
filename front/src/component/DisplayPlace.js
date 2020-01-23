@@ -3,17 +3,26 @@ import './Display.css';
 import { Link } from 'react-router-dom'
 
 function DisplayPlace(props){
-  let url = props.place.local_photo;
+
+  let url = 'http://via.placeholder.com/100x80'
+  if (props.place.local_photo) {
+    url = props.place.local_photo;
   if (!url.startsWith('http')) {
     url = `http://localhost:8000/${props.place.local_photo}`;
+  }}
+
+  let imgValues = {
+    src: url,
+    alt: 'profil du vacancier'
   }
+
   return(
   <div id="pagePlace">
     <button className='arrowBack'>
       <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
     </button>
     <div id="ProfilPlace">
-    <img className="photoProfil" src={url} alt="profil du lieu touristique"></img>
+    <img className="photoProfil" src={imgValues.src} alt={imgValues.alt} ></img>
     </div>
     <h2 className="titreProfil">{props.place.local_name}</h2>
     <div className="desc">
