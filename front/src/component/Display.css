@@ -14,6 +14,8 @@
 #pagePrinc{
   position: fixed;
   min-width: 98%;
+  align-items: center;
+
 }
 
 
@@ -114,6 +116,7 @@ text-align:center;
 .FlexRow {
   display: flex;
   align-items: center;
+  margin-left: 3%;
 }
 
 #buttonDelete{
