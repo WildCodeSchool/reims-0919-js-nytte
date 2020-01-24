@@ -152,6 +152,9 @@ Content-Type: application/json
 ### GET a list of bookings
 GET http://localhost:8000/api/bookings
 
+### GET a list of bookings
+GET http://localhost:8000/api/bookings/tourist/11
+
 ### GET a list of events and volum of bookings
 GET http://localhost:8000/api/bookings/status
 

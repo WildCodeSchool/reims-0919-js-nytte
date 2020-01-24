@@ -13,8 +13,14 @@ function Sidebar(props){
         <Link className="menu-item-bar-actu" to="/place">
           Lieux
         </Link>
-        <Link className="menu-item-bar-actu" to="/vacationer">
-          Vacanciers
+        <Link className="menu-item-bar-actu" to="/profilevacationer">
+          Mon profil
+        </Link>
+          <Link className="menu-item-bar-actu" to="/events">
+          Fil d'actu
+        </Link>
+        <Link className="menu-item-bar-actu" to="/bookings/tourist/delete">
+          Vos Réservations
         </Link>
         <Link className='logout' onClick={props.deleteToken} to='/login'>Se déconnecter</Link>
       </Menu>)
@@ -28,20 +34,26 @@ function Sidebar(props){
         <Link className="menu-item-bar" to="/formplace">
           Lieux
         </Link>
-  
         <Link className="menu-item-bar" to="/formevents">
-          Événements
+          Évènements
         </Link>
-  
         <Link className="menu-item-bar" to="/formvacationer">
           Vacanciers
         </Link>
-        <p id="sup">Suppression</p>
+        <p id="sup">Modification/Suppression</p>
+        <Link className="menu-item-bar" to="/places/delete">
+          Lieux
+        </Link>     
+        <Link className="menu-item-bar" to="/happens/delete">
+          Evènements
+        </Link>   
         <Link className="menu-item-bar" to="/vacationer/delete">
           Vacanciers
-        </Link>      
-  
-        <Link className="menu-item-bar" to="/events">
+        </Link>  
+        <Link className="menu-item-bar" to="/bookings/event/delete">
+          Réservations
+        </Link>  
+        <Link className="menu-item-bar-actu" to="/events">
           Fil d'actu
         </Link>
         <Link className="menu-item-bar" to="/place">

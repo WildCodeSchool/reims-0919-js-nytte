@@ -6,6 +6,7 @@ import DisplayPlace from './component/DisplayPlace.js'
 import FormAdmin from './component/FormAdmin.js'
 import FormPlace from './component/FormPlace'
 import DisplayVacationer from './component/DisplayVacationer.js'
+import DisplayProfileVacationer from './component/DisplayProfileVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
 import Sidebar from './component/Sidebar'
@@ -17,10 +18,15 @@ import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
 import ListOfBooks from './component/ListOfBooks.js'
-import BookBar from './component/BookBar.js'
+import BookBarLight from './component/BookBarLight.js'
 import CancelBar from './component/CancelBar.js'
 import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
+import DeletionOfPlaces from './component/DeletionOfPlaces.js'
+import DeletionOfEvents from './component/DeletionOfEvents'
+import DeletionOfVacationers from './component/DeletionOfVacationers.js'
+import DeletionOfBookingsByEvent from './component/DeletionOfBookingsByEvent.js'
+import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
 import ModifPlace from './component/ModifPlace.js'
@@ -39,7 +45,7 @@ class App extends React.Component {
       events: [],
       currentEvent:0,
       token: null,
-      books:null,
+      books:[],
       listbooks:null,
       isAdmin:false,
     }
@@ -80,41 +86,27 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
-      .then(response => {
-        this.setState({
-          campings: response.data
-        })
-      })
-
-
-    axios.get('http://localhost:8000/api/vacationers')
-      .then(response => {
-        this.setState({
-          vacationers: response.data
-        })
-      })
-
-    axios.get('http://localhost:8000/api/happenings')
-      .then(response => {
-        this.setState({
-          events: response.data
-        })
-      })
-    
-  
-    axios.get('http://localhost:8000/api/bookings/status')
       .then(response => response.data)
       .then(data => {
         this.setState({
-          books: data})
-      })    
+          campings: data
+        })
+      })
     
-    axios.get('http://localhost:8000/api/bookings/10')
-      .then(response => response.data)
+    axios.get('http://localhost:8000/api/bookings')
       .then(data => {
         this.setState({
           listbooks: data})
       }) 
+      
+
+    axios.get('http://localhost:8000/api/bookings/tourist')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          touristbooks: data})
+      }) 
+      
    
   }
 
@@ -131,6 +123,51 @@ class App extends React.Component {
     .then(response => {
       this.setState({
         places: response.data
+      })
+    })
+
+    this.state.token && !this.state.events.length && axios.get(
+      'http://localhost:8000/api/happenings',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        events: response.data
+      })
+    })
+    
+    this.state.token && !this.state.vacationers.length && axios.get(
+      'http://localhost:8000/api/vacationers',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        vacationers: response.data
+      })
+    })
+
+    this.state.token && !this.state.books.length && axios.get(
+      'http://localhost:8000/api/bookings/status',
+      {
+        headers: {
+          "Authorization": `Bearer ${this.state.token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )    
+    .then(response => {
+      this.setState({
+        books: response.data
       })
     })
   }
@@ -215,6 +252,7 @@ class App extends React.Component {
       })
     }
 
+
   render() {
     const loggedIn = (this.state.token !== null && this.state.token !== undefined);
     return (
@@ -266,6 +304,23 @@ class App extends React.Component {
                 nextVacationer={this.nextVacationer}
               />
             )}
+          </Route>        
+          <Route exact path='/profilevacationer'>
+          {this.state.vacationers && React.Children.toArray(this.state.vacationers.map((vacationer) => (
+              <DisplayProfileVacationer
+                firstname={vacationer.tourist_firstname}
+                lastname={vacationer.tourist_lastname}
+                city={vacationer.tourist_city}
+                zip={vacationer.tourist_zip}
+                address={vacationer.tourist_address1}
+                birthday={vacationer.birthday}
+                photo={vacationer.tourist_photo}
+                phone={vacationer.tourist_phone}
+                email={vacationer.tourist_email}
+              />
+          )))}
+          </Route>    
+          <Route path='/vacationers/delete'>
           </Route>  
           <Route exact path='/formplace'>
             <FormPlace postFormDataPlace={this.postFormDataPlace} />
@@ -288,12 +343,95 @@ class App extends React.Component {
               <h1 style={{textAlign:'center'}}>Profils vacancier</h1>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'un profil est définitive !</p>
             </div>
-              {React.Children.toArray(this.state.vacationers.map((vacationer) => (
-                <></>
-                                )))}
+              {this.state.vacationers&&React.Children.toArray(this.state.vacationers.map((vacationer) => (
+                  <DeletionOfVacationers
+                    id={vacationer.id}
+                    firstname={vacationer.tourist_firstname}
+                    lastname={vacationer.tourist_lastname}
+                    city={vacationer.tourist_city}
+                    zip={vacationer.tourist_zip}
+                  />
+              )))}
             </>
-          </Route>        
-          
+            </Route>
+            <Route path='/happens/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Evènements</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.events.map((event) => (
+                  <DeletionOfEvents
+                    id={event.id}
+                    title={event.happening_name}
+                    date={event.happening_date}
+                    time={event.happening_time}
+                  />
+              )))}
+            </>
+          </Route>    
+          <Route path='/places/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Lieux</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'un lieu est définitive !</p>
+            </div>
+              {React.Children.toArray(this.state.places.map((place) => (
+                  <DeletionOfPlaces
+                    id={place.id}
+                    name={place.local_name}
+                  />
+              )))}
+            </>
+          </Route>    
+          <Route exact path='/bookings/event/delete'>
+            <>
+            <Sidebar/>
+            <CancelBar />
+            <div>
+              <h1 style={{textAlign:'center'}}>Réservation</h1>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
+            </div>
+            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+                  <DeletionOfBookingsByEvent
+                    id={book.happening_id}
+                    date={book.happening_date}
+                    time={book.happening_time}
+                    name={book.happening_name}
+                    bookable={book.seats_bookable}
+                    booked={book.places_booked}
+                    free={book.free_places}
+                  />
+              )))}
+            </>
+          </Route>  
+          <Route path='/bookings/tourist/delete'>
+            <>
+            <Sidebar/>
+            <BookBarLight />
+            <div>
+              <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
+            </div>
+            {this.state.touristbooks && React.Children.toArray(this.state.touristbooks.map((touristbook) => (
+                  <DeletionOfBookingsByTourist
+                    id={touristbook.tourist_id}
+                    idevent={touristbook.happening_id}
+                    idbook={touristbook.num_book}
+                    date={touristbook.tourist_date}
+                    time={touristbook.happening_time}
+                    name={touristbook.happening_name}
+                  />
+              )))}
+            </>
+            </Route>  
+
+          <Route exact path='/formvacationer'>
+            <FormVacationer vacationer={this.state.vacationers}/>
+          </Route>
           <Route exact path='/events'>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <EventBar/>
@@ -386,6 +524,12 @@ class App extends React.Component {
               />
           )))}
           </Route>
+
+          {/*<Route
+            exact
+            path='/bookings/tourist/delete'
+            render={(props) => <DeletionOfBookingsByTourist />}
+          />*/}
           <Route
             exact
             path='/bookings/:id'

@@ -61,7 +61,6 @@ function EventCardFull({id, photo, title, category, description, date, time, end
         <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
         <div className="fullCardButton">
           <button className="BookButton" type="button" onClick={() => book(eventId, token)}>RESERVER</button>
-          <button className="MapButton" type="button">Y ALLER</button>
         </div>
         </>
         :""
