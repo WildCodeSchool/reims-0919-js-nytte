@@ -29,7 +29,7 @@ import DeletionOfBookingsByEvent from './component/DeletionOfBookingsByEvent.js'
 import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
-
+import ModifPlace from './component/ModifPlace.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -54,6 +54,7 @@ class App extends React.Component {
     this.postFormDataPlace = this.postFormDataPlace.bind(this)
     this.postFormDataVacat = this.postFormDataVacat.bind(this)
     this.postFormDataEvent = this.postFormDataEvent.bind(this)
+    this.deleteToken = this.deleteToken.bind(this)
   }
 
    nextVacationer() {
@@ -74,6 +75,14 @@ class App extends React.Component {
     })
   }
 
+  deleteToken(){
+    this.setState(() =>{
+      return {
+        token:null
+      }
+    })
+  }
+
   componentDidMount() {
     axios
       .get('http://localhost:8000/api/admins')
@@ -83,14 +92,7 @@ class App extends React.Component {
           campings: data
         })
       })
-  
-     {/* .then(response => response.data)
-      .then(data => {
-        this.setState({
-          books: data})
-      })   */} 
     
-
     axios.get('http://localhost:8000/api/bookings')
       .then(data => {
         this.setState({
@@ -266,7 +268,7 @@ class App extends React.Component {
             </Route>
             {loggedIn ? <>
           <Route exact path='/displayadmin'>
-            <Sidebar isAdmin={this.state.isAdmin} />
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
@@ -330,9 +332,12 @@ class App extends React.Component {
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
           </Route>
+          <Route exact path='/modifplace'>
+            <ModifPlace place={this.state.places[this.state.currentPlace]} />
+          </Route>
           <Route path='/vacationer/delete'>
             <>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
             <div>
               <h1 style={{textAlign:'center'}}>Profils vacancier</h1>
@@ -428,7 +433,7 @@ class App extends React.Component {
             <FormVacationer vacationer={this.state.vacationers}/>
           </Route>
           <Route exact path='/events'>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <EventBar/>
             {React.Children.toArray(this.state.events.map((event) => (
                 <EventCard 
@@ -451,7 +456,7 @@ class App extends React.Component {
               if (event) {
                 return (
                   <>
-                    <Sidebar />
+                    <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <EventCardFull
                       id={event.id}
                       photo={event.local_photo}
@@ -481,7 +486,7 @@ class App extends React.Component {
               if (eventMap) {
                 return (
                   <>
-                    <Sidebar />
+                    <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <Map
                       photo={eventMap.local_photo}
                       title={eventMap.happening_name}
@@ -505,7 +510,7 @@ class App extends React.Component {
 
 
           <Route exact path='/bookings'>
-          <Sidebar/>
+          <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <EventBar/>
           {this.state.books && React.Children.toArray(this.state.books.map((book) => (
               <BookingList 
