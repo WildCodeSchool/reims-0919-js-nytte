@@ -146,6 +146,14 @@ text-align:center;
   background-position:center center;
 }
 
+.logoBook{
+  height: 40px;
+  width: 40px;
+  background-image:url('https://zupimages.net/up/20/04/suev.png');
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+
 .logout {
   margin-top: 33%;
     text-decoration: none;

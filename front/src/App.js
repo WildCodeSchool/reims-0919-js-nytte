@@ -356,7 +356,7 @@ class App extends React.Component {
             </Route>
             <Route path='/happens/delete'>
             <>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
             <div>
               <h1 style={{textAlign:'center'}}>Evènements</h1>
@@ -374,7 +374,7 @@ class App extends React.Component {
           </Route>    
           <Route path='/places/delete'>
             <>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
             <div>
               <h1 style={{textAlign:'center'}}>Lieux</h1>
@@ -390,7 +390,7 @@ class App extends React.Component {
           </Route>    
           <Route exact path='/bookings/event/delete'>
             <>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
             <div>
               <h1 style={{textAlign:'center'}}>Réservation</h1>
@@ -411,7 +411,7 @@ class App extends React.Component {
           </Route>  
           <Route path='/bookings/tourist/delete'>
             <>
-            <Sidebar/>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <BookBarLight />
             <div>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
