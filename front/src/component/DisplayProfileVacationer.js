@@ -1,8 +1,10 @@
 import React from 'react';
 import './Display.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
-function DisplayProfileVacationer({firstname,lastname,city,zip,address,birthday,photo,phone,email}){
+function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthday,photo,phone,email}){
+  let history=useHistory()
   return(
   <div id="pageVacationer">
     <button className='arrowBack'>
@@ -29,9 +31,7 @@ function DisplayProfileVacationer({firstname,lastname,city,zip,address,birthday,
       {email===null||<p>{email}</p>}
     </div>
     <p>Mes réservations</p>
-    <button type="button">
-      <img className="logoBook" src="zupimages.net/up/20/04/suev.png" alt="bouton de direction vers bookings"></img>
-    </button>  
+    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}/>
     </div>
   )
 }
