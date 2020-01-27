@@ -5,16 +5,29 @@ import {useHistory} from 'react-router-dom';
 function EventCard({id, title, photo, category, date, endDate, time, endTime, isItBookable}){
   let history=useHistory()
 
-  let imgValues = {
-    src: 'https://cutt.ly/JrieTtL',
-    alt: 'image lieu par défaut',
-  }
+  let url = 'https://cutt.ly/JrieTtL'
   if (photo) {
-    imgValues = {
-      src: photo,
-      alt: 'profil du lieu touristique',
-    }
+    url = photo;
+  if (!url.startsWith('http')) {
+    url = `http://localhost:8000/${photo}`;
+  }}
+
+  let imgValues = {
+    src: url,
+    alt: "profil de l'évenement"
   }
+
+
+  // let imgValues = {
+  //   src: 'https://cutt.ly/JrieTtL',
+  //   alt: 'image lieu par défaut',
+  // }
+  // if (photo) {
+  //   imgValues = {
+  //     src: photo,
+  //     alt: 'profil du lieu touristique',
+  //   }
+  // }
   return(
   <div onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} className="CardLight">
     <div className="pictureCardLight">

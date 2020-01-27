@@ -38,6 +38,21 @@ const book = (eventId, token) => {
 function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, map, token}){
   const eventId = useParams().id;
   let history=useHistory()
+  
+  let url = 'https://cutt.ly/JrieTtL'
+  if (photo) {
+    url = photo;
+  if (!url.startsWith('http')) {
+    url = `http://localhost:8000/${photo}`;
+  }}
+
+  let imgValues = {
+    src: url,
+    alt: "profil de l'évenement"
+  }
+  
+  
+  
   return (
   <div className="CardFull">
     <div className="pictureCardFull">
@@ -45,7 +60,7 @@ function EventCardFull({id, photo, title, category, description, date, time, end
         {renderSwitch(category)}
           <h1>{category.toUpperCase()}</h1>
       </div>  
-        <img className="photoCardFull" src={photo} alt="profil du lieu touristique"></img>
+        <img className="photoCardFull" src={imgValues.src} alt={imgValues.alt}></img>
     </div>
     <div className="CardTextDescription">
       <h2>{title}</h2>
