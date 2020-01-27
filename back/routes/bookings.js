@@ -120,9 +120,10 @@ router.post('/', (request, response) => {
 });
 
 
-router.delete('/tourist/:id', (req, res) => {
+router.delete('/tourist/:id/:id', (req, res) => {
   const idVacationer = req.params.id;
-  connection.query('DELETE FROM booking WHERE tourist_id = ?', [idVacationer], err => {
+  const idEvent = req.params.id;
+  connection.query('DELETE FROM booking WHERE tourist_id = ? AND happening_id= ?', [idVacationer, idEvent], err => {
     if (err) {
       console.log(err);
       res.status(500).send(`Erreur lors de la suppression d'un booking`);
