@@ -88,13 +88,6 @@ class App extends React.Component {
     })
   }
 
-  resetAdmin(){
-    this.setState(()=>{
-      return {
-        isAdmin:false
-      }
-    })
-  }
 
   componentDidMount() {
     axios
@@ -303,6 +296,7 @@ class App extends React.Component {
             <FormAdmin />
           </Route>
           <Route exact path='/place' >
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.places && (
               <DisplayPlace 
                 place={this.state.places[this.state.currentPlace]}
@@ -311,6 +305,7 @@ class App extends React.Component {
             )}          
           </Route>
           <Route exact path='/vacationer'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.vacationers && (
               <DisplayVacationer
                 vacationer={this.state.vacationers[this.state.currentVacationer]}
@@ -336,12 +331,15 @@ class App extends React.Component {
           <Route path='/vacationers/delete'>
           </Route>  
           <Route exact path='/formplace'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormPlace postFormDataPlace={this.postFormDataPlace} />
           </Route>
           <Route exact path='/formvacationer'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
           </Route>
           <Route exact path='/formevents'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
           </Route>
