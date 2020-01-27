@@ -289,7 +289,7 @@ class App extends React.Component {
               <EventCard 
                 id={event.id}
                 index={index}
-                photo={event.local_photo}
+                photo={event.happening_picture}
                 category={event.happening_category}
                 date={event.happening_date}
                 time={event.happening_time}
@@ -451,7 +451,7 @@ class App extends React.Component {
             {React.Children.toArray(this.state.events.map((event) => (
                 <EventCard 
                   id={event.id}
-                  photo={event.local_photo}
+                  photo={event.happening_picture}
                   title={event.happening_name}
                   category={event.happening_category}
                   date={event.happening_date}
@@ -472,7 +472,8 @@ class App extends React.Component {
                     <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <EventCardFull
                       id={event.id}
-                      photo={event.local_photo}
+                      photo={event.happening_picture}
+                      photoLieu={event.local_photo}
                       title={event.happening_name}
                       category={event.happening_category}
                       logo={event.happening_picture}
@@ -501,7 +502,7 @@ class App extends React.Component {
                   <>
                     <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <Map
-                      photo={eventMap.local_photo}
+                      photo={eventMap.happening_picture}
                       title={eventMap.happening_name}
                       category={eventMap.happening_category}
                       logo={eventMap.happening_picture}
