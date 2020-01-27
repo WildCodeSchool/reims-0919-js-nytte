@@ -50,9 +50,7 @@ function EventCardFull({id, photo, title, category, description, date, time, end
     src: url,
     alt: "profil de l'évenement"
   }
-  
-  
-  
+    
   return (
   <div className="CardFull">
     <div className="pictureCardFull">

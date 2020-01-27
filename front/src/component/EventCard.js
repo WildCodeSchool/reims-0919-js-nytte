@@ -17,17 +17,6 @@ function EventCard({id, title, photo, category, date, endDate, time, endTime, is
     alt: "profil de l'évenement"
   }
 
-
-  // let imgValues = {
-  //   src: 'https://cutt.ly/JrieTtL',
-  //   alt: 'image lieu par défaut',
-  // }
-  // if (photo) {
-  //   imgValues = {
-  //     src: photo,
-  //     alt: 'profil du lieu touristique',
-  //   }
-  // }
   return(
   <div onClick={event=> { event.preventDefault(); history.push(`/events/${id}`) }} className="CardLight">
     <div className="pictureCardLight">
