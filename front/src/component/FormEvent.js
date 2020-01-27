@@ -49,10 +49,7 @@ class FormEvent extends React.Component {
     render() {
       return (
       <div className = "formContainer">
-        <div className="bannerTop">
-        <button className='arrowBack'>
-          <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
-        </button>
+        <div className="bannerTop"> 
           <h1 className='title'>Création
             <br/>
               d'un événement

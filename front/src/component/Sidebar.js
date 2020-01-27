@@ -30,7 +30,7 @@ function Sidebar(props){
         <Link className="menu-item-bar-actu" to="/displayadmin">
           Accueil
         </Link>
-        <p id="crea">Création</p>
+        <p id="crea">Créer</p>
         <Link className="menu-item-bar" to="/formplace">
           Lieux
         </Link>
@@ -40,7 +40,7 @@ function Sidebar(props){
         <Link className="menu-item-bar" to="/formvacationer">
           Vacanciers
         </Link>
-        <p id="sup">Modification/Suppression</p>
+        <p id="sup">Modifier/Supprimer</p>
         <Link className="menu-item-bar" to="/places/delete">
           Lieux
         </Link>     
@@ -52,8 +52,9 @@ function Sidebar(props){
         </Link>  
         <Link className="menu-item-bar" to="/bookings/event/delete">
           Réservations
-        </Link>  
-        <Link className="menu-item-bar-actu" to="/events">
+        </Link>
+        <p id="sup">Consulter</p>  
+        <Link className="menu-item-bar" to="/events">
           Fil d'actu
         </Link>
         <Link className="menu-item-bar" to="/place">

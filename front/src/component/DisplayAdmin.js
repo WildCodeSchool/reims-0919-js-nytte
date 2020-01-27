@@ -28,8 +28,8 @@ function DisplayAdmin(props){
         {props.camping.email===null||<p>{props.camping.email_company}</p>}
       </div>
       <p>{props.camping.description_company}</p>
-      <div className="buttonGO">
-        <button className="ButtonGO" type="button" onClick={event=>history.push("/events")}>GO</button>
+      <div>
+        <button className="ButtonGO" type="button" onClick={event=>history.push("/events")}>GO ></button>
       </div>
 </div>
   )
