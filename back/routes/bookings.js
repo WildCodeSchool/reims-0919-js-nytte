@@ -25,7 +25,7 @@ router.get('/status', verifyToken, (request, response) => {
       if (authData.user.type === "1") {
         // vacationer
         connection.query(
-          "SELECT happening_id, seats_bookable,happening_name, happening_date, happening_time, COUNT(happening_id) AS places_booked, seats_bookable-COUNT(happening_id) AS free_places FROM booking INNER JOIN happening ON happening_id=happening.id INNER JOIN place ON happening.place_id=place.id INNER JOIN vacationer ON booking.tourist_id=vacationer.id WHERE happening_date>=DATE(NOW()) AND seats_bookable IS NOT NULL AND booking.tourist_id=? GROUP BY happening_id ORDER BY happening_date ASC"
+          "SELECT happening_id, happening_name, happening_date, happening_time, vacationer.id FROM booking INNER JOIN happening ON happening_id=happening.id INNER JOIN place ON happening.place_id=place.id INNER JOIN vacationer ON booking.tourist_id=vacationer.id WHERE happening_date>=DATE(NOW()) AND booking.tourist_id=? ORDER BY happening_date ASC",
           [authData.user.id],
           (errSql, results) => {
             if (errSql) {
