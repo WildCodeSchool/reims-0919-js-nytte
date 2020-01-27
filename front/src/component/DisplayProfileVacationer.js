@@ -5,13 +5,26 @@ import {useHistory} from 'react-router-dom';
 
 function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthday,photo,phone,email}){
   let history=useHistory()
+
+  let url = 'https://cutt.ly/JrieTtL'
+  if (photo) {
+    url = photo;
+  if (!url.startsWith('http')) {
+    url = `http://localhost:8000/${photo}`;
+  }}
+
+  let imgValues = {
+    src: url,
+    alt: "photo de profil"
+  }
+  
   return(
   <div id="pageVacationer">
     <button className='arrowBack'>
       <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
     </button>
     <div id="ProfilVacationer">
-      <img className="photoProfilVac" src={photo} alt="photo de profil" />
+      <img className="photoProfilVac" src={imgValues.src} alt={imgValues.alt} />
       <h2 className="titreProfil">{firstname} {lastname}</h2>
     </div>
     <div className="adressePres">
