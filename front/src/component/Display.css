@@ -95,8 +95,9 @@
 }
 
 
-#phonePres, #responsablePres, #mailPres{
+#phonePres, #responsablePres, #mailPres,#bookPres{
   display:flex;
+  flex-direction:row;
   align-items: center;
 }
 .titreProfil{

@@ -20,7 +20,7 @@ function Sidebar(props){
           Fil d'actu
         </Link>
         <Link className="menu-item-bar-actu" to="/bookings/tourist">
-          Vos Réservations
+          Mes Réservations
         </Link>
         <Link className='logout' onClick={props.deleteToken} to='/login'>Se déconnecter</Link>
       </Menu>)

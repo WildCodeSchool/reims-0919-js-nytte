@@ -14,9 +14,9 @@ function DeletionOfBookingsByTourist({date, time, name, idtourist,idevent}){
   return(
   <div id="ListOfVacationers">
     <div id="ProfilVacationer">
-    {name===name.slice(0,20)
-      ?<p className="nameVac">{idtourist}-{name}</p>
-      :<p className="nameVac">{idtourist}-{name.slice(0,20)}...</p>}
+    {name===name.slice(0,25)
+      ?<p className="nameVac">{name}</p>
+      :<p className="nameVac">{name.slice(0,25)}...</p>}
     </div>
     <div className="adresseVac">
       <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
