@@ -81,6 +81,19 @@ class App extends React.Component {
         token:null
       }
     })
+    this.setState(()=>{
+      return {
+        isAdmin:false
+      }
+    })
+  }
+
+  resetAdmin(){
+    this.setState(()=>{
+      return {
+        isAdmin:false
+      }
+    })
   }
 
   componentDidMount() {
@@ -268,7 +281,7 @@ class App extends React.Component {
             </Route>
             {loggedIn ? <>
           <Route exact path='/displayadmin'>
-            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
+            <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
