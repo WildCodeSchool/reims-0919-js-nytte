@@ -88,13 +88,6 @@ class App extends React.Component {
     })
   }
 
-  resetAdmin(){
-    this.setState(()=>{
-      return {
-        isAdmin:false
-      }
-    })
-  }
 
   componentDidMount() {
     axios
@@ -289,7 +282,7 @@ class App extends React.Component {
               <EventCard 
                 id={event.id}
                 index={index}
-                photo={event.local_photo}
+                photo={event.happening_picture}
                 category={event.happening_category}
                 date={event.happening_date}
                 time={event.happening_time}
@@ -303,6 +296,7 @@ class App extends React.Component {
             <FormAdmin />
           </Route>
           <Route exact path='/place' >
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.places && (
               <DisplayPlace 
                 place={this.state.places[this.state.currentPlace]}
@@ -311,6 +305,7 @@ class App extends React.Component {
             )}          
           </Route>
           <Route exact path='/vacationer'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             {this.state.vacationers && (
               <DisplayVacationer
                 vacationer={this.state.vacationers[this.state.currentVacationer]}
@@ -336,12 +331,15 @@ class App extends React.Component {
           <Route path='/vacationers/delete'>
           </Route>  
           <Route exact path='/formplace'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormPlace postFormDataPlace={this.postFormDataPlace} />
           </Route>
           <Route exact path='/formvacationer'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormVacationer postFormDataVacat={this.postFormDataVacat}/>
           </Route>
           <Route exact path='/formevents'>
+          <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
           </Route>
@@ -451,7 +449,7 @@ class App extends React.Component {
             {React.Children.toArray(this.state.events.map((event) => (
                 <EventCard 
                   id={event.id}
-                  photo={event.local_photo}
+                  photo={event.happening_picture}
                   title={event.happening_name}
                   category={event.happening_category}
                   date={event.happening_date}
@@ -472,7 +470,8 @@ class App extends React.Component {
                     <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <EventCardFull
                       id={event.id}
-                      photo={event.local_photo}
+                      photo={event.happening_picture}
+                      photoLieu={event.local_photo}
                       title={event.happening_name}
                       category={event.happening_category}
                       logo={event.happening_picture}
@@ -501,7 +500,7 @@ class App extends React.Component {
                   <>
                     <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <Map
-                      photo={eventMap.local_photo}
+                      photo={eventMap.happening_picture}
                       title={eventMap.happening_name}
                       category={eventMap.happening_category}
                       logo={eventMap.happening_picture}

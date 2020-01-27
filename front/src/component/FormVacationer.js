@@ -41,9 +41,6 @@ class FormVacationer extends React.Component {
   render() {
     return (
     <div className = "formContainer">
-      <button className='arrowBack'>
-        <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
-      </button>
       <div className='formAdminVacationer'>
         <img
           src='https://zupimages.net/up/19/50/0b2g.png'

@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 
 function renderSwitch(category){
-  switch({category}){
+  console.log({category})
+  switch(category){
     case "Restauration":
       return <img className="logoCategory" src="https://zupimages.net/up/20/03/o5vx.png" alt="logo de la catégorie"></img>;
     case "Sport":
@@ -21,7 +22,6 @@ function renderSwitch(category){
     case "Cours":
       return <img className="logoCategory" src="https://zupimages.net/up/20/03/ay5x.png" alt="logo de la catégorie"></img>;
     default:
-      console.log("yes")
       return <img className="logoCategory" src="https://zupimages.net/up/20/03/zshx.png" alt="logo de la catégorie"></img>;  
   }
 }

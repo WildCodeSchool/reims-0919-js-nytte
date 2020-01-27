@@ -17,12 +17,21 @@
   align-items: center;
 
 }
+.ButtonGO{
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: white;
+  outline: none;
+  font-weight: 448;
+  text-shadow:#ffffff5e 1px 1px 0, 0px 0px 9px rgba(255, 255, 255, 0.219)
+}
 
 
  .info{
   border: 2px solid white;
   border-radius: 2%;
-} 
+}
 
 #pagePrinc, #pagePlace{
   display:flex;
@@ -30,6 +39,15 @@
   height:70%;
   top: 0;
 }
+
+#pagePlace {
+  height: 100vh;
+  border-radius: 0;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
 
 #mailPres p {
   margin-left: 13%;
@@ -67,6 +85,9 @@
   box-shadow:0 19px 38px
   rgba(0,0,0,0.30), 0 4px 12px rgba(0,0,0,0.22);
 }
+#pagePlace img {
+  margin: 0;
+} 
 
 .logo{
   width:30px;
@@ -163,6 +184,8 @@ text-align:center;
     font-weight: 600;
     cursor: pointer;
 }
+
+
 
 
 @media screen and (min-width: 480px)
