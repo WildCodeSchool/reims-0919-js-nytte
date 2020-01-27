@@ -153,7 +153,7 @@ Content-Type: application/json
 GET http://localhost:8000/api/bookings
 
 ### GET a list of bookings
-GET http://localhost:8000/api/bookings/tourist/11
+GET http://localhost:8000/api/bookings/tourist/1
 
 ### GET a list of events and volum of bookings
 GET http://localhost:8000/api/bookings/status
@@ -174,4 +174,4 @@ DELETE http://localhost:8000/api/bookings/event/1
 DELETE http://localhost:8000/api/places/3
 
 ### DELETE en event
-DELETE http://localhost:8000/api/happenings/3
+DELETE http:/localhost:8000/api/happenings/3
