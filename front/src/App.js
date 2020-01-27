@@ -17,17 +17,14 @@ import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import UploadImage from './component/UploadImage'
 import LoginAdmin from './component/LoginAdmin'
 import BookingList from './component/BookingList.js'
-import ListOfBooks from './component/ListOfBooks.js'
 import BookBarLight from './component/BookBarLight.js'
 import CancelBar from './component/CancelBar.js'
-import TotalBooks from './component/TotalBooks.js'
 import Map from './component/Map.js'
 import DeletionOfPlaces from './component/DeletionOfPlaces.js'
 import DeletionOfEvents from './component/DeletionOfEvents'
 import DeletionOfVacationers from './component/DeletionOfVacationers.js'
 import DeletionOfBookingsByEvent from './component/DeletionOfBookingsByEvent.js'
 import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist.js'
-import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 import LoginVacationer from './component/LoginVacationer'
 import ModifPlace from './component/ModifPlace.js'
 
@@ -328,7 +325,7 @@ class App extends React.Component {
               />
           )))}
           </Route>    
-          <Route path='/vacationers/delete'>
+          <Route exact path='/vacationers/delete'>
           </Route>  
           <Route exact path='/formplace'>
           <Sidebar resetAdmin={this.resetAdmin} isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
@@ -365,7 +362,7 @@ class App extends React.Component {
               )))}
             </>
             </Route>
-            <Route path='/happens/delete'>
+            <Route exact path='/happens/delete'>
             <>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
@@ -383,7 +380,7 @@ class App extends React.Component {
               )))}
             </>
           </Route>    
-          <Route path='/places/delete'>
+          <Route exact path='/places/delete'>
             <>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
@@ -420,21 +417,20 @@ class App extends React.Component {
               )))}
             </>
           </Route>  
-          <Route path='/bookings/tourist/delete'>
+          <Route exact path='/bookings/tourist'>
             <>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <BookBarLight />
             <div>
               <p style={{textAlign:'center'}}>Attention ! la suppression d'une réservation est définitive !</p>
             </div>
-            {this.state.touristbooks && React.Children.toArray(this.state.touristbooks.map((touristbook) => (
+            {this.state.books && React.Children.toArray(this.state.books.map((book) => (
                   <DeletionOfBookingsByTourist
-                    id={touristbook.tourist_id}
-                    idevent={touristbook.happening_id}
-                    idbook={touristbook.num_book}
-                    date={touristbook.tourist_date}
-                    time={touristbook.happening_time}
-                    name={touristbook.happening_name}
+                    idtourist={book.id}
+                    idevent={book.happening_id}
+                    date={book.happening_date}
+                    time={book.happening_time}
+                    name={book.happening_name}
                   />
               )))}
             </>
@@ -536,18 +532,6 @@ class App extends React.Component {
               />
           )))}
           </Route>
-
-          {/*<Route
-            exact
-            path='/bookings/tourist/delete'
-            render={(props) => <DeletionOfBookingsByTourist />}
-          />*/}
-          <Route
-            exact
-            path='/bookings/:id'
-            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
-          />
-
          
           <Route exact path='/uploadimages'>
             <UploadImage />

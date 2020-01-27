@@ -21,7 +21,7 @@ function DeleteOfVacationers({id, lastname, firstname, zip, city}){
     </div>
     <button id="buttonEye" type="button" onClick={event=> { event.preventDefault(); history.push(`/bookings/tourist/delete`) }} href={'/bookings/tourist/delete'}></button>
     <button id="buttonEdit" type="button"></button>
-    <button id="buttonDelete" type="button" onClick={() =>deleteFormData()} type='submit' value='Supprimer'> </button>  
+    <button id="buttonDelete" type="button" onClick={() =>deleteFormData()} value='Supprimer'> </button>  
   </div>
   )
 }

@@ -11,7 +11,7 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       <Link className='arrowBackLink' to='/displayadmin'>&lsaquo;</Link>
     </button>
     <div id="ProfilVacationer">
-      <img className="photoProfilVac" src={photo} alt="photo de profil" />
+      <img className="photoProfilVac" src={photo} alt="profil" />
       <h2 className="titreProfil">{firstname} {lastname}</h2>
     </div>
     <div className="adressePres">
@@ -30,8 +30,9 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       {email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
       {email===null||<p>{email}</p>}
     </div>
-    <p>Mes réservations</p>
-    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}/>
+    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}>
+      Mes réservations
+    </a>
     </div>
   )
 }

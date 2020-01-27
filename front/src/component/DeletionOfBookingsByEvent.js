@@ -21,7 +21,7 @@ function DeleteOfBookingsByEvent({date, time, name, id}){
     </div>
     <button id="buttonEye" type="button"></button>
     <button id="buttonEdit" type="button"></button>
-    <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} type='submit' value='Supprimer'> </button>  
+    <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} value='Supprimer'> </button>  
   </div>
   )
 }
