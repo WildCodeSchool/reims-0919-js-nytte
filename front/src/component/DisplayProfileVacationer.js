@@ -27,7 +27,9 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       <img className="photoProfilVac" src={imgValues.src} alt={imgValues.alt} />
       <h2 className="titreProfil">{firstname} {lastname}</h2>
     </div>
+    <div className='infoVacationer'>
     <div className="adressePres">
+      <img src='https://zupimages.net/up/20/05/5keb.png'></img>
       <p>{address} {zip} {city}</p>
     </div>
     <div className="desc">
@@ -43,9 +45,13 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       {email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
       {email===null||<p>{email}</p>}
     </div>
-    <div id="bookPres"></div>
-    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`bookings/tourist`) }} ></a>
+
+    <div className='resaVacationer'>
+    <a onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}>
+      <img className='logoResa' src='https://zupimages.net/up/20/04/suev.png'/></a>
     <p>Mes réservations</p>
+    </div>
+    </div>
     </div>
   )
 }
