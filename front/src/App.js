@@ -46,6 +46,7 @@ class App extends React.Component {
       books:[],
       listbooks:null,
       isAdmin:false,
+      hasApiBeenCalledYet: false
     }
     this.nextVacationer = this.nextVacationer.bind(this)
     this.nextPlace = this.nextPlace.bind(this)
@@ -110,70 +111,59 @@ class App extends React.Component {
         this.setState({
           touristbooks: data})
       }) 
-      
-   
   }
 
   componentDidUpdate() {
-    this.state.token && !this.state.places.length && axios.get(
-      'http://localhost:8000/api/places',
-      {
-        headers: {
-          "Authorization": `Bearer ${this.state.token}`,
-          "Content-Type": "application/json"
-        }
-      }
-    )
-    .then(response => {
-      this.setState({
-        places: response.data
-      })
-    })
-
-    this.state.token && !this.state.events.length && axios.get(
-      'http://localhost:8000/api/happenings',
-      {
-        headers: {
-          "Authorization": `Bearer ${this.state.token}`,
-          "Content-Type": "application/json"
-        }
-      }
-    )    
-    .then(response => {
-      this.setState({
-        events: response.data
-      })
-    })
-    
-    this.state.token && !this.state.vacationers.length && axios.get(
-      'http://localhost:8000/api/vacationers',
-      {
-        headers: {
-          "Authorization": `Bearer ${this.state.token}`,
-          "Content-Type": "application/json"
-        }
-      }
-    )    
-    .then(response => {
-      this.setState({
-        vacationers: response.data
-      })
-    })
-
-    this.state.token && !this.state.books.length && axios.get(
-      'http://localhost:8000/api/bookings/status',
-      {
-        headers: {
-          "Authorization": `Bearer ${this.state.token}`,
-          "Content-Type": "application/json"
-        }
-      }
-    )    
-    .then(response => {
-      this.setState({
-        books: response.data
-      })
-    })
+    if (this.state.token && !this.state.hasApiBeenCalledYet) {
+      axios.all([
+        axios.get(
+          'http://localhost:8000/api/places',
+          {
+            headers: {
+              "Authorization": `Bearer ${this.state.token}`,
+              "Content-Type": "application/json"
+            }
+          }
+        ),
+        axios.get(
+          'http://localhost:8000/api/happenings',
+          {
+            headers: {
+              "Authorization": `Bearer ${this.state.token}`,
+              "Content-Type": "application/json"
+            }
+          }
+        ),
+        axios.get(
+          'http://localhost:8000/api/vacationers',
+          {
+            headers: {
+              "Authorization": `Bearer ${this.state.token}`,
+              "Content-Type": "application/json"
+            }
+          }
+        ),
+        axios.get(
+          'http://localhost:8000/api/bookings/status',
+          {
+            headers: {
+              "Authorization": `Bearer ${this.state.token}`,
+              "Content-Type": "application/json"
+            }
+          }
+        )
+      ])
+      .then(axios.spread((places,happenings,vacationers,bookings)=>{
+        this.setState({
+          places: places.data,
+          happenings: happenings.data,
+          vacationers: vacationers.data,
+          books: bookings.data,
+          hasApiBeenCalledYet: true
+        })
+      }))
+    }
+   
   }
 
   postFormDataPlace(formData) {
@@ -459,11 +449,7 @@ class App extends React.Component {
                   />
               )))}
             </>
-            </Route>  
-
-          <Route exact path='/formvacationer'>
-            <FormVacationer vacationer={this.state.vacationers}/>
-          </Route>
+            </Route>   
           <Route exact path='/events'>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <EventBar/>
