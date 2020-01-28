@@ -27,6 +27,7 @@ import DeletionOfBookingsByEvent from './component/DeletionOfBookingsByEvent.js'
 import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist.js'
 import LoginVacationer from './component/LoginVacationer'
 import ModifPlace from './component/ModifPlace.js'
+import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -341,10 +342,33 @@ class App extends React.Component {
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
           </Route>
-          <Route exact path='/modifplace'>
+          {/*<Route exact path='/modifplace'>
             <ModifPlace place={this.state.places[this.state.currentPlace]} />
+          </Route>*/}
+
+
+          <Route exact path={`/modifplace/:id`}render={(props) => {
+              const {id} = props.match.params;
+              let index = 0;
+              const place = this.state.places.find((place, indexOfPlaces) => {
+                if (place.id === parseInt(id)) {
+                  index = indexOfPlaces
+                }
+                return place.id === parseInt(id)
+              });
+              if (place) {
+                return (
+                  <>
+                  <ModifPlace place={this.state.places} index={index} />
+                  </>
+                )
+              } else {
+                return <Redirect to="/events" />
+              }
+            }}>
           </Route>
-          <Route path='/vacationer/delete'>
+
+         <Route path='/vacationer/delete'>
             <>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
@@ -535,6 +559,28 @@ class App extends React.Component {
               />
           )))}
           </Route>
+
+          {/*<Route exact path='/bookings/:id'>
+          <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
+            <EventBar/>
+          {this.state.books && React.Children.toArray(this.state.books.map((book) => (
+              <BookingList 
+                id={book.happening_id}
+                date={book.happening_date}
+                time={book.happening_time}
+                name={book.happening_name}
+                bookable={book.seats_bookable}
+                booked={book.places_booked}
+                free={book.free_places}
+              />
+          )))}
+          </Route>*/}
+
+          <Route
+            exact
+            path='/bookings/:id'
+            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
+          />
          
           <Route exact path='/uploadimages'>
             <UploadImage />
