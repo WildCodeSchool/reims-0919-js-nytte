@@ -43,8 +43,9 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       {email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
       {email===null||<p>{email}</p>}
     </div>
+    <div id="bookPres"></div>
+    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`bookings/tourist`) }} ></a>
     <p>Mes réservations</p>
-    <a className="logoBook" onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}/>
     </div>
   )
 }

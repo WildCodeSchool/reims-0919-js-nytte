@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Display.css';
 import {useHistory} from 'react-router-dom';
 
 function DisplayAdmin(props){
   let history=useHistory()
+  const [dataVisible, setDataVisible] = useState(true)
   return(
     <div id="pagePrinc">
+      {dataVisible && (<>
       <div id="photoDeProfil">
         {props.camping.photo===null
           ?<img className="photoProfil" src='https://cutt.ly/3rieGlZ' alt="profil par défaut"></img>
@@ -28,8 +30,9 @@ function DisplayAdmin(props){
         {props.camping.email===null||<p>{props.camping.email_company}</p>}
       </div>
       <p>{props.camping.description_company}</p>
+      </>)}
       <div>
-        <button className="ButtonGO" type="button" onClick={event=>history.push("/events")}>GO ></button>
+        <button className="ButtonGO" type="button" onClick={event=> setDataVisible(prevValue => !prevValue)/*history.push("/events")*/}> {dataVisible ? 'GO >' : props.camping.company.toUpperCase() }</button>
       </div>
 </div>
   )

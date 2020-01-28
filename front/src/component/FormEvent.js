@@ -2,7 +2,6 @@ import React from 'react';
 import Switch from "react-switch";
 import './FormEvent.css'
 import UploadImage from './UploadImage'
-import { Link } from 'react-router-dom'
 
 
 class FormEvent extends React.Component {
