@@ -546,22 +546,6 @@ class App extends React.Component {
           )))}
           </Route>
 
-          {/*<Route exact path='/bookings/:id'>
-          <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
-            <EventBar/>
-          {this.state.books && React.Children.toArray(this.state.books.map((book) => (
-              <BookingList 
-                id={book.happening_id}
-                date={book.happening_date}
-                time={book.happening_time}
-                name={book.happening_name}
-                bookable={book.seats_bookable}
-                booked={book.places_booked}
-                free={book.free_places}
-              />
-          )))}
-          </Route>*/}
-
           <Route
             exact
             path='/bookings/:id'
