@@ -435,11 +435,7 @@ class App extends React.Component {
                   />
               )))}
             </>
-            </Route>  
-
-          <Route exact path='/formvacationer'>
-            <FormVacationer vacationer={this.state.vacationers}/>
-          </Route>
+            </Route>   
           <Route exact path='/events'>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <EventBar/>
