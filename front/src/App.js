@@ -157,7 +157,7 @@ class App extends React.Component {
       .then(axios.spread((places,happenings,vacationers,bookings)=>{
         this.setState({
           places: places.data,
-          happenings: happenings.data,
+          events: happenings.data,
           vacationers: vacationers.data,
           books: bookings.data,
           hasApiBeenCalledYet: true
