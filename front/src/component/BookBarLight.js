@@ -5,7 +5,7 @@ function BookBarLight(){
   return(
     <>
     <div className="pictureCardBar">
-      <h1>VOS RESERVATIONS</h1>
+      <h1>MES RESERVATIONS</h1>
     </div>
     </>
   )

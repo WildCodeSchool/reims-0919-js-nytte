@@ -19,8 +19,8 @@ function Sidebar(props){
           <Link className="menu-item-bar-actu" to="/events">
           Fil d'actu
         </Link>
-        <Link className="menu-item-bar-actu" to="/bookings/tourist/delete">
-          Vos Réservations
+        <Link className="menu-item-bar-actu" to="/bookings/tourist">
+          Mes Réservations
         </Link>
         <Link className='logout' onClick={props.deleteToken} to='/login'>Se déconnecter</Link>
       </Menu>)

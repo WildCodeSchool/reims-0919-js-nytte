@@ -14,7 +14,7 @@ router.get('/', verifyToken, (request, response) => {
       if (authData.user.type === "1") {
         // vacationer
         connection.query(
-          'SELECT DISTINCT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id INNER JOIN vacationer ON admin.id=vacationer.admin_id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND vacationer.id=? ORDER BY happening_date ASC',
+          'SELECT DISTINCT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, local_name, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id INNER JOIN vacationer ON admin.id=vacationer.admin_id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND vacationer.id=? ORDER BY happening_date ASC',
           [authData.user.id],
           (errSql, results) => {
             if (errSql) {
@@ -27,7 +27,7 @@ router.get('/', verifyToken, (request, response) => {
       } else if (authData.user.type === "2") {
         // admin
         connection.query(
-          'SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND place.admin_id=? ORDER BY happening_date ASC',
+          'SELECT happening.id, happening_name, happening_picture, happening_category, happening_description, happening_date, happening_time_end, happening_date_end, happening_time,isItBookable, seats_bookable, local_photo,local_name, mapping FROM place INNER JOIN happening ON place.id= happening.place_id INNER JOIN admin ON place.admin_id=admin.id WHERE happening_date>=DATE(NOW()) OR happening_date IS NULL AND place.admin_id=? ORDER BY happening_date ASC',
               [authData.user.id],
               (errSql, results) => {
                 if (errSql) {

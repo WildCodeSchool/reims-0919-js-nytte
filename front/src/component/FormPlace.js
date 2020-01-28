@@ -1,6 +1,5 @@
 import React from 'react';
 import './FormPlace.css'
-import { Link } from 'react-router-dom'
 import UploadImage from './UploadImage'
 
 class FormPlace extends React.Component {

@@ -28,7 +28,7 @@ function EventCard({id, title, photo, category, date, endDate, time, endTime, is
           {category.toUpperCase()}</a>
         <div className="viewDate">
           {date===null?"":
-            <p>{date.slice(0,10)} </p>}
+            <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} </p>}
           {time===null?"":
             <p> à {time.slice(0,5)}</p>}
           {endTime===null?"":

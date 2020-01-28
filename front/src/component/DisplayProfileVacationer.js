@@ -45,6 +45,7 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
       {email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
       {email===null||<p>{email}</p>}
     </div>
+
     <div className='resaVacationer'>
     <a onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}>
       <img className='logoResa' src='https://zupimages.net/up/20/04/suev.png'/></a>
