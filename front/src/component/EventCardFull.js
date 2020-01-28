@@ -53,6 +53,9 @@ function EventCardFull({id, photo, title, category, description, date, time, end
     
   return (
   <div className="CardFull">
+    <button onClick={event=> { event.preventDefault(); history.push(`/events`) }} className='arrowBack'>
+    &laquo;
+    </button>
     <div className="pictureCardFull">
       <div className="logoTitle">
         {renderSwitch(category)}
@@ -72,17 +75,17 @@ function EventCardFull({id, photo, title, category, description, date, time, end
       {isItBookable
         ?<>
         <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
-        <div className="fullCardButton">
-          <button className="BookButton" type="button" onClick={() => book(eventId, token)}>RESERVER</button>
-        </div>
-        </>
-        :""
-        }
-        {map===null
-        ?""
-        :<div className="fullCardButton">
-          <button className="MapButton" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/map/${id}`) }} href={`/events/map/${id}`}>Y ALLER</button>
-        </div>
+          <div className="fullCardButton">
+            <button className="BookButton" type="button" onClick={() => book(eventId, token)}>RESERVER</button>
+          </div>
+          </>
+          :""
+          }
+          {map===null
+          ?""
+          :<div className="fullCardButton">
+            <button className="MapButton" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/map/${id}`) }} href={`/events/map/${id}`}>Y ALLER</button>
+          </div>
         }
     </div>
   </div>
