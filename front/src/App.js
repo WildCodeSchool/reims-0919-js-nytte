@@ -29,6 +29,7 @@ import LoginVacationer from './component/LoginVacationer'
 import ModifPlace from './component/ModifPlace.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -332,10 +333,6 @@ class App extends React.Component {
             <FormEvent postFormDataEvent={this.postFormDataEvent}
                        places={this.state.places}/>
           </Route>
-          {/*<Route exact path='/modifplace'>
-            <ModifPlace place={this.state.places[this.state.currentPlace]} />
-          </Route>*/}
-
 
           <Route exact path={`/modifplace/:id`}render={(props) => {
               const {id} = props.match.params;
@@ -549,9 +546,10 @@ class App extends React.Component {
           <Route
             exact
             path='/bookings/:id'
-            render={(props) => <DisplayListOfBooks id={props.match.params.id} />}
+            render={(props) => 
+            <DisplayListOfBooks id={props.match.params.id}/>}
           />
-         
+          
           <Route exact path='/uploadimages'>
             <UploadImage />
           </Route>

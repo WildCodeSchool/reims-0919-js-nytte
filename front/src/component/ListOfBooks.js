@@ -6,10 +6,9 @@ function ListOfBooks({date,name,lastname,firstname}){
     <div className="ListOfBooks">
       <table className="bookTable">
         <tr>
-          <td>{name}</td>
-          <td>{date.slice(0,10)}</td>
-          <td>{lastname}</td>
-          <td>{firstname}</td>
+          <td className="eventTd">{name.slice(0,15)}...</td>
+          <td className="dateTd">{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)}</td>
+          <td className="nameTd">{firstname} {lastname}</td>
         </tr>
       </table>
     </div>

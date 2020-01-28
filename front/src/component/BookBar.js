@@ -10,10 +10,9 @@ function BookBar(){
     <>
     <table className="bookTable">
       <tr>
-        <th>Evenement</th>
-        <th>Date</th>
-        <th>Nom</th>
-        <th>Prénom</th>
+        <th className="eventTd">Evenement</th>
+        <th className="dateTd">Date</th>
+        <th className="nameTd">Vacancier</th>
       </tr>
     </table>
     </>

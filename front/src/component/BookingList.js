@@ -6,10 +6,10 @@ function BookingList({id,date,time,name,bookable,booked,free}){
   let history=useHistory()
   return(
     <div className="BookingList">
-      <a className="nameButton" onClick={event=> { event.preventDefault(); history.push(`/bookings/${id}`) }} href={`/bookings/${id}`}>
+      <a className="nameButtonBook" onClick={event=> { event.preventDefault(); history.push(`/bookings/${id}`) }} href={`/bookings/${id}`}>
           {name}</a>
       <div className="horodateur">
-        <p>Date : {date.slice(0,10)}</p>
+        <p>Date : {date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)}</p>
         <p>Heure : {time.slice(0,5)}</p>
       </div>  
       <div>
