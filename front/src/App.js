@@ -286,6 +286,7 @@ class App extends React.Component {
                 endDate={event.happening_time_end}
                 endTime={event.happening_date_end}
                 isItBookable={event.isItBookable}
+                place={event.local_name}
               />
           )))}
           </Route>
@@ -454,6 +455,7 @@ class App extends React.Component {
                   endTime={event.happening_date_end}
                   isItBookable={event.isItBookable}
                   map={event.mapping}
+                  place={event.local_name}
                 />
             )))}
           </Route>
@@ -479,6 +481,7 @@ class App extends React.Component {
                       isItBookable={event.isItBookable}
                       map={event.mapping}
                       token={this.state.token}
+                      place={event.local_name}
                     />
                   </>
                 )

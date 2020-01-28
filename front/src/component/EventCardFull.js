@@ -35,7 +35,8 @@ const book = (eventId, token) => {
     .catch(error => alert('Vous avez déjà réservé cet événement'))
 }
 
-function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, map, token}){
+function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, place, map, token}){
+  console.log({place})
   const eventId = useParams().id;
   let history=useHistory()
   return (
@@ -50,14 +51,16 @@ function EventCardFull({id, photo, title, category, description, date, time, end
     <div className="CardTextDescription">
       <h2>{title}</h2>
       <p>{description}</p>
+      <p>Lieu : {place}</p>
       {date===null
         ?""
-        :<p>Date : {date.slice(0,10)} </p>}
+        :<p>Date : {date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)}</p>}
       {endTime===null
         ?<p>à {time.slice(0,5)}</p>
         :<p> Horaires : {time.slice(0,5)} - {endTime.slice(0,5)}</p>}
       {isItBookable
         ?<>
+        
         <p>Pour réserver, merci de vous rendre à l'accueil ou cliquer sur le bouton :</p>
         <div className="fullCardButton">
           <button className="BookButton" type="button" onClick={() => book(eventId, token)}>RESERVER</button>
