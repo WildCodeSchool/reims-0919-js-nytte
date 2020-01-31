@@ -22,8 +22,6 @@ function DeletionOfEvents({id, title, date, time}){
     <div className="adresseVac">
       <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
     </div>
-    <button id="buttonEye" type="button" onClick={event=> { event.preventDefault(); history.push(`/bookings/tourist/delete`) }} href={'/bookings/event/delete'}></button>
-    <button id="buttonEdit" type="button"></button>
     <button id="buttonDelete" type="button" onClick={() => deleteFormData(id)} value='Supprimer'> </button>  
   </div>
   )
