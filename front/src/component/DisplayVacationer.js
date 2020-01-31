@@ -21,8 +21,10 @@ function DisplayVacationer(props){
   <div id="pageVacationer">
       <div id="ProfilVacationer">
         <img className="photoProfilVac" src={imgValues.src} alt={imgValues.alt} />
-        <h2 className="titreProfil">{props.vacationer.tourist_firstname} {props.vacationer.tourist_lastname}</h2>
       </div>
+
+        <h2 className="titreProfil">{props.vacationer.tourist_firstname} {props.vacationer.tourist_lastname}</h2>
+      
       <div className="adressePres FlexRow">
         <img className="logo" src='https://zupimages.net/up/20/04/ldbv.png' alt="logo adresse"/>
         <p>{props.vacationer.tourist_address1} {props.vacationer.tourist_zip} {props.vacationer.tourist_city}</p>
@@ -43,7 +45,7 @@ function DisplayVacationer(props){
         <div>
           <button className='buttonNextVacationer' type="button" onClick={props.nextVacationer}>Suivant</button>  
         </div>
-    </div>
+      </div>
   )
 }
 

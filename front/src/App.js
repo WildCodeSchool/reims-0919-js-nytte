@@ -472,7 +472,6 @@ class App extends React.Component {
               if (event) {
                 return (
                   <>
-                    <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
                     <EventCardFull
                       id={event.id}
                       photo={event.happening_picture}
