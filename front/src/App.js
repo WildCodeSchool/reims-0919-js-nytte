@@ -9,6 +9,8 @@ import DisplayVacationer from './component/DisplayVacationer.js'
 import DisplayProfileVacationer from './component/DisplayProfileVacationer.js'
 import EventCard from './component/EventCard.js'
 import EventCardFull from './component/EventCardFull'
+import EventCardForAdmin from './component/EventCardForAdmin.js'
+import EventCardFullForAdmin from './component/EventCardFullForAdmin'
 import Sidebar from './component/Sidebar'
 import FormEvent from './component/FormEvent'
 import EventBar from './component/EventBar'
@@ -496,6 +498,59 @@ class App extends React.Component {
               }
             }}>
           </Route>
+
+          <Route exact path='/happens'>
+            <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
+            <EventBar/>
+            {React.Children.toArray(this.state.events.map((event) => (
+                <EventCardForAdmin 
+                  id={event.id}
+                  photo={event.happening_picture}
+                  title={event.happening_name}
+                  category={event.happening_category}
+                  date={event.happening_date}
+                  time={event.happening_time}
+                  endDate={event.happening_time_end}
+                  endTime={event.happening_date_end}
+                  isItBookable={event.isItBookable}
+                  map={event.mapping}
+                  place={event.local_name}
+                />
+            )))}
+          </Route>
+          <Route exact path={`/happens/:id`} render={(props) => {
+              const {id} = props.match.params;
+              const event = this.state.events.find(event => event.id === parseInt(id));
+              if (event) {
+                return (
+                  <>
+                    <EventCardFullForAdmin
+                      id={event.id}
+                      photo={event.happening_picture}
+                      photoLieu={event.local_photo}
+                      title={event.happening_name}
+                      category={event.happening_category}
+                      logo={event.happening_picture}
+                      description={event.happening_description}
+                      date={event.happening_date}
+                      time={event.happening_time}
+                      endDate={event.happening_date_end}
+                      endTime={event.happening_time_end}
+                      isItBookable={event.isItBookable}
+                      map={event.mapping}
+                      token={this.state.token}
+                      place={event.local_name}
+                    />
+                  </>
+                )
+              } else {
+                return <Redirect to="/events" />
+              }
+            }}>
+          </Route>
+
+
+
           <Route exact path={`/events/map/:id`} render={(props) => {
               const {id} = props.match.params;
               const eventMap = this.state.events.find(eventMap => eventMap.id === parseInt(id));
