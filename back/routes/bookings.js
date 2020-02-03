@@ -120,9 +120,8 @@ router.post('/', (request, response) => {
 });
 
 
-router.delete('/tourist/:id/:id', (req, res) => {
-  const idVacationer = req.params.id;
-  const idEvent = req.params.id;
+router.delete('/tourist/:idVacationer/:idEvent', (req, res) => {
+  const {idVacationer, idEvent} = req.params;
   connection.query('DELETE FROM booking WHERE tourist_id = ? AND happening_id= ?', [idVacationer, idEvent], err => {
     if (err) {
       console.log(err);
