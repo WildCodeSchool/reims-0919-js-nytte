@@ -148,6 +148,7 @@ text-decoration: none;
 .pictureCardBar h1 {
     padding: 8%;
     margin-top: 0%;
+    font-size: 1.8em;
 }
 
 .CardTextDescription{
@@ -172,13 +173,12 @@ text-decoration: none;
 }
 
 .fullCardButton{
-    margin: 3%;
     display:flex;
     flex-direction:row;
     justify-content:space-around;
     margin-right:1%;
     margin-left:1%;
-    margin-top: 7%;
+    margin-top: 5%;
 }
 
 .BookButton, .MapButton{

@@ -15,7 +15,9 @@
 }
 
 .form-place {
+    margin-bottom: 4%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -97,7 +99,6 @@ textarea{
   margin-top:16px;
   border:none;
   width:100px;
-  border-bottom:1px solid rgb(90, 88, 88);
   border-top:none;
   border-right:none;
   border-left:none;
