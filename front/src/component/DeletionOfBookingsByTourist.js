@@ -3,13 +3,13 @@ import './Display.css';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom';
 
-const deleteFormData = (idtourist,idevent) => 
+const deleteFormData = (idtourist,idevent, forgetBook) => 
   axios.delete(`http://localhost:8000/api/bookings/tourist/${idtourist}/${idevent}`)
     .then(response => {
-      (response.status === 200) && (alert("la réservation est supprimée !"))
+      (response.status === 200) && (forgetBook())
     })
 
-function DeletionOfBookingsByTourist({date, time, name, idtourist,idevent}){
+function DeletionOfBookingsByTourist({date, time, name, idtourist,idevent, forgetBook}){
   let history=useHistory()
   return(
   <div id="ListOfVacationers">
@@ -22,7 +22,7 @@ function DeletionOfBookingsByTourist({date, time, name, idtourist,idevent}){
       <p>{date.slice(8,10)}/{date.slice(5,7)}/{date.slice(2,4)} {time.slice(0,5)}</p>
     </div>
     <button id="buttonEye" type="button" onClick={event=> { event.preventDefault(); history.push(`/events/${idevent}`) }} href={`/events/${idevent}`}></button>
-    <button id="buttonDelete" type="button" onClick={() => deleteFormData(idtourist,idevent)}></button>  
+    <button id="buttonDelete" type="button" onClick={() => deleteFormData(idtourist,idevent, forgetBook)}></button>  
   </div>
   )
 }
