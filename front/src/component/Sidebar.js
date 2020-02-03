@@ -54,7 +54,7 @@ function Sidebar(props){
           Réservations
         </Link>
         <p id="sup">Consulter</p>  
-        <Link className="menu-item-bar" to="/events">
+        <Link className="menu-item-bar" to="/happens">
           Fil d'actu
         </Link>
         <Link className="menu-item-bar" to="/place">

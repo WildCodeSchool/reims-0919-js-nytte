@@ -56,7 +56,7 @@ export default class DisplayListOfBooks extends React.Component {
                                     booked={this.state.listbooks.length}
                                 />
                             </>
-                        : <Redirect to="/events" />
+                        : <div />
                 }
             </>
         )
