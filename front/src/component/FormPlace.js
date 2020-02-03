@@ -36,9 +36,9 @@ class FormPlace extends React.Component {
       return (
       <div className = "formContainer">
         <div className="bannerTop">
-          <h1 className='title'>Création
+          <h1 className='title'>
             <br/>
-              d'un lieu
+              Lieu
           </h1>
         </div>
         <form>
