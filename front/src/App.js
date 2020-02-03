@@ -362,7 +362,7 @@ class App extends React.Component {
               )))}
             </>
             </Route>
-            <Route exact path='/happens/delete'>
+            <Route path='/happens/delete'>
             <>
             <Sidebar isAdmin={this.state.isAdmin} deleteToken={this.deleteToken} token={this.state.token}/>
             <CancelBar />
