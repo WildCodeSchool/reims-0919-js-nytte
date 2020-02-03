@@ -1,6 +1,7 @@
 import React from 'react'
 import './FormAdmin.css'
 import UploadImage from './UploadImage'
+import { withRouter } from 'react-router-dom'
 
 class FormVacationer extends React.Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='lastname'>Nom</label>
             <input
+              className='inputInWhite'
               type='text'
               name='lastname'
               id='lastname'
@@ -58,6 +60,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='firstname'>Prénom</label>
             <input
+              className='inputInWhite'
               type='text'
               name='firstname'
               id='firstname'
@@ -68,6 +71,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='adminId'>N° établissement</label>
             <input
+              className='inputInWhite'
               type='number'
               name='adminId'
               id='adminId'
@@ -78,6 +82,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='email'>Mail</label>
             <input
+              className='inputInWhite'
               type='email'
               name='email'
               id='email'
@@ -88,6 +93,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='adress'>Adresse</label>
             <input
+              className='inputInWhite'
               type='text'
               name='adress'
               id='adress'
@@ -98,6 +104,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='city'>Ville</label>
             <input
+              className='inputInWhite'
               type='text'
               name='city'
               id='city'
@@ -118,6 +125,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='username'>Identifiant</label>
             <input
+              className='inputInWhite'
               type='text'
               name='username'
               id='username'
@@ -128,6 +136,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='password'>Mot de passe</label>
             <input
+              className='inputInWhite'
               type='password'
               name='password'
               id='password'
@@ -138,6 +147,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='phone'>Téléphone</label>
             <input
+              className='inputInWhite'
               type='tel'
               name='phone'
               id='phone'
@@ -148,6 +158,7 @@ class FormVacationer extends React.Component {
           <div className='form-example marginBottom'>
             <label htmlFor='birthday'>Date de naissance</label>
             <input
+              className='inputInWhite'
               type='date'
               name='birthday'
               id='birthday'

@@ -210,6 +210,10 @@ text-align:center;
   width:414px;
 }
 
+.pagePlace p {
+  font-size: 1.8em;
+}
+
 
 @media screen and (min-width: 415px)
 {
