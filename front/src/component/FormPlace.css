@@ -58,6 +58,7 @@ textarea{
   text-align: center;
   font-size: 0.9em;
   color:white;
+  justify-content: center;
 }
 
 .createButton {
@@ -77,10 +78,7 @@ textarea{
   text-decoration:none;
 }
 
-.title {
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .form-place input {
   background: none;

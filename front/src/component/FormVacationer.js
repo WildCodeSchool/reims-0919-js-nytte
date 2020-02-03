@@ -41,13 +41,11 @@ class FormVacationer extends React.Component {
     return (
     <div className = "formContainer">
       <div className='formAdminVacationer'>
-        <img
-          src='https://zupimages.net/up/19/50/0b2g.png'
-          className='LogoNytte'
-          alt='logo Nytte'></img>
-        <h1>Création d'un vacancier</h1>
+        <div className='topComponent'>
+          <h1 className='titleVacationer'>Vacancier</h1>
+        </div>
         <form>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='lastname'>Nom</label>
             <input
               type='text'
@@ -57,7 +55,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='firstname'>Prénom</label>
             <input
               type='text'
@@ -67,7 +65,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='adminId'>N° établissement</label>
             <input
               type='number'
@@ -77,7 +75,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='email'>Mail</label>
             <input
               type='email'
@@ -87,7 +85,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='adress'>Adresse</label>
             <input
               type='text'
@@ -97,7 +95,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='city'>Ville</label>
             <input
               type='text'
@@ -107,7 +105,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='zip'>Code postal</label>
             <input
               type='text'
@@ -117,7 +115,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='username'>Identifiant</label>
             <input
               type='text'
@@ -127,7 +125,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='password'>Mot de passe</label>
             <input
               type='password'
@@ -137,7 +135,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='phone'>Téléphone</label>
             <input
               type='tel'
@@ -147,7 +145,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='birthday'>Date de naissance</label>
             <input
               type='date'
@@ -157,7 +155,7 @@ class FormVacationer extends React.Component {
               required
             />
           </div>
-          <div className='form-example'>
+          <div className='form-example marginBottom'>
             <label htmlFor='photo'>Photo</label>
             <UploadImage
                   savePicture = {this.savePicture}
@@ -168,9 +166,8 @@ class FormVacationer extends React.Component {
           className="createButton"
           onClick={() => this.props.postFormDataVacat(this.state)}
           type='submit'
-          value='Créer'
         >
-          Valider
+          Créer
         </button>
       </div>
     </div>
