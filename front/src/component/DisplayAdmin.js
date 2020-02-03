@@ -32,7 +32,7 @@ function DisplayAdmin(props){
       <p>{props.camping.description_company}</p>
       </>)}
       <div>
-        <button className="ButtonGO" type="button" onClick={event=> setDataVisible(prevValue => !prevValue)}> {dataVisible ? 'GO >' : props.camping.company.toUpperCase() }</button>
+        <button className="ButtonGO" type="button" onClick={event=> { event.preventDefault(); history.push(`/events`) }}>GO ></button>
       </div>
 </div>
   )

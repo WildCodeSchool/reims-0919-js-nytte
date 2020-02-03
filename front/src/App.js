@@ -269,20 +269,6 @@ class App extends React.Component {
             {this.state.campings && (
               <DisplayAdmin camping={this.state.campings[this.state.currentCamping]} token={this.state.token} />
             )}
-            {React.Children.toArray(this.state.events.map((event, index) => (
-              <EventCard 
-                id={event.id}
-                index={index}
-                photo={event.happening_picture}
-                category={event.happening_category}
-                date={event.happening_date}
-                time={event.happening_time}
-                endDate={event.happening_time_end}
-                endTime={event.happening_date_end}
-                isItBookable={event.isItBookable}
-                place={event.local_name}
-              />
-          )))}
           </Route>
           <Route exact path='/formadmin'>
             <FormAdmin />

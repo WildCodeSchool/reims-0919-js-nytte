@@ -49,9 +49,9 @@ class FormEvent extends React.Component {
       return (
       <div className = "formContainer">
         <div className="bannerTop"> 
-          <h1 className='title'>Création
+          <h1 className='title'>
             <br/>
-              d'un événement
+              Evénement
           </h1>
         </div>
         <form>
