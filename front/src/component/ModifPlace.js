@@ -9,7 +9,7 @@ class ModifPlace extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        place: this.props.place
+        place: this.props.place[this.props.index]
         };
 
      
@@ -49,6 +49,7 @@ class ModifPlace extends React.Component {
 
 
     render() {
+      console.log(this.props.id)
       return (
       <div className = "formContainer">
         <div className="bannerTop">

@@ -270,6 +270,25 @@ text-decoration: none;
     width:auto;
 }
 
+.nameButtonBook{
+    background-color:rgb(58, 49, 43);
+    border:0.5px solid rgb(58, 49, 43);
+    box-shadow: 8px 8px 12px rgba(70, 67, 67, 0.411);
+    min-height:8vh;
+    text-decoration:none;
+    color:white;
+    font-size:1.6em;
+    border-radius:10px 10px 0 0;
+    text-align: center;
+}
+
+.eventTd{
+    width: 120px;
+}
+
+.nameTd{
+    width: 160px;
+}
 
 
 @media screen and (min-width: 480px)

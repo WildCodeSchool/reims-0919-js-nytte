@@ -60,16 +60,16 @@ margin-bottom:0
   margin-top:30px;
 }
 
-@media screen and (min-width: 480px)
+@media screen and (min-width: 415px)
 {
   #phonePres, #responsablePres, #mailPres{
     display:flex;
     justify-content: space-around;
-    width:20%;
+    width:414px;
     align-items: center;
     margin-left:15%;
   }
   #pagePrinc{
-    width:400px;
+    width:414px;
   }
 }

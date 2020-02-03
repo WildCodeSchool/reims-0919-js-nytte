@@ -25,20 +25,20 @@ function DisplayVacationer(props){
 
         <h2 className="titreProfil">{props.vacationer.tourist_firstname} {props.vacationer.tourist_lastname}</h2>
       
-      <div className="adressePres FlexRow">
+      <div id="adressePresII">
         <img className="logo" src='https://zupimages.net/up/20/04/ldbv.png' alt="logo adresse"/>
         <p>{props.vacationer.tourist_address1} {props.vacationer.tourist_zip} {props.vacationer.tourist_city}</p>
       </div>
       <div className="desc">
         <p>{props.vacationer.birthday}</p>
       </div>
-      <div id="phonePres">
+      <div id="phonePresII">
         {props.vacationer.tourist_phone===null? "": 
           <img className="logo" src='https://zupimages.net/up/19/49/m5nc.png' alt="logo tél"></img>}
         {props.vacationer.tourist_phone==null? "": 
           <p>{props.vacationer.tourist_phone}</p>}
       </div>
-      <div id="mailPres">
+      <div id="mailPresII">
         {props.vacationer.tourist_email===null||<img className="logo" src='https://zupimages.net/up/19/49/jijs.png' alt="logo email"></img>}
         {props.vacationer.tourist_email===null||<p>{props.vacationer.tourist_email}</p>}
       </div>

@@ -47,9 +47,9 @@ function DisplayProfileVacationer({id,firstname,lastname,city,zip,address,birthd
     </div>
 
     <div className='resaVacationer'>
-    <a onClick={event=> { event.preventDefault(); history.push(`/tourist/delete/${id}`) }} href={`/tourist/delete/${id}`}>
+    <a onClick={event=> { event.preventDefault(); history.push(`/bookings/tourist`) }} href={`/bookings/tourist`}>
       <img className='logoResa' src='https://zupimages.net/up/20/04/suev.png'/></a>
-    <p>Mes réservations</p>
+    <p id="myBook">Mes réservations</p>
     </div>
     </div>
     </div>
