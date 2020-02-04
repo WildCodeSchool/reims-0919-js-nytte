@@ -431,7 +431,8 @@ class App extends React.Component {
                     date={book.happening_date}
                     time={book.happening_time}
                     name={book.happening_name}
-                    forgetBook={() => this.setState(prevState => ({books: [...prevState.books].filter(previousBook => previousBook.id !== book.id)}))}
+                    forgetBook={() => this.setState(prevState => ({books: [...prevState.books].filter(previousBook => previousBook.happening_name !== book.happening_name
+                    )}))}
                   />
               )))}
             </>
