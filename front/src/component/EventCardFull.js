@@ -3,6 +3,7 @@ import './EventCard.css';
 import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import cogoToast from 'cogo-toast';
 
 function renderSwitch(category){
   console.log({category})
@@ -31,8 +32,8 @@ const book = (eventId, token) => {
     happening_id: eventId,
     tourist_id: token
     })
-    .then(response => response.status === 200 && alert("Votre réservation a été effectuée !"))
-    .catch(error => alert('Vous avez déjà réservé cet événement'))
+    .then(response => response.status === 200 && cogoToast.success("Votre réservation a été effectuée !"))
+    .catch(error => cogoToast.warn('Vous avez déjà réservé cet événement'))
 }
 
 function EventCardFull({id, photo, title, category, description, date, time, endTime, isItBookable, place, map, token}){
