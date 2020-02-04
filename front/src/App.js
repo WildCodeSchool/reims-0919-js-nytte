@@ -30,6 +30,7 @@ import DeletionOfBookingsByTourist from './component/DeletionOfBookingsByTourist
 import LoginVacationer from './component/LoginVacationer'
 import ModifPlace from './component/ModifPlace.js'
 import DisplayListOfBooks from './component/DisplayListOfBooks.js'
+import cogoToast from 'cogo-toast';
 
 
 class App extends React.Component {
@@ -184,7 +185,8 @@ class App extends React.Component {
         this.setState(prevState => {
           return {places: [...prevState.places, response.data]}
         }, () => {
-          alert("Votre lieu a été créé !")
+          cogoToast.success("Votre lieu a été créé !")
+          //alert("Votre lieu a été créé !")
         })
       } else {
         console.log(response)
@@ -213,8 +215,9 @@ class App extends React.Component {
       if (response.status === 201) { 
         this.setState(prevState => {
           return {vacationers: [...prevState.vacationers, response.data]}
-        }, () => {        
-          alert("Votre compte a été créé!")
+        }, () => { 
+          cogoToast.success("Votre compte a été créé!")       
+          //alert("Votre compte a été créé!")
         })
         } else {
           console.log(response)
@@ -240,8 +243,9 @@ class App extends React.Component {
         if (response.status === 201) {
           this.setState(prevState => {
             return {events: [...prevState.events, response.data]}
-          }, () => {        
-            alert("Votre événement a été créé!")
+          }, () => { 
+            cogoToast.success("Votre événement a été créé!")       
+            //alert("Votre événement a été créé!")
           })
           } else {
             console.log(response)
